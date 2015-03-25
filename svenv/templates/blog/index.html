@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% if blog_list %}
+<ul>
+    {% for blog in blog_list %}
+    <article>
+        <header>
+            <h3>{{ blog.title }}</h3>
+            <em>Posted on {{ blog.date|date }}</em>
+        </header>
+        <section>
+            {{ blog.content|safe }}
+        </section>
+    </article>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
