@@ -3,7 +3,7 @@ from blog.models import Blog
 
 
 class ListView(generic.ListView):
-    template_name = 'blog/index.html'
+    template_name = 'blog/list.html'
     context_object_name = 'blog_list'
 
     def get_queryset(self):
