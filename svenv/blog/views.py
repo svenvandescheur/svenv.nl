@@ -7,4 +7,4 @@ class IndexView(generic.ListView):
     context_object_name = 'blog_list'
 
     def get_queryset(self):
-        return Blog.objects.order_by('date')
+        return Blog.objects.order_by('date').reverse()
