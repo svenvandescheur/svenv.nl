@@ -11,3 +11,8 @@ class ListView(generic.ListView):
         Gets a list of Blog items in newest first order
         """
         return Blog.objects.order_by('date').reverse()
+
+
+class PostView(generic.DetailView):
+    model = Blog
+    template_name = 'blog/post.html'

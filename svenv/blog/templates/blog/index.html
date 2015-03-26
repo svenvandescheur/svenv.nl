@@ -3,12 +3,15 @@
     {% for blog in blog_list %}
     <article>
         <header>
-            <h3>{{ blog.title }}</h3>
-            <em>Posted on {{ blog.date|date }}</em>
+            <h3><a href="{{ blog.id }}">{{ blog.title }}</a></h3>
         </header>
         <section>
             {{ blog.content|safe }}
         </section>
+        <footer>
+            <em>{{ blog.date|date }}</em>
+            <a href="{{ blog.id }}">Permanent link</a>
+        </footer>
     </article>
     {% endfor %}
 </ul>
