@@ -9,6 +9,5 @@ class ListView(generic.ListView):
     def get_queryset(self):
         """
         Gets a list of Blog items in newest first order
-        :return:
         """
         return Blog.objects.order_by('date').reverse()
