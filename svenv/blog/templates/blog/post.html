@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content  %}
+    <article>
+        <header>
+            <h3>{{ blog.title }}</h3>
+        </header>
+        <section>
+            {{ blog.content|safe }}
+        </section>
+        <footer>
+            <em>{{ blog.date|date }}</em>
+        </footer>
+    </article>
+{% endblock %}
