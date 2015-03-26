@@ -2,17 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Svenv.nl</title>
 </head>
 <body>
-<header>
-    <h1>Blog</h1>
-</header>
-<nav>
-    <ul>
-        <li><a href="/">Blog</a></li>
-    </ul>
-</nav>
-{% block content %}no content{% endblock %}
+<div id="document">
+    {% include "header.html" %}
+    {% include "sidebar.html" %}
+    {% block content %}{% endblock %}
+    {% include "footer.html" %}
+</div>
 </body>
 </html>
