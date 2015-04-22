@@ -3,13 +3,13 @@
 {% block content  %}
     <article>
         <header>
-            <h3>{{ blog.title }}</h3>
+            <h3>{{ post.title }}</h3>
         </header>
         <section>
-            {{ blog.content|safe }}
+            {{ post.content|safe }}
         </section>
         <footer>
-            <em>{{ blog.date|date }}</em>
+            <em>{{ post.date|date }}</em>
         </footer>
     </article>
 {% endblock %}

@@ -3,8 +3,8 @@ from blog.models import Category, Post
 
 
 class ListView(generic.ListView):
-    template_name = 'blog/list.html'
     context_object_name = 'blog_list'
+    template_name = 'blog/list.html'
 
     def get_queryset(self):
         """

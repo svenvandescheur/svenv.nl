@@ -5,7 +5,7 @@
         {% for blog in blog_list %}
         <article>
             <header>
-                <h3><a href="{{ blog.id }}">{{ blog.title }}</a></h3>
+                <h3><a href="{{ blog.category.name }}/{{ blog.url_title }}">{{ blog.title }}</a></h3>
             </header>
             <section>
                 {{ blog.content|safe }}
