@@ -16,10 +16,10 @@ class Post(models.Model):
 
     author = models.ForeignKey(User)
     category = models.ForeignKey('Category')
-    content = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200)
     url_title = models.CharField(max_length=100)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         """
