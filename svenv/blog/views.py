@@ -3,12 +3,12 @@ from blog.models import Category, Post
 
 
 class ListView(generic.ListView):
-    context_object_name = 'blog_list'
+    context_object_name = 'post_list'
     template_name = 'blog/list.html'
 
     def get_queryset(self):
         """
-        Gets a list of Blog items in newest first order
+        Gets a list posts in newest first order
         """
         category = self._get_category()
         print Post.objects.filter(category=category).order_by('date').reverse()

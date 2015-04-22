@@ -7,6 +7,7 @@ class Post(models.Model):
     """
     Post model
 
+    Posts are written by Django users
     Posts live in a category
     The combination url_title and category should be unique
     """

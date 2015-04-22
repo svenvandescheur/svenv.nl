@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content  %}
+    <nav>
+        <a href="/">Get back home</a>
+    </nav>
     <article>
         <header>
             <h3>{{ post.title }}</h3>
@@ -9,7 +12,7 @@
             {{ post.content|safe }}
         </section>
         <footer>
-            <em>{{ post.date|date }}</em>
+            <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
         </footer>
     </article>
 {% endblock %}
