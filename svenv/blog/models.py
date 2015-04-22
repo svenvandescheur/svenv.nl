@@ -14,7 +14,7 @@ class Post(models.Model):
     def __str__(self):
         return self.url_title
 
-    author = models.OneToOneField(User)
+    author = models.ForeignKey(User)
     category = models.ForeignKey('Category')
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
