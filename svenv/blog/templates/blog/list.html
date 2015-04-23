@@ -5,9 +5,10 @@
         {% for post in post_list %}
         <article>
             <header>
-                <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title }}</a></h3>
+                <img src="//lorempixel.com/400/300/cats?" alt="header image for {{ post.url_title }}">
             </header>
             <section>
+                <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title }}</a></h3>
                 {{ post.content|safe }}
             </section>
             <footer>

@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Base template
+   ========================================================================== */
+
+/**
+ * Imports
+ */
+@import (reference) "../lib/grid";
+
+
+/**
+ * Defaults
+ */
+* {
+  .border-box();
+}
+
+/*
+ * Less
+ */
+@header: #3F51B5;
+@article-header: #3F51B5;
+@background: #ECEFF1;
+
+.shadow(){
+    box-shadow: 0 0 0 1px rgba(34,34,34,0.1),0 6px 12px rgba(34,34,34,0.1);
+}
+
+
+/*
+ * Styling
+ */
+body {
+    background: @background;
+}
+
+#document > header {
+    background: @header;
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+}
+
+article {
+    .shadow();
+    float: left;
+    padding: 2px;
+
+    header {
+        background: @article-header;
+        overflow: hidden;
+        white-space: nowrap;
+
+        img {
+            .cols(12, max-width);
+        }
+    }
+
+    footer {
+        background: @background;
+        overflow: hidden;
+        text-align: center;
+        white-space: nowrap;
+    }
+}
