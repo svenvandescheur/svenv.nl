@@ -8,7 +8,7 @@
         {% for post in post_list %}
         <article>
             <header>
-                <img src="//lorempixel.com/400/300/cats" width=400" height="300" alt="header image for {{ post.url_title }}">
+                <img src="{{ post.image.url }}" width="{gith }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
             </header>
             <section>
                 <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title|markdown|safe }}</a></h3>

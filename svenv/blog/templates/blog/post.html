@@ -6,7 +6,7 @@
 {% block content  %}
     <article>
         <header>
-            <img src="//lorempixel.com/1024/768/cats" width=1024" height="768" alt="header image for {{ post.url_title }}">
+            <img src="{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
         </header>
         <section>
             <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title|markdown|safe }}</a></h3>
