@@ -1,18 +1,20 @@
 {% extends "base.html" %}
+{% load markdown %}
+
+{% block bodyclass %}postview{% endblock %}
 
 {% block content  %}
-    <nav>
-        <a href="/">Get back home</a>
-    </nav>
     <article>
         <header>
-            <h3>{{ post.title }}</h3>
+            <img src="//lorempixel.com/1024/768/cats" width=1024" height="768" alt="header image for {{ post.url_title }}">
         </header>
         <section>
-            {{ post.content|safe }}
+            <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title|markdown|safe }}</a></h3>
+            {{ post.content|markdown|safe }}
         </section>
         <footer>
             <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
+            <a href="/{{ post.category.name }}/{{ post.url_title }}">Permalink</a>
         </footer>
     </article>
 {% endblock %}

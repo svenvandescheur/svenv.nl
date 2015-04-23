@@ -8,7 +8,13 @@
    .vmargin(0, 0.25);
 }
 
-article {
+body.listview #document > header {
+    h1 {
+        .hmargin(0.25, 0.25);
+    }
+}
+
+body.listview article {
     .cols(11.5);
     .hmargin(0.25, 0.25);
     .vmargin(0.25, 0.25);
@@ -24,7 +30,7 @@ article {
         .rows(4, max-height);
         font-size: 120%;
         line-height: 1.5em;
-        overflow: hidden;
+        overflow-y: scroll;
 
     }
 

@@ -15,15 +15,28 @@
   .border-box();
 }
 
+
+/**
+ * Fonts
+ */
+.import-google-font('Lobster');
+
 /*
  * Less
  */
-@header: #3F51B5;
-@article-header: #3F51B5;
-@background: #ECEFF1;
+@header: @background;
+@background: darken(white, 5%);
 
 .shadow(){
     box-shadow: 0 0 0 1px rgba(34,34,34,0.1),0 6px 12px rgba(34,34,34,0.1);
+}
+
+.blur(@length: 5px) {
+    -webkit-filter: blur(@length);
+    -moz-filter: blur(@length);
+    -o-filter: blur(@length);
+    -ms-filter: blur(@length);
+    filter: blur(@length);
 }
 
 
@@ -34,22 +47,26 @@ body {
     background: @background;
 }
 
-#document > header {
+body.listview #document > header {
     background: @header;
+    .vmargin(0, 0);
 
     h1 {
-        color: white;
-        text-align: center;
+        color: @link-color;
+        font-family: 'Lobster', cursive;
     }
 }
 
-article {
+body.listview {
+    line-height: 1.5em;
+}
+
+body.listview article {
     .shadow();
     float: left;
     padding: 2px;
 
     header {
-        background: @article-header;
         overflow: hidden;
         white-space: nowrap;
 
@@ -58,8 +75,69 @@ article {
         }
     }
 
+    section, footer {
+        .hpadding(0.5);
+    }
+
     footer {
-        background: @background;
+        background: white;
+        overflow: hidden;
+        text-align: left;
+        white-space: nowrap;
+    }
+}
+
+body.postview {
+    font-size: 160%;
+}
+
+body.postview #document > header {
+    .rows(0, min-height);
+    .rows(0, height);
+    .vmargin(0, 0);
+
+    h1 {
+        .rows(2, top);
+        color: white;
+        display: block;
+        font-family: 'Lobster', cursive;
+        font-size: 300%;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+    }
+}
+
+body.postview article {
+    line-height: 1.5em;
+
+    header {
+        .cols(12, width);
+        .rows(8, max-height);
+        overflow: hidden;
+
+        img {
+            .blur();
+            .cols(12, width);
+        }
+    }
+
+    section, footer {
+        .cols(10);
+        .rows(-3, top);
+        .hmargin(1);
+        .hpadding(1);
+        .vpadding(1);
+        .shadow();
+        position: relative;
+
+        h1, h2, h3, h4, h5, h6 {
+            .vmargin(0, 1);
+        }
+    }
+
+    footer {
+        background: white;
         overflow: hidden;
         text-align: center;
         white-space: nowrap;
