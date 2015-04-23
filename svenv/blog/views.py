@@ -10,19 +10,10 @@ class ListView(generic.ListView):
         """
         Gets a list posts in newest first order
         """
-        category = self._get_category()
-        print Post.objects.filter(category=category).order_by('date').reverse()
-        return Post.objects.filter(category=category).order_by('date').reverse()
-
-    def _get_category(self):
-        """
-        Attempts to get the category from url
-        if no category name is given it defaults to the first category in database
-        """
         if self.kwargs['category_name'] is not None:
-            return Category.objects.get(name=self.kwargs['category_name'])
+            return Post.objects.filter(category=self.kwargs['category_name']).order_by('date').reverse()
         else:
-            return Category.objects.all()[:1].get()
+            return Post.objects.all().order_by('date').reverse()
 
 
 class PostView(generic.DetailView):
