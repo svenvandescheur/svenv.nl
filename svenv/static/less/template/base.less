@@ -24,8 +24,8 @@
 /*
  * Less
  */
-@header: @background;
-@background: darken(white, 5%);
+@header: white;
+@background: darken(white, 10);
 
 .shadow(){
     box-shadow: 0 0 0 1px rgba(34,34,34,0.1),0 6px 12px rgba(34,34,34,0.1);
@@ -47,13 +47,28 @@ body {
     background: @background;
 }
 
-body.listview #document > header {
-    background: @header;
-    .vmargin(0, 0);
+body.listview {
+    #document> header {
+        background: @header;
+        position: fixed;
 
-    h1 {
-        color: @link-color;
-        font-family: 'Lobster', cursive;
+        h1 {
+            color: @link-color;
+            font-family: 'Lobster', cursive;
+        }
+    }
+
+    section#content {
+        .vmargin(1.25, 0);
+        background: @background;
+    }
+
+    #document > footer {
+        .cols(12);
+        .rows(1);
+        .vmargin(1, 0);
+        background: @background;
+        text-align: center;
     }
 }
 
@@ -72,6 +87,7 @@ body.listview article {
 
         img {
             .cols(12, width);
+            background: @background;
         }
     }
 
@@ -82,7 +98,6 @@ body.listview article {
     footer {
         background: white;
         overflow: hidden;
-        text-align: left;
         white-space: nowrap;
     }
 }
@@ -91,20 +106,26 @@ body.postview {
     font-size: 160%;
 }
 
-body.postview #document > header {
-    .rows(0, min-height);
-    .rows(0, height);
-    .vmargin(0, 0);
+body.postview {
+    #document > header {
+        .rows(0, min-height);
+        .rows(0, height);
+        .vmargin(0, 0);
 
-    h1 {
-        .rows(2, top);
-        color: white;
-        display: block;
-        font-family: 'Lobster', cursive;
-        font-size: 300%;
-        position: relative;
-        text-align: center;
-        z-index: 1;
+        h1 {
+            .rows(2, top);
+            color: white;
+            display: block;
+            font-family: 'Lobster', cursive;
+            font-size: 300%;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+    }
+
+    section#content {
+        background: @background;
     }
 }
 
@@ -118,7 +139,8 @@ body.postview article {
 
         img {
             .blur();
-            .cols(12, width);
+            height: inherit;
+            width: inherit;
         }
     }
 

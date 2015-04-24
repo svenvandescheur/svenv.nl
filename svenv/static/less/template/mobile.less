@@ -30,12 +30,17 @@ body.listview article {
         .rows(4, max-height);
         font-size: 120%;
         line-height: 1.5em;
-        overflow-y: scroll;
-
+        overflow: hidden;
     }
 
     footer {
         .cols(12);
         .rows(1, line-height);
+        text-align: left;
+
+
+        a {
+            float: right;
+        }
     }
 }

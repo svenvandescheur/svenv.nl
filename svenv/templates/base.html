@@ -8,9 +8,15 @@
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
 <div id="document">
-    {% include "header.html" %}
-    {% block content %}{% endblock %}
-    {% include "footer.html" %}
+    <header>
+        {% include "header.html" %}
+    </header>
+    <section id="content">
+        {% block content %}{% endblock %}
+    </section>
+    <footer>
+        {% include "footer.html" %}
+    </footer>
 </div>
 </body>
 </html>
