@@ -5,6 +5,8 @@ from django.db import models
 class Category(models.Model):
     """
     Category model
+
+    Categories contain posts
     """
     def __str__(self):
         return self.name
@@ -18,6 +20,7 @@ class Post(models.Model):
 
     Posts are written by Django users
     Posts live in a category
+    Posts contain an image
     """
     def __str__(self):
         return self.url_title
@@ -33,7 +36,10 @@ class Post(models.Model):
 
 class Image(models.Model):
     """
-    Image to be used as header image in blog post
+    Image model
+
+    This class contains meta information about images
+    It's primary use is to provide posts with images
     """
     def __str__(self):
         return self.title

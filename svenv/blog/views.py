@@ -1,8 +1,14 @@
+from blog.models import Category, Image, Post
+from django.utils.encoding import smart_text
 from django.views import generic
-from blog.models import Category, Post
-
+from rest_framework import viewsets
+from rest_framework.utils import formatting
+import serializers
 
 class ListView(generic.ListView):
+    """
+    Shows a list of posts (e.g. home page)
+    """
     context_object_name = 'post_list'
     template_name = 'blog/list.html'
 
@@ -17,6 +23,10 @@ class ListView(generic.ListView):
 
 
 class PostView(generic.DetailView):
+    """
+    Shows a specific post
+    """
+    queryset = Post.objects.all()
     model = Post
     template_name = 'blog/post.html'
 
@@ -26,3 +36,50 @@ class PostView(generic.DetailView):
         """
         category = Category.objects.get(name__icontains=self.kwargs['category_name'])
         return Post.objects.get(category=category, url_title__icontains=self.kwargs['url_title'])
+
+
+class BaseBlogViewSet(viewsets.ModelViewSet):
+    """
+    Base class for viewsets
+    """
+    def get_view_description(self, html=False):
+        """
+        Fetches the docstring from the model and uses it as description
+        """
+        description = self.model.__doc__
+        description = formatting.dedent(smart_text(description))
+        if html:
+            return formatting.markup_description(description)
+        return description
+
+    def get_serializer_class(self):
+        """
+        Returns serializer class based on model name
+        """
+        return getattr(serializers, self.model.__name__ + 'Serializer')
+
+
+class PostViewSet(BaseBlogViewSet):
+    """
+    Api viewset for post
+    """
+    model = Post
+    queryset = Post.objects.all()
+
+
+class CategoryViewset(BaseBlogViewSet):
+    """
+    Api view set for category
+    """
+    model = Category
+    queryset = model.objects.all()
+
+
+
+
+class ImageViewset(BaseBlogViewSet):
+    """
+    Api view set for image
+    """
+    model = Image
+    queryset = model.objects.all()
