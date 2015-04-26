@@ -2,11 +2,17 @@
    Wide screen overrides
    ========================================================================== */
 
-body.listview article {
-    .cols(3.75);
+body.listview #document {
+    section#content {
+        .cols(11);
+        .hmargin(0.5, 0.5);
+    }
 }
 
 body.listview article {
+    .cols(3.75);
+
+
     section {
         overflow-y: scroll;
     }
