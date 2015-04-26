@@ -53,8 +53,11 @@ body.listview {
         position: fixed;
 
         h1 {
-            color: @link-color;
             font-family: 'Lobster', cursive;
+
+            a:hover {
+                text-decoration: none;
+            }
         }
     }
 
@@ -86,7 +89,6 @@ body.listview {
 body.listview article {
     .shadow();
     float: left;
-    padding: 2px;
 
     header {
         overflow: hidden;
@@ -121,13 +123,20 @@ body.postview {
 
         h1 {
             .rows(2, top);
-            color: white;
             display: block;
             font-family: 'Lobster', cursive;
             font-size: 300%;
             position: relative;
             text-align: center;
             z-index: 1;
+
+            a {
+                color: white;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
         }
     }
 
@@ -152,6 +161,19 @@ body.postview article {
         .cols(12, width);
         .rows(8, max-height);
         overflow: hidden;
+
+        a {
+            .cols(2);
+            .rows(1, line-height);
+            .vmargin(-1, 0);
+            .rows(3, top);
+            background: @link-color;
+            color: white;
+            float: left;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
 
         img {
             .blur();
