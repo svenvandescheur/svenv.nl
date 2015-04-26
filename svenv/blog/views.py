@@ -1,7 +1,9 @@
 from blog.models import Category, Image, Post
+from django.conf import settings
 from django.utils.encoding import smart_text
 from django.views import generic
 from rest_framework import viewsets
+from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer
 from rest_framework.utils import formatting
 import serializers
 
@@ -16,10 +18,12 @@ class ListView(generic.ListView):
         """
         Gets a list posts in newest first order
         """
+        limit = settings.REST_FRAMEWORK['PAGE_SIZE']
+
         if self.kwargs['category_name'] is not None:
-            return Post.objects.filter(category=self.kwargs['category_name']).order_by('date').reverse()
+            return Post.objects.filter(category=self.kwargs['category_name']).order_by('date').reverse()[:limit]
         else:
-            return Post.objects.all().order_by('date').reverse()
+            return Post.objects.all().order_by('date').reverse()[:limit]
 
 
 class PostView(generic.DetailView):
@@ -39,9 +43,17 @@ class PostView(generic.DetailView):
 
 
 class BaseBlogViewSet(viewsets.ModelViewSet):
+    ordering_fields = ('__all__')
+
     """
     Base class for viewsets
     """
+    def get_serializer_class(self):
+        """
+        Returns serializer class based on model name
+        """
+        return getattr(serializers, self.model.__name__ + 'Serializer')
+
     def get_view_description(self, html=False):
         """
         Fetches the docstring from the model and uses it as description
@@ -52,19 +64,18 @@ class BaseBlogViewSet(viewsets.ModelViewSet):
             return formatting.markup_description(description)
         return description
 
-    def get_serializer_class(self):
-        """
-        Returns serializer class based on model name
-        """
-        return getattr(serializers, self.model.__name__ + 'Serializer')
-
 
 class PostViewSet(BaseBlogViewSet):
     """
     Api viewset for post
+    Supports HTML rendering
     """
     model = Post
+    ordering = 'id'
     queryset = Post.objects.all()
+    renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
+    template_name = 'blog/list.html'
+
 
 
 class CategoryViewset(BaseBlogViewSet):

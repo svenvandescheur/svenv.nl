@@ -13,5 +13,7 @@ class ImageSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    image = ImageSerializer()
+
     class Meta:
         model = Post
