@@ -1,12 +1,10 @@
 from django.conf.urls import patterns, include, url
 from blog.views import ListView, PostView
 from rest_framework import routers, serializers, viewsets
-from views import CategoryViewset, ImageViewset, PostViewSet
+from views import PostViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'category', CategoryViewset)
-router.register(r'image', ImageViewset)
 router.register(r'posts', PostViewSet)
 
 urlpatterns = patterns('',

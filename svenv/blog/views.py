@@ -43,12 +43,13 @@ class PostView(generic.DetailView):
         return Post.objects.get(category=category, url_title__icontains=self.kwargs['url_title'])
 
 
-class BaseBlogViewSet(viewsets.ModelViewSet):
-    ordering_fields = ('__all__')
-
+class BaseBlogViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Base class for viewsets
     """
+    ordering_fields = ('__all__')
+
+
     def get_serializer_class(self):
         """
         Returns serializer class based on model name
@@ -76,20 +77,3 @@ class PostViewSet(BaseBlogViewSet):
     queryset = Post.objects.all()
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
     template_name = 'blog/list.html'
-
-
-
-class CategoryViewset(BaseBlogViewSet):
-    """
-    Api view set for category
-    """
-    model = Category
-    queryset = model.objects.all()
-
-
-class ImageViewset(BaseBlogViewSet):
-    """
-    Api view set for image
-    """
-    model = Image
-    queryset = model.objects.all()
