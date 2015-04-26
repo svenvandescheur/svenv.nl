@@ -16,6 +16,7 @@ class ImageSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=200)
 
+
 class PostSerializer(serializers.ModelSerializer):
     image = ImageSerializer()
     author = UserSerializer()
