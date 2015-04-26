@@ -7,6 +7,7 @@ from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, Templat
 from rest_framework.utils import formatting
 import serializers
 
+
 class ListView(generic.ListView):
     """
     Shows a list of posts (e.g. home page)
@@ -84,8 +85,6 @@ class CategoryViewset(BaseBlogViewSet):
     """
     model = Category
     queryset = model.objects.all()
-
-
 
 
 class ImageViewset(BaseBlogViewSet):
