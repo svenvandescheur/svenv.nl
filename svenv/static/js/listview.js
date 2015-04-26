@@ -32,7 +32,7 @@ function ListView() {
      * adds the received data to the dom and update the current page value
      */
     this._fetchPostsSuccess = function(data) {
-        $(data).insertBefore(this.fetch_button);
+        $(data).insertBefore(this.fetch_button).hide().fadeIn();
         this.setPage(this.nextPage());
     };
 
@@ -41,7 +41,7 @@ function ListView() {
      * notifies the user that fetching posts has failed
      */
     this._fetchPostsError = function() {
-        alert('Fetching posts failed!');
+        this.fetch_button.text('No more posts.');
     };
 
     /**
@@ -76,9 +76,9 @@ function ListView() {
  */
 function main() {
     // Fetch posts when link in clicked
-    $('.fetch_posts').click(function(e) {
+    listView = new ListView;
+    listView.fetch_button.click(function(e) {
         e.preventDefault();
-        listView = new ListView;
         listView.fetchPosts();
     });
 };

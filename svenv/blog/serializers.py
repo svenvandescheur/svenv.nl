@@ -18,6 +18,7 @@ class UserSerializer(serializers.Serializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
     image = ImageSerializer()
     author = UserSerializer()
 
