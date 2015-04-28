@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Mobile overrides
+   ========================================================================== */
+
+#document > header {
+   .cols(12);
+   .rows(1);
+   .vmargin(0, 0.25);
+}
+
+body.listview #document > header {
+    h1 {
+        .hmargin(0.25, 0.25);
+    }
+}
+
+body.listview article {
+    .cols(11.5);
+    .hmargin(0.25, 0.25);
+    .vmargin(0.25, 0.25);
+
+    header {
+        .cols(12);
+        .rows(1);
+    }
+
+    section {
+        .cols(12);
+        .rows(4);
+        .rows(4, max-height);
+        font-size: 120%;
+        line-height: 1.5em;
+        overflow: hidden;
+    }
+
+    footer {
+        .cols(12);
+        .rows(1, line-height);
+        text-align: left;
+
+
+        a {
+            float: right;
+        }
+    }
+}

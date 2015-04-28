@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load blog_template_helpers %}
+
+{% block bodyclass %}postview{% endblock %}
+
+{% block content  %}
+    <article>
+        <header>
+            <a href="/">Back to base</a>
+            <img src="{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
+        </header>
+        <section>
+            <h3>{{ post.title }}</h3>
+            {{ post.content|markdown|safe }}
+        </section>
+        <footer>
+            <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
+            <a href="/{{ post.category.name }}/{{ post.url_title }}">Permalink</a>
+        </footer>
+    </article>
+{% endblock %}

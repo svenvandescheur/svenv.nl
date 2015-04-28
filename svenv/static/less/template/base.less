@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Base template
+   ========================================================================== */
+
+/**
+ * Imports
+ */
+@import (reference) "../lib/grid";
+
+
+/**
+ * Defaults
+ */
+* {
+  .border-box();
+}
+
+
+/**
+ * Fonts
+ */
+.import-google-font('Lobster');
+
+/*
+ * Less
+ */
+@header: white;
+@background: darken(white, 10);
+
+.shadow(){
+    box-shadow: 0 0 0 1px rgba(34,34,34,0.1),0 6px 12px rgba(34,34,34,0.1);
+}
+
+.blur(@length: 5px) {
+    -webkit-filter: blur(@length);
+    -moz-filter: blur(@length);
+    -o-filter: blur(@length);
+    -ms-filter: blur(@length);
+    filter: blur(@length);
+}
+
+
+/*
+ * Styling
+ */
+body {
+    background: @background;
+}
+
+body.listview {
+    #document> header {
+        background: @header;
+        position: fixed;
+
+        h1 {
+            font-family: 'Lobster', cursive;
+
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    section#content {
+        .vmargin(1.25, 0);
+        background: @background;
+    }
+
+    #document > footer {
+        .cols(12);
+        .rows(1);
+        .vmargin(1, 0);
+        background: @background;
+        text-align: center;
+    }
+}
+
+body.listview {
+    line-height: 1.5em;
+
+    .fetch_posts {
+        .cols(12);
+        .rows(1, line-height);
+        display: block;
+        float: left;
+        text-align: center;
+    }
+}
+
+body.listview article {
+    .shadow();
+    float: left;
+
+    header {
+        overflow: hidden;
+        white-space: nowrap;
+
+        img {
+            .cols(12, width);
+            background: @background;
+        }
+    }
+
+    section, footer {
+        .hpadding(0.5);
+    }
+
+    footer {
+        background: white;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+body.postview {
+    font-size: 160%;
+}
+
+body.postview {
+    #document > header {
+        .rows(0, min-height);
+        .rows(0, height);
+        .vmargin(0, 0);
+
+        h1 {
+            .rows(2, top);
+            display: block;
+            font-family: 'Lobster', cursive;
+            font-size: 300%;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+
+            a {
+                color: white;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    section#content {
+        background: @background;
+    }
+
+    #document > footer {
+        text-align: center;
+        background: @background;
+    }
+}
+
+body.postview article {
+    h3 {
+        color: @link-color;
+    }
+
+    line-height: 1.5em;
+
+    header {
+        .cols(12, width);
+        .rows(8, max-height);
+        overflow: hidden;
+
+        a {
+            .cols(2);
+            .rows(1, line-height);
+            .vmargin(-1, 0);
+            .rows(3, top);
+            background: @link-color;
+            color: white;
+            float: left;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        img {
+            .blur();
+            height: inherit;
+            width: inherit;
+        }
+    }
+
+    section, footer {
+        .cols(10);
+        .rows(-3, top);
+        .hmargin(1);
+        .hpadding(1);
+        .vpadding(1);
+        .shadow();
+        position: relative;
+
+        h1, h2, h3, h4, h5, h6 {
+            .vmargin(0, 1);
+        }
+    }
+
+    footer {
+        background: white;
+        overflow: hidden;
+        text-align: center;
+        white-space: nowrap;
+    }
+}

@@ -52,3 +52,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Pycharm
+.idea/
