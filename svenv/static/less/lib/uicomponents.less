@@ -1,0 +1,222 @@
+/* ==========================================================================
+   UI components lib
+   ========================================================================== */
+
+/**
+ * Imports
+ */
+@import 'grid';
+@import 'typography';
+
+
+/**
+ * Settings
+ */
+@alert-border: solid 1px transparent;
+@alert-height: 1 * @row-height;
+@alert-margin: @paragraph-margin;
+@alert-padding: 0 5px;
+@alert-danger-color: rgb(239, 214, 214);
+@alert-danger-border-color: darken(@alert-danger-color, 10%);
+@alert-danger-text-color: darken(@alert-danger-color, 50%);
+@alert-info-color: rgb(208, 232, 246);
+@alert-info-border-color: darken(@alert-info-color, 10%);
+@alert-info-text-color: darken(@alert-info-color, 50%);
+@alert-warning-color: rgb(252, 248, 227);
+@alert-warning-border-color: darken(@alert-warning-color, 10%);
+@alert-warning-text-color: darken(@alert-warning-color, 50%);
+@alert-success-color: rgb(223, 240, 216);
+@alert-success-border-color: darken(@alert-success-color, 10%);
+@alert-success-text-color: darken(@alert-success-color, 50%);
+
+@footer-background-color: rgb(60, 63,65);
+@footer-height: 0;
+@footer-margin: 0;
+@footer-padding: @row-height 0.5px * @column-fixed-width;
+@footer-text-color: lighten(@footer-background-color, 30%);
+
+@header-background-color: rgb(255, 255,255);
+@header-height: 0;
+@header-margin: 0;
+@header-padding: @row-height 0.5px * @column-fixed-width;
+
+@navbar-background-color: rgb(40, 147, 210);
+@navbar-height: 1 * @row-height;
+@navbar-margin: 0;
+@navbar-padding: 0 0.5px * @column-fixed-width;
+@navbar-button-background-color: @navbar-background-color;
+@navbar-button-color: rgb(255, 255, 255);
+@navbar-button-decoration: none;
+@navbar-button-padding: 10px;
+@navbar-button-hover-background-color: darken(@navbar-button-background-color, 10%);
+@navbar-button-hover-color: darken(@navbar-button-color, 10%);
+@navbar-button-hover-decoration: none;
+@navbar-input-width: 1 * @column-fixed-width;
+
+@section-background-color: rgb(255, 255,255);
+@section-height: 0;
+@section-margin: 0;
+@section-padding: @row-height 0.5px * @column-fixed-width;
+
+@sidebar-background-color: rgb(255, 255,255);
+@sidebar-height: 0;
+@sidebar-margin: 0;
+@sidebar-padding: @row-height 0.5px * @column-fixed-width;
+
+
+/**
+ * Component mixins
+ */
+.alert(@type: 'warning') {
+  .cols(@column-count);
+  border: @alert-border;
+  display: inline-block;
+  height: @alert-height;
+  line-height: @alert-height;
+  padding: @alert-padding;
+  margin: @alert-margin;
+  background-color: ~"@{alert-@{type}-color}";
+  color: ~"@{alert-@{type}-text-color}";
+  border-color: ~"@{alert-@{type}-border-color}";
+
+  a, a:hover {
+    text-decoration: underline;
+    color: ~"@{alert-@{type}-text-color}";
+  };
+}
+
+.avatar-rounded() {
+  border-radius: 50%;
+  -moz-border-radius: 50%; /* Firefox */
+  -webkit-border-radius: 50%; /* Safari and Chrome */
+}
+
+.footer() {
+  .cols(@column-count);
+  color: @footer-text-color;
+  float: left;
+  background-color: @footer-background-color;
+  min-height: @footer-height;
+  margin: @footer-margin;
+  padding: @footer-padding;
+}
+
+.header() {
+  float: left;
+  background-color: @header-background-color;
+  min-height: @header-height;
+  margin: @header-margin;
+  padding: @header-padding;
+}
+
+.imageheader(@image) {
+  .cols(@column-count);
+  background: url(@image) no-repeat top center;
+  background-size: cover;
+}
+
+.navbar() {
+  .cols(@column-count);
+  float: left;
+  background-color: @navbar-background-color;
+  list-style: none;
+  margin: @navbar-margin;
+  padding: @navbar-padding;
+
+  ul {
+    .cols(@column-count);
+    list-style: none;
+  }
+  li {
+    background-color: @navbar-button-background-color;
+    float: left;
+    line-height: @navbar-height;
+
+    &:hover {
+      background-color: @navbar-button-hover-background-color;
+    }
+  }
+
+  a {
+    color: @navbar-button-color;
+    display: inline-block;
+    padding: @navbar-button-padding;
+    text-decoration: @navbar-button-decoration;
+
+    &:hover {
+      color: @navbar-button-hover-color;
+      text-decoration: @navbar-button-hover-decoration;
+    }
+  }
+
+  input {
+    min-width: @navbar-input-width;
+    float: right;
+  }
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.section() {
+  .cols(@column-count);
+  float: left;
+  background-color: @section-background-color;
+  min-height: @section-height;
+  margin: @section-margin;
+  padding: @section-padding;
+}
+
+.sidebar {
+  .cols(3);
+  float: left;
+  background-color: @sidebar-background-color;
+  min-height: @sidebar-height;
+  margin: @sidebar-margin;
+  padding: @sidebar-padding;
+}
+
+
+/**
+ * Component presets
+ */
+.alert, .alert-warning {
+  .alert('warning');
+}
+
+.alert-danger {
+  .alert('danger');
+}
+
+.alert-info {
+  .alert('info');
+}
+
+.alert-success {
+  .alert('success');
+}
+
+.avatar-rounded {
+  .avatar-rounded();
+}
+
+section {
+  .section();
+}
+
+.sidebar {
+  .sidebar();
+}
+
+footer {
+  .footer();
+}
+
+header {
+  .header();
+}
+
+.navbar {
+  .navbar();
+}
