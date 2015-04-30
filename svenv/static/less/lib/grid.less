@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Grid system lib
+   ========================================================================== */
+
+/**
+ * Settings
+ */
+@column-count: 12;
+@column-width: 100% / @column-count;
+@fixed-grid-size: 1200px;
+@fixed-grid-column-count: 12;
+@column-fixed-width: @fixed-grid-size / @fixed-grid-column-count;
+@row-height: 30px;
+
+
+/**
+ * Box sizing mixins
+ */
+.content-box() {
+  box-sizing: content-box;
+  -moz-box-sizing: content-box; /* Firefox */
+  -webkit-box-sizing: content-box; /* Safari */
+}
+
+.border-box() {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; /* Firefox */
+  -webkit-box-sizing: border-box; /* Safari */
+}
+
+
+/**
+ * Columns and rows
+ */
+.cols(@cols: 1, @type: width) {
+  @{type}: @cols * @column-width;
+}
+
+.fixed-cols(@cols: 1, @type: width) {
+  @{type}: @cols * @column-fixed-width * 1px;
+}
+
+.rows(@rows: 1, @type: min-height) {
+  @{type}: @rows * @row-height;
+}
+
+
+/**
+ * Margin and padding
+ */
+.hmargin(@guttercount-left: 1, @guttercount-right: 1) {
+  margin-left: @guttercount-left * @column-width;
+  margin-right: @guttercount-right * @column-width;
+}
+
+.vmargin(@spacercount-top: 1, @spacercount-bottom: 1) {
+  margin-top: @spacercount-top * @row-height;
+  margin-bottom: @spacercount-bottom * @row-height;
+}
+
+.hpadding(@padding-left: 1, @padding-right: 1) {
+  padding-left: @padding-left * @column-width;
+  padding-right: @padding-right * @column-width;
+}
+
+.vpadding(@padding-top: 1, @padding-bottom: 1) {
+  padding-top: @padding-top * @row-height;
+  padding-bottom: @padding-bottom * @row-height;
+}
+
+
+/**
+ * Align center
+ */
+.center() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/**
+ * Transformations
+ */
+.origin(@h: 50, @v: 50) {
+  transform-origin: @h * 1% @v * 1%;
+  -ms-transform-origin: @h * 1% @v * 1%; /* IE 9 */
+  -webkit-transform-origin: @h * 1% @v * 1%; /* Safari and Chrome */
+  -moz-transform-origin: @h * 1% @v * 1%; /* Firefox */
+}
+
+.rotate(@angle) {
+  transform: rotate();
+  -ms-transform: rotate(@angle * 1deg); /* IE 9 */
+  -moz-transform: rotate(@angle * 1deg); /* Firefox */
+  -webkit-transform: rotate(@angle * 1deg); /* Safari */
+}

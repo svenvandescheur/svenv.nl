@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Typography lib
+   ========================================================================== */
+
+/**
+ * Settings
+ */
+@font-size: 16px;  // use for scaling, also used by mediaqueries.less
+@line-height: 1.2 * @font-size;
+
+@default-color: rgb(85, 85, 85);
+@default-font: Helvetica Neue ,Helvetica,Arial,sans-serif;
+@heading-color: rgb(51, 51, 51);
+@heading-font: @default-font;
+@heading-font-weight: normal;
+@heading-margin: 20px 0 10px;
+@link-color: rgb(51, 122, 183);
+@link-default-decoration: none;
+@link-hover-color: darken(@link-color, 10%);
+@link-hover-decoration: underline;
+@list-margin: 0 0 10px 0;
+@paragraph-margin: 0 0 10px;
+
+@h1-size: 2.2em;
+@h2-size: 1.8em;
+@h3-size: 1.5em;
+
+
+/**
+ * Typography mixins
+ */
+.import-google-font(@font) {  // Use in root, syntax: .import-google-font('Open+Sans');
+  @import url("http://fonts.googleapis.com/css?family=@{font}");
+}
+
+
+/**
+ * Typography presets
+ */
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: @default-font;
+  font-size: @font-size;
+  line-height: @line-height;
+}
+
+a {
+  color: @link-color;
+  text-decoration: @link-default-decoration;
+}
+
+a:hover {
+  color: @link-hover-color;
+  text-decoration: @link-hover-decoration;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: @heading-color;
+  font-family: @heading-font;
+  font-weight: @heading-font-weight;
+  margin: @heading-margin;
+}
+
+h1 {
+  font-size: @h1-size;
+}
+
+h2 {
+  font-size: @h2-size;
+}
+
+h3 {
+  font-size: @h3-size;
+}
+
+ol, ul {
+  list-style-position: inside;
+  margin: @list-margin;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+p {
+  margin: @paragraph-margin;
+}
+
+q, blockquote {
+  font-style: italic;
+}

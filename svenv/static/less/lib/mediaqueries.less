@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Media queries lib
+   ========================================================================== */
+
+/**
+ * Imports
+ */
+@import 'typography';
+
+
+/**
+ * Settings
+ */
+@em-font-size: @font-size;  // Loaded from typography
+
+@widemobile-min: (480px / @em-font-size * 1em);  // Convert to em
+@tablet-min: (768px / @em-font-size * 1em);
+@widescreen-min: (992px / @em-font-size * 1em);
+@hugescreen-min: (1888px / @em-font-size * 1em);
+
+@mobile-max: (479px / @em-font-size * 1em);
+@widemobile-max: (767px / @em-font-size * 1em);
+@tablet-max: (991px / @em-font-size * 1em);
+@widescreen-max: (1887px / @em-font-size * 1em);
+
+
+/**
+ * Progressive enhancing overrides (mobile first)
+ *
+ * Mobile loads "mobile.less"
+ * Wide mobile loads "mobile.less" and "widemobile.less"
+ * Tablet loads "mobile.less", "widemobile.less" and "tablet.less"
+ * etc.
+ */
+.progressive-enhancement() {
+  // Mobile layout
+  @media only screen {
+    @import (multiple) "../template/mobile";
+  }
+
+  // Wide mobile layout
+  @media only screen and (min-width: @widemobile-min) {
+    @import (multiple) "../template/widemobile";
+  }
+
+  // Tablet layout
+  @media only screen and (min-width: @tablet-min) {
+    @import (multiple) "../template/tablet";
+  }
+
+  // Widescreen layout
+  @media only screen and (min-width: @widescreen-min) {
+    @import (multiple) "../template/widescreen";
+  }
+
+  // Huge-screen layout
+  @media only screen and (min-width: @hugescreen-min) {
+    @import (multiple) "../template/hugescreen";
+  }
+}
+
+
+/**
+ * Graceful degrading overrides (desktop first)
+ *
+ * Huge screen loads "hugescreen.less"
+ * Wide screen loads "hugescreen.less" and "widescreen.less"
+ * Tablet loads "hugescreen.less", "widescreen.less" and "tablet.less"
+ * etc.
+ */
+.graceful-degradation() {
+  // Huge-screen layout
+  @media only screen {
+    @import (multiple) "../template/hugescreen";
+  }
+
+  // Widescreen layout
+  @media only screen and (max-width: @widescreen-max) {
+    @import (multiple) "../template/widescreen";
+  }
+
+  // Tablet layout
+  @media only screen and (max-width: @tablet-max) {
+    @import (multiple) "../template/tablet";
+  }
+
+  // Wide mobile layout
+  @media only screen and (max-width: @widemobile-max) {
+    @import (multiple) "../template/widemobile";
+  }
+
+  // Mobile layout
+  @media only screen and (max-width: @mobile-max) {
+    @import (multiple) "../template/mobile";
+  }
+}
+
+
+/**
+ * Independent themes
+ *
+ * Mobile loads "mobile.less"
+ * Wide mobile loads "widemobile.less"
+ * Tablet loads "tablet.less"
+ * etc.
+ */
+.independent-themes() {
+  // Mobile layout
+  @media only screen and (max-width: @mobile-max) {
+    @import (multiple) "../template/mobile";
+  }
+
+  // Wide mobile layout
+  @media only screen and (min-width: @widemobile-min) and (max-width: @widemobile-max) {
+    @import (multiple) "../template/widemobile";
+  }
+
+  // Tablet layout
+  @media only screen and (min-width: @tablet-min) and (max-width: @tablet-max) {
+    @import (multiple) "../template/tablet";
+  }
+
+  // Widescreen layout
+  @media only screen and (min-width: @widescreen-min) and (max-width: @widescreen-max) {
+    @import (multiple) "../template/widescreen";
+  }
+
+  // Huge-screen layout
+  @media only screen and (min-width: @hugescreen-min) {
+    @import (multiple) "../template/hugescreen";
+  }
+}

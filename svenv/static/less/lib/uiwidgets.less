@@ -1,0 +1,199 @@
+/* ==========================================================================
+   UI widgets lib
+   ========================================================================== */
+
+/**
+ * Imports
+ */
+@import 'grid';
+@import 'typography';
+
+
+/**
+ * Settings
+ */
+@widget-height: 1px * @row-height;
+@widget-width: 3px * @column-fixed-width;
+@widget-margin: 0 10px 10px 0;
+
+@button-height: 1px * @row-height;
+@button-width: 1px * @column-fixed-width;
+@button-margin: 0 10px 10px 0;
+@button-background-color: rgb(177, 178, 177);
+@button-border: 2px solid transparent;
+@button-font-size: 0.5 * @button-height;
+@button-text-color: rgb(255, 255, 255);
+@button-active-background-color: rgb(40, 147, 210);
+@button-active-text-color: @button-text-color;
+@button-hover-background-color: @button-active-background-color;
+@button-hover-border: 2px solid darken(@button-hover-background-color, 20%);
+@button-hover-text-color: @button-text-color;
+@button-pressed-border: 2px solid darken(@button-active-background-color, 20%);
+@button-disabled-background-color: rgb(226, 226, 226);
+@button-disabled-text-color: @button-text-color;
+
+@form-align: true;
+
+@input-color: rgb(255, 255, 255);
+@input-border: solid 1px rgb(238, 238, 238);
+
+@label-width: 2px * @column-fixed-width;
+@label-color: rgb(98, 98, 98);
+
+@table-align: left;
+@table-head-background-color: rgb(208, 232, 246);
+@table-head-border: solid 1px darken(@table-head-background-color, 10%);
+@table-head-height: 1 * @row-height;
+@table-head-padding: 0 5px;
+@table-head-text-color: darken(@table-head-background-color, 50);
+@table-cell-background-color: rgb(255, 255, 255);
+@table-cell-border: solid 1px darken(@table-cell-background-color, 10%);
+@table-cell-height: 1 * @row-height;
+@table-cell-padding: 0 5px;
+@table-cell-text-color: darken(@table-cell-background-color, 50);
+@table-margin: @paragraph-margin;
+@table-width: @column-count * @column-width;
+
+
+/**
+ * Widget mixins
+ */
+.widget() {
+  height: @widget-height;
+  line-height: @widget-height;
+  min-width: @widget-width;
+  margin: @widget-margin;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+.button() {
+  .widget();
+  height: @button-height;
+  line-height: @button-height;
+  min-width: @button-width;
+  margin: @button-margin;
+  background-color: @button-background-color;
+  border: @button-border;
+  color: @button-text-color;
+  font-size: @button-font-size;
+  line-height: 0;
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: @button-active-background-color;
+      border: @button-border;
+      border-bottom: @button-hover-border;
+    }
+
+    &:active {
+      background-color: @button-active-background-color;
+      border: @button-border;
+      border-top: @button-hover-border;
+    }
+  }
+
+  &:disabled {
+    background-color: @button-disabled-background-color;
+    color: @button-disabled-text-color;
+  }
+}
+
+.button-active() {
+  .button();
+  background-color: @button-active-background-color;
+  color: @button-active-text-color;
+  border: @button-border;
+}
+
+.form when(@form-align) {
+  button, input, label, meter, progress, select, textarea {
+    float: left;
+  }
+
+  label {
+    clear: left;
+  }
+}
+
+.input() {
+  .widget();
+  background-color: @input-color;
+  border: @input-border;
+}
+
+.label() {
+  .widget();
+  min-width: @label-width;
+  color: @label-color;
+}
+
+.meter() {
+  .input();
+  height: 8px;
+}
+
+.table() {
+  margin: @table-margin;
+  text-align: @table-align;
+  width: @table-width;
+
+  td {
+    background-color: @table-cell-background-color;
+    border: @table-cell-border;
+    color: @table-cell-text-color;
+    height: @table-cell-height;
+    line-height: @table-cell-height;
+    padding: @table-cell-padding;
+  }
+  th {
+    background-color: @table-head-background-color;
+    border: @table-head-border;
+    color: @table-head-text-color;
+    height: @table-head-height;
+    line-height: @table-head-height;
+    padding: @table-head-padding;
+  }
+}
+
+.textarea() {
+  .input();
+  .rows(2, min-height);
+  border: @input-border;
+}
+
+
+/**
+ * Widget presets
+ */
+.button, input[type="button"], input[type="reset"], input[type="file"]::-webkit-file-upload-button, button {
+  .button();
+}
+
+.button.active, input[type="submit"] {
+  .button-active;
+}
+
+form {
+  .form();
+}
+
+input, select, {
+  .input();
+}
+
+label, legend {
+  .label();
+}
+
+meter, progress {
+  .meter();
+}
+
+textarea {
+  .textarea();
+}
+
+table {
+  .table();
+}
