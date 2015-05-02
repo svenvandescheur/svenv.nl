@@ -1,5 +1,4 @@
-django==1.7
-django-templates-macros
+django
 djangorestframework
 markdown
 markdown2
