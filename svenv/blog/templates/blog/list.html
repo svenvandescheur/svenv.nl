@@ -1,6 +1,6 @@
 {% extends results|yesno:"ajax.html,base.html" %}
 {% load macros %}
-{% load blog_template_helpers %}
+{% load formatting %}
 
 {% macro post_list data %}
     {% for post in data %}
