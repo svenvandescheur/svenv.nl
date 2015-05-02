@@ -1,6 +1,7 @@
-Django
+django
 django-templates-macros
 djangorestframework
 markdown
 markdown2
 python-dateutil
+uwsgi
