@@ -59,11 +59,15 @@ WSGI_APPLICATION = 'svenv.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+mysql_password = open('/random.txt').read().splitlines()[0]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'svenv.nl',
+        'USER': 'admin',
+        'PASSWORD': mysql_password,
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
