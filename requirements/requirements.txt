@@ -3,4 +3,3 @@ djangorestframework
 markdown
 markdown2
 python-dateutil
-uwsgi
