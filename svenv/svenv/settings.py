@@ -63,7 +63,7 @@ mysql_password = open('/random.txt').read().splitlines()[0]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'svenv.nl',
+        'NAME': 'svenv_nl',
         'USER': 'admin',
         'PASSWORD': mysql_password,
         'HOST': 'localhost',
