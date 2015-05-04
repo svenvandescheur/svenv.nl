@@ -23,7 +23,6 @@ class Post(models.Model):
     Posts contain an image
     """
     def __str__(self):
-
         return self.url_title
 
     author = models.ForeignKey(User)
