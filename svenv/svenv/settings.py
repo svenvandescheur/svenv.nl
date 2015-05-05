@@ -76,6 +76,8 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
+MEDIA_URL = '/'
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True

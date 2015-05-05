@@ -45,6 +45,6 @@ class Image(models.Model):
         return self.title
 
     title = models.CharField(max_length=100)
-    url = models.CharField(max_length=200)
-    width = models.IntegerField()
-    height = models.IntegerField()
+    url = models.ImageField(upload_to='media/%Y/%m/%d', width_field='width', height_field='height')
+    width = models.IntegerField(blank=True, null=True)
+    height = models.IntegerField(blank=True, null=True)
