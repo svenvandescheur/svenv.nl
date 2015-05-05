@@ -48,3 +48,4 @@ class Image(models.Model):
     url = models.ImageField(upload_to='media/%Y/%m/%d', width_field='width', height_field='height')
     width = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
+    copyright = models.CharField(max_length=200, blank=True, null=True)
