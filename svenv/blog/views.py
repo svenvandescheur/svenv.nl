@@ -13,6 +13,7 @@ class ListView(generic.ListView):
     Shows a list of posts (e.g. home page)
     """
     context_object_name = 'post_list'
+    media_url = settings.MEDIA_URL
     template_name = 'blog/list.html'
 
     def get_queryset(self):
@@ -32,6 +33,7 @@ class PostView(generic.DetailView):
     Shows a specific post
     """
     queryset = Post.objects.all()
+    media_url = settings.MEDIA_URL
     model = Post
     template_name = 'blog/post.html'
 
