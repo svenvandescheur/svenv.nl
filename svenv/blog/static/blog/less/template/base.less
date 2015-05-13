@@ -124,7 +124,7 @@ body.postview {
 
         h1 {
             .cols(12);
-            .rows(2, top);
+            .rows(1.5, top);
             display: block;
             font-family: 'Lobster', cursive;
             font-size: 300%;
@@ -175,8 +175,8 @@ body.postview {
 
             section, footer {
                 .cols(12);
-                .rows(-3, top);
                 .hpadding(1);
+                .vmargin(-3);
                 .vpadding(1);
                 .shadow();
                 position: relative;
@@ -195,6 +195,7 @@ body.postview {
     }
 
     #document > footer {
+        font-size: initial;
         text-align: center;
         background: @background;
     }

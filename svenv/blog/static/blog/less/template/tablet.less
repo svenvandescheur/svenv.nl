@@ -16,6 +16,12 @@ body.listview article {
 
 
 body.postview {
+    #document > header {
+        h1 {
+            .rows(2, top);
+        }
+    }
+
     #document > section {
         article {
             header {
@@ -26,7 +32,7 @@ body.postview {
                     z-index: 1;
                 }
             }
-            
+
             section, footer {
                 .cols(10);
                 .hmargin(1, 1);
