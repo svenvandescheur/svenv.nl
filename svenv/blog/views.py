@@ -8,12 +8,24 @@ from rest_framework.utils import formatting
 import serializers
 
 
-class ListView(generic.ListView):
+class BaseBlogView():
+    """
+    Base class for Blog views
+    """
+    media_url = settings.MEDIA_URL
+
+    def get_media_url(self):
+        """
+        Method used to expose media url to templates
+        """
+        return self.media_url
+
+
+class ListView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
     context_object_name = 'post_list'
-    media_url = settings.MEDIA_URL
     template_name = 'blog/list.html'
 
     def get_queryset(self):
@@ -28,12 +40,11 @@ class ListView(generic.ListView):
             return Post.objects.all().order_by('date').reverse()[:limit]
 
 
-class PostView(generic.DetailView):
+class PostView(BaseBlogView, generic.DetailView):
     """
     Shows a specific post
     """
     queryset = Post.objects.all()
-    media_url = settings.MEDIA_URL
     model = Post
     template_name = 'blog/post.html'
 

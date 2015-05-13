@@ -7,7 +7,7 @@
     <article>
         <header>
             <a href="/">Back to base</a>
-            <img src="{{ view.media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
+            <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
         </header>
         <section>
             <h3>{{ post.title }}</h3>
