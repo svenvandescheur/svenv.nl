@@ -13,3 +13,24 @@ body.listview article {
     .hmargin(0.125, 0.125);
     .vmargin(0.125, 0.125);
 }
+
+
+body.postview {
+    #document > section {
+        article {
+            header {
+                a {
+                    .cols(3);
+                    .rows(2, top);
+                    position: absolute;
+                    z-index: 1;
+                }
+            }
+            
+            section, footer {
+                .cols(10);
+                .hmargin(1, 1);
+            }
+        }
+    }
+}

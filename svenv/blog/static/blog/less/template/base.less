@@ -3,12 +3,6 @@
    ========================================================================== */
 
 /**
- * Imports
- */
-@import (reference) "../lib/grid";
-
-
-/**
  * Defaults
  */
 * {
@@ -20,6 +14,7 @@
  * Fonts
  */
 .import-google-font('Lobster');
+
 
 /*
  * Less
@@ -41,14 +36,16 @@
 
 
 /*
- * Styling
+ * Listview base styling
  */
-body {
-    background: @background;
-}
-
 body.listview {
-    #document> header {
+    background: @background;
+    line-height: 1.5em;
+    
+    #document > header {
+        .cols(12);
+        .rows(1);
+        .vmargin(0, 0.25);
         background: @header;
         position: fixed;
 
@@ -61,9 +58,46 @@ body.listview {
         }
     }
 
-    section#content {
+    #document > section {
         .vmargin(1.25, 0);
         background: @background;
+        
+        .fetch_posts {
+            .cols(12);
+            .rows(1, line-height);
+            display: block;
+            float: left;
+            text-align: center;
+        }
+        
+        article {
+            .shadow();
+            float: left;
+            font-size: 120%;
+            line-height: 1.5em;
+            overflow: hidden;
+
+            header {
+                overflow: hidden;
+                white-space: nowrap;
+
+                img {
+                    .cols(12, width);
+                    background: @background;
+                }
+            }
+
+            section, footer {
+                .hpadding(0.5);
+            }
+
+            footer {
+                background: white;
+                overflow: hidden;
+                text-align: left;
+                white-space: nowrap;
+            }
+        }
     }
 
     #document > footer {
@@ -75,59 +109,26 @@ body.listview {
     }
 }
 
-body.listview {
-    line-height: 1.5em;
-
-    .fetch_posts {
-        .cols(12);
-        .rows(1, line-height);
-        display: block;
-        float: left;
-        text-align: center;
-    }
-}
-
-body.listview article {
-    .shadow();
-    float: left;
-
-    header {
-        overflow: hidden;
-        white-space: nowrap;
-
-        img {
-            .cols(12, width);
-            background: @background;
-        }
-    }
-
-    section, footer {
-        .hpadding(0.5);
-    }
-
-    footer {
-        background: white;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-}
-
+/*
+ * Postview base styling
+ */
 body.postview {
+    background: @background;
     font-size: 160%;
-}
-
-body.postview {
+    
     #document > header {
+        .cols(12);
         .rows(0, min-height);
         .rows(0, height);
         .vmargin(0, 0);
 
         h1 {
+            .cols(12);
             .rows(2, top);
             display: block;
             font-family: 'Lobster', cursive;
             font-size: 300%;
-            position: relative;
+            position: absolute;
             text-align: center;
             z-index: 1;
 
@@ -141,66 +142,60 @@ body.postview {
         }
     }
 
-    section#content {
+    #document > section {
         background: @background;
+        
+        article {
+            h3 {
+                color: @link-color;
+            }
+
+            line-height: 1.5em;
+
+            header {
+                .cols(12, width);
+                .rows(8, max-height);
+                overflow: hidden;
+
+                a {
+                    .cols(12);
+                    .rows(1, line-height);
+                    background: @link-color;
+                    color: white;
+                    float: left;
+                    text-align: center;
+                }
+
+                img {
+                    .blur();
+                    height: inherit;
+                    width: inherit;
+                }
+            }
+
+            section, footer {
+                .cols(12);
+                .rows(-3, top);
+                .hpadding(1);
+                .vpadding(1);
+                .shadow();
+                position: relative;
+
+                h1, h2, h3, h4, h5, h6 {
+                    .vmargin(0, 1);
+                }
+            }
+
+            footer {
+                background: white;
+                overflow: hidden;
+                text-align: center;
+            }
+        }
     }
 
     #document > footer {
         text-align: center;
         background: @background;
-    }
-}
-
-body.postview article {
-    h3 {
-        color: @link-color;
-    }
-
-    line-height: 1.5em;
-
-    header {
-        .cols(12, width);
-        .rows(8, max-height);
-        overflow: hidden;
-
-        a {
-            .cols(2);
-            .rows(1, line-height);
-            .vmargin(-1, 0);
-            .rows(3, top);
-            background: @link-color;
-            color: white;
-            float: left;
-            position: relative;
-            text-align: center;
-            z-index: 1;
-        }
-
-        img {
-            .blur();
-            height: inherit;
-            width: inherit;
-        }
-    }
-
-    section, footer {
-        .cols(10);
-        .rows(-3, top);
-        .hmargin(1);
-        .hpadding(1);
-        .vpadding(1);
-        .shadow();
-        position: relative;
-
-        h1, h2, h3, h4, h5, h6 {
-            .vmargin(0, 1);
-        }
-    }
-
-    footer {
-        background: white;
-        overflow: hidden;
-        text-align: center;
-        white-space: nowrap;
     }
 }
