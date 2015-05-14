@@ -3,6 +3,37 @@
  * Provides dynamic interaction on frontend
  */
 
+
+/**
+ * Logic common for all views
+ */
+function View() {
+    this.prettyprint_target = $('code');
+
+    /**
+     * Finds the current view
+     * @returns {String} The current view
+     */
+    this.getView = function() {
+        if ($('body').hasClass('listview')) {
+            return 'listview';
+        };
+
+        if ($('body').hasClass('postview')) {
+            return 'postview';
+        };
+    }
+
+    /**
+     * Sets up pretty printing for code
+     * @returns {Object} fluent interface
+     */
+    this.prettyPrint = function() {
+        this.prettyprint_target.addClass('prettyprint');
+        return this;
+    };
+};
+
 /**
  * Provides methods for ListView
  */
@@ -58,7 +89,7 @@ function ListView() {
      */
     this.getPage = function() {
         return parseInt($('body').attr('data-page'))
-    }
+    };
 
     /**
      * Sets the current page
@@ -68,19 +99,29 @@ function ListView() {
     this.setPage = function(page) {
         $('body').attr('data-page', page);
         return this;
-    }
+    };
 };
 
 /**
  * Provides main routine, called on ready
  */
 function main() {
-    // Fetch posts when link in clicked
-    listView = new ListView;
-    listView.fetch_button.click(function(e) {
-        e.preventDefault();
-        listView.fetchPosts();
-    });
+    // Get base view
+    view = new View;
+    viewClass = view.getView();
+
+    // Prettyprint
+    view.prettyPrint();
+
+    // Listview specific logic
+    if (viewClass == 'listview') {
+        listView = new ListView;
+
+        listView.fetch_button.click(function(e) {
+            e.preventDefault();
+            listView.fetchPosts();
+        });
+    };
 };
 
 /**
