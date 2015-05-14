@@ -1,5 +1,6 @@
 from blog.models import Category, Image, Post
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 from django.utils.encoding import smart_text
 from django.views import generic
 from rest_framework import viewsets
@@ -30,14 +31,19 @@ class ListView(BaseBlogView, generic.ListView):
 
     def get_queryset(self):
         """
-        Gets a list posts in newest first order
+        Gets a list of Posts in the selected category limited to REST_FRAMEWORK['PAGE_SIZE']
+        If no category is selected (home page) no category filtering is performed
         """
+        category_name = self.kwargs['category_name']
         limit = settings.REST_FRAMEWORK['PAGE_SIZE']
 
-        if self.kwargs['category_name'] is not None:
-            return Post.objects.filter(category=self.kwargs['category_name']).order_by('date').reverse()[:limit]
-        else:
+        if category_name is None:
             return Post.objects.all().order_by('date').reverse()[:limit]
+
+        print category_name
+        category = get_object_or_404(Category, name=self.kwargs['category_name'])
+        return Post.objects.filter(category=category).order_by('date').reverse()[:limit]
+
 
 
 class PostView(BaseBlogView, generic.DetailView):
@@ -53,7 +59,7 @@ class PostView(BaseBlogView, generic.DetailView):
         Finds the correct post by category_name and url_title
         """
         category = Category.objects.get(name__icontains=self.kwargs['category_name'])
-        return Post.objects.get(category=category, url_title__icontains=self.kwargs['url_title'])
+        return get_object_or_404(Post, category=category, url_title__icontains=self.kwargs['url_title'])
 
 
 class BaseBlogViewSet(viewsets.ReadOnlyModelViewSet):
