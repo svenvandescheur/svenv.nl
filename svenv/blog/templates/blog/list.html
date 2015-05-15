@@ -11,7 +11,7 @@
             </a>
         </header>
         <section>
-            <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title }}</a></h3>
+            <h3><a href="/{{ post.category.name }}/{{ post.url_title }}">{{ post.title }}</a></h3>
             {{ post.content|markdown|safe }}
         </section>
         <footer>
