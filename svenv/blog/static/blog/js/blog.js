@@ -138,7 +138,7 @@ function main() {
 
     // view specific logic
     if (viewClass === 'categoryview') {
-        categoryView = new CategoryView();
+        var categoryView = new CategoryView();
 
         categoryView.fetch_button.click(function (e) {
             e.preventDefault();
