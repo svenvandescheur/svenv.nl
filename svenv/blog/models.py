@@ -49,3 +49,24 @@ class Image(models.Model):
     width = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
     copyright = models.CharField(max_length=200, blank=True, null=True)
+
+
+class Page(models.Model):
+    """
+    Page model
+
+    Pages are simple (web) pasges
+    Pages are written by Django users
+    Pages contain an image
+    """
+    def __str__(self):
+        return self.path
+
+    author = models.ForeignKey(User)
+    image = models.ForeignKey('Image')
+    title = models.CharField(max_length=200)
+    short_title = models.CharField(max_length=100)
+    path = models.CharField(max_length=200)
+    content = models.TextField()
+    position = models.IntegerField(unique=True)
+    date = models.DateTimeField(auto_now_add=True)

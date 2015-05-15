@@ -6,12 +6,12 @@
     {% for post in data %}
     <article>
         <header>
-            <a href="{{ post.category.name }}/{{ post.url_title }}">
+            <a href="/{{ post.category.name }}/{{ post.url_title }}">
                 <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
             </a>
         </header>
         <section>
-            <h3><a href="{{ post.category.name }}/{{ post.url_title }}">{{ post.title }}</a></h3>
+            <h3><a href="/{{ post.category.name }}/{{ post.url_title }}">{{ post.title }}</a></h3>
             {{ post.content|markdown|safe }}
         </section>
         <footer>
@@ -22,7 +22,7 @@
     {% endfor %}
 {% endmacro %}
 
-{% block bodyclass %}listview{% endblock %}
+{% block bodyclass %}categoryview{% endblock %}
 
 {% block content %}
     {% if results %}

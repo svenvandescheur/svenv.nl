@@ -1,4 +1,4 @@
-from blog.models import Category, Image, Post
+from blog.models import Category, Image, Post, Page
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.utils.encoding import smart_text
@@ -21,8 +21,17 @@ class BaseBlogView():
         """
         return self.media_url
 
+    def get_pages(self):
+        return Page.objects.all().order_by('position');
 
-class ListView(BaseBlogView, generic.ListView):
+    def is_in_debug_mode(self):
+        """
+        Method use to expose DEBUG setting to templates
+        """
+        return settings.DEBUG
+
+
+class CategoryView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
@@ -37,11 +46,11 @@ class ListView(BaseBlogView, generic.ListView):
         category_name = self.kwargs['category_name']
         limit = settings.REST_FRAMEWORK['PAGE_SIZE']
 
-        if category_name is None:
+        if category_name == '':
             return Post.objects.all().order_by('date').reverse()[:limit]
 
+        category = get_object_or_404(Category, name=category_name)
         print category_name
-        category = get_object_or_404(Category, name=self.kwargs['category_name'])
         return Post.objects.filter(category=category).order_by('date').reverse()[:limit]
 
 
@@ -60,6 +69,23 @@ class PostView(BaseBlogView, generic.DetailView):
         """
         category = Category.objects.get(name__icontains=self.kwargs['category_name'])
         return get_object_or_404(Post, category=category, url_title__icontains=self.kwargs['url_title'])
+
+
+class PageView(BaseBlogView, generic.DetailView):
+    """
+    Shows a specific page
+    """
+    queryset = Page.objects.all()
+    model = Page
+    template_name = 'blog/page.html'
+
+    def get_object(self):
+        """
+        Finds the correct page by page_path
+        If no page is found, it attempts to load a category
+        """
+        path = self.kwargs['page_path']
+        return get_object_or_404(Page, path__icontains=path)
 
 
 class BaseBlogViewSet(viewsets.ReadOnlyModelViewSet):

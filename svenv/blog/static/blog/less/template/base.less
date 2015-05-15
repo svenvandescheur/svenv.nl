@@ -44,9 +44,9 @@ code {
 
 
 /*
- * Listview base styling
+ * Categoryview base styling
  */
-body.listview {
+body.categoryview {
     background: @background;
     line-height: 1.5em;
     
@@ -58,10 +58,32 @@ body.listview {
         position: fixed;
 
         h1 {
+            float: left;
             font-family: 'Lobster', cursive;
 
             a:hover {
                 text-decoration: none;
+            }
+        }
+        
+        nav {
+            .cols(7);
+            .rows(0, height);
+            float: left;
+
+            ul {
+                .rows(1, line-height);
+                .hmargin(1);
+                list-style-type: none;
+
+                li {
+                    display: inline;
+                    margin-right: 20px;
+
+                    a {
+                        text-transform: capitalize;
+                    }
+                }
             }
         }
     }
@@ -118,9 +140,9 @@ body.listview {
 }
 
 /*
- * Postview base styling
+ * Postview/pageview base styling
  */
-body.postview {
+body.postview, body.pageview {
     background: @background;
     font-size: 160%;
     
