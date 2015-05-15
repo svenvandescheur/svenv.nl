@@ -15,6 +15,12 @@ class BaseBlogView():
     """
     media_url = settings.MEDIA_URL
 
+    def is_in_debug_mode(self):
+        """
+        Method use to expose DEBUG setting to templates
+        """
+        return settings.DEBUG
+
     def get_media_url(self):
         """
         Method used to expose media url to templates
