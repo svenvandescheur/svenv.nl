@@ -17,5 +17,6 @@
             <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
             <a href="/{{ post.category.name }}/{{ post.url_title }}">Permalink</a>
         </footer>
+        <section id="disqus_thread"></section>
     </article>
 {% endblock %}

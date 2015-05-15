@@ -105,6 +105,25 @@ function CategoryView() {
 }
 
 /**
+ * Provides methods for postview
+ */
+function PostView () {
+    'use strict';
+    this.disqus_shortname = 'svenv';
+
+    /**
+     * Add Disqus to the current page
+     * @returns {Object} fluent interface
+     */
+    this.disqus = function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + this.disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        return this;
+    }
+}
+
+/**
  * Provides main routine, called on ready
  */
 function main() {
@@ -117,14 +136,17 @@ function main() {
     // Prettyprint
     view.prettyPrint();
 
-    // categoryview specific logic
+    // view specific logic
     if (viewClass === 'categoryview') {
-        categoryview = new CategoryView();
+        var categoryView = new CategoryView();
 
-        categoryview.fetch_button.click(function (e) {
+        categoryView.fetch_button.click(function (e) {
             e.preventDefault();
-            categoryview.fetchPosts();
+            categoryView.fetchPosts();
         });
+    } else if (viewClass === 'postview') {
+        var postView = new PostView();
+        postView.disqus();
     }
 }
 
