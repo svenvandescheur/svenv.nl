@@ -6,7 +6,7 @@
     {% for post in data %}
     <article>
         <header>
-            <a href="{{ post.category.name }}/{{ post.url_title }}">
+            <a href="/{{ post.category.name }}/{{ post.url_title }}">
                 <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
             </a>
         </header>

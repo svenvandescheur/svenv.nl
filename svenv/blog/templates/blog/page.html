@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% load formatting %}
+
+{% block bodyclass %}pageview{% endblock %}
+
+{% block content  %}
+    <article>
+        <header>
+            <a href="/">More pages</a>
+            <img src="{{ view.get_media_url }}{{ page.image.url }}" width="{{ page.image.width }}" height="{{ page.image.height }}" alt="{{ page.image.title }}">
+        </header>
+        <section>
+            <h3>{{ page.title }}</h3>
+            {{ page.content|markdown|safe }}
+        </section>
+    </article>
+{% endblock %}
