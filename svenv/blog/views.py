@@ -28,7 +28,7 @@ class BaseBlogView():
         return self.media_url
 
 
-class ListView(BaseBlogView, generic.ListView):
+class CategoryView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
