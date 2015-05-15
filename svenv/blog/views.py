@@ -15,17 +15,20 @@ class BaseBlogView():
     """
     media_url = settings.MEDIA_URL
 
-    def is_in_debug_mode(self):
-        """
-        Method use to expose DEBUG setting to templates
-        """
-        return settings.DEBUG
-
     def get_media_url(self):
         """
         Method used to expose media url to templates
         """
         return self.media_url
+
+    def get_pages(self):
+        return Page.objects.all();
+
+    def is_in_debug_mode(self):
+        """
+        Method use to expose DEBUG setting to templates
+        """
+        return settings.DEBUG
 
 
 class CategoryView(BaseBlogView, generic.ListView):

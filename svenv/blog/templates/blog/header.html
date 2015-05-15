@@ -1,1 +1,8 @@
 <h1><a href="/">Svenv.nl</a></h1>
+<nav id="primary_navigation">
+    <ul>
+        {% for page in view.get_pages %}
+            <li><a href="{{ page.path}}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
