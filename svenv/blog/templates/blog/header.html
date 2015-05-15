@@ -2,7 +2,7 @@
 <nav id="primary_navigation">
     <ul>
         {% for page in view.get_pages %}
-            <li><a href="{{ page.path}}">{{ page.title }}</a></li>
+            <li><a href="{{ page.path}}">{{ page.short_title }}</a></li>
         {% endfor %}
     </ul>
 </nav>
