@@ -65,6 +65,8 @@ class Page(models.Model):
     author = models.ForeignKey(User)
     image = models.ForeignKey('Image')
     title = models.CharField(max_length=200)
+    short_title = models.CharField(max_length=100)
     path = models.CharField(max_length=200)
     content = models.TextField()
+    position = models.IntegerField(unique=True)
     date = models.DateTimeField(auto_now_add=True)

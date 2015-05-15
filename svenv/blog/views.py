@@ -22,7 +22,7 @@ class BaseBlogView():
         return self.media_url
 
     def get_pages(self):
-        return Page.objects.all();
+        return Page.objects.all().order_by('position');
 
     def is_in_debug_mode(self):
         """
