@@ -13,13 +13,23 @@ class BaseBlogView():
     """
     Base class for Blog views
     """
-    media_url = settings.MEDIA_URL
+    def get_base_url(self):
+        """
+        Method use to expose base url to templates
+        """
+        return settings.BASE_URL
+
+    def get_language_code(self):
+        """
+        Method use to expose the Django language code to templates
+        """
+        return settings.LANGUAGE_CODE
 
     def get_media_url(self):
         """
         Method used to expose media url to templates
         """
-        return self.media_url
+        return settings.MEDIA_URL
 
     def get_pages(self):
         return Page.objects.all().order_by('position');
