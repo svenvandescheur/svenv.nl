@@ -1,4 +1,4 @@
-from blog.settings import REST_FRAMEWORK
+from blog.settings import *
 import os
 
 
