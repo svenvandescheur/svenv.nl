@@ -15,9 +15,22 @@ module.exports = function(grunt) {
         ],
         dest: 'svenv/blog/static/blog/js/svenv.min.js'
       }
-    }
+    },
+    less: {
+      development: {
+        options: {
+          compress: true,
+          yuicompress: true,
+          optimization: 2
+        },
+        files: {
+          'svenv/blog/static/blog/css/main.css': 'svenv/blog/static/blog/less/main.less',
+        }
+      }
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.registerTask('default', ['uglify']);
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.registerTask('default', ['uglify', 'less']);
 };
