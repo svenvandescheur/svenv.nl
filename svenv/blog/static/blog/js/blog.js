@@ -24,15 +24,6 @@ function View() {
             return 'postview';
         }
     };
-
-    /**
-     * Sets up pretty printing for code
-     * @returns {Object} fluent interface
-     */
-    this.prettyPrint = function () {
-        this.prettyprint_target.addClass('prettyprint');
-        return this;
-    };
 }
 
 /**
@@ -132,9 +123,6 @@ function main() {
     var view = new View(),
         viewClass = view.getView(),
         categoryview;
-
-    // Prettyprint
-    view.prettyPrint();
 
     // view specific logic
     if (viewClass === 'categoryview') {

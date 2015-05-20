@@ -24,7 +24,7 @@ module.exports = function(grunt) {
           optimization: 2
         },
         files: {
-          'svenv/blog/static/blog/css/main.css': 'svenv/blog/static/blog/less/main.less',
+          'svenv/blog/static/blog/css/main.css': ['svenv/blog/static/blog/less/main.less', 'svenv/blog/static/blog/css/github.css'],
         }
       }
     },

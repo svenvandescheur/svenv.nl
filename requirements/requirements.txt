@@ -3,4 +3,5 @@ djangorestframework
 markdown
 markdown2
 pillow
+pygments
 python-dateutil
