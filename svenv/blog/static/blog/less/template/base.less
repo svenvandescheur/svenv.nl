@@ -2,28 +2,6 @@
    Base template
    ========================================================================== */
 
-/**
- * Defaults
- */
-* {
-  .border-box();
-}
-
-code {
-    display: block;
-    line-height: 1.2em;
-    padding: 10px;
-    white-space: pre;
-    border-radius: 0!important;
-}
-
-
-/**
- * Fonts
- */
-.import-google-font('Lobster');
-
-
 /*
  * Less
  */
@@ -41,6 +19,30 @@ code {
     -ms-filter: blur(@length);
     filter: blur(@length);
 }
+
+
+/**
+ * Defaults
+ */
+* {
+  .border-box();
+}
+
+code {
+    background-color: #333;
+    border-radius: 0!important;
+    display: block;
+    line-height: 1.2em;
+    overflow-x: scroll;
+    padding: 10px;
+    white-space: pre;
+}
+
+
+/**
+ * Fonts
+ */
+.import-google-font('Lobster');
 
 
 /*
@@ -124,6 +126,7 @@ body.categoryview {
             footer {
                 background: white;
                 overflow: hidden;
+                position: relative;
                 text-align: left;
                 white-space: nowrap;
             }

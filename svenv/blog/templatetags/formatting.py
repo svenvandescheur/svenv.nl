@@ -16,4 +16,4 @@ def datetime(value):
 
 @register.filter
 def markdown(value):
-    return markdown2.markdown(value)
+    return markdown2.markdown(value, extras=['fenced-code-blocks'])
