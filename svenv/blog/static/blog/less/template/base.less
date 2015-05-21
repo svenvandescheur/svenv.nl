@@ -44,7 +44,19 @@ code {
 /**
  * Fonts
  */
-.import-google-font('Lobster');
+@font-face {
+  font-family: 'Lobster';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/static/blog/fonts/Lobster-regular/Lobster-regular.eot');
+  src: url('/static/blog/fonts/Lobster-regular/Lobster-regular.eot?#iefix') format('embedded-opentype'),
+       local('Lobster'),
+       local('Lobster-regular'),
+       url('/static/blog/fonts/Lobster-regular/Lobster-regular.woff2') format('woff2'),
+       url('/static/blog/fonts/Lobster-regular/Lobster-regular.woff') format('woff'),
+       url('/static/blog/fonts/Lobster-regular/Lobster-regular.ttf') format('truetype'),
+       url('/static/blog/fonts/Lobster-regular/Lobster-regular.svg#Lobster') format('svg');
+}
 
 
 /*
