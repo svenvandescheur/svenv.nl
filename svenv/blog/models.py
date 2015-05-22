@@ -12,6 +12,8 @@ class Category(models.Model):
         return self.name
 
     name = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class Post(models.Model):
@@ -32,6 +34,7 @@ class Post(models.Model):
     url_title = models.CharField(max_length=100)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class Image(models.Model):
@@ -49,6 +52,8 @@ class Image(models.Model):
     width = models.IntegerField(blank=True, null=True)
     height = models.IntegerField(blank=True, null=True)
     copyright = models.CharField(max_length=200, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class Page(models.Model):
@@ -70,3 +75,4 @@ class Page(models.Model):
     content = models.TextField()
     position = models.IntegerField(unique=True)
     date = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
