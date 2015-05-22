@@ -3,7 +3,7 @@
     {% for category in view.get_categories %}
     <url>
         <loc>{{ view.get_base_url }}{% url 'category' category.name %}</loc>
-        <lastmod>{{ category.date }}</lastmod>
+        <lastmod>{{ category.modified|date:"Y-m-d\TH:i:sO" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
 
@@ -13,7 +13,7 @@
     {% for post in view.get_posts %}
     <url>
         <loc>{{ view.get_base_url }}{% url 'post' post.category.name post.url_title %}</loc>
-        <lastmod>{{ post.date }}</lastmod>
+        <lastmod>{{ post.modified|date:"Y-m-d\TH:i:sO" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
@@ -22,7 +22,7 @@
     {% for page in view.get_pages %}
     <url>
         <loc>{{ view.get_base_url }}{% url 'page' page.path %}</loc>
-        <lastmod>{{ page.date }}</lastmod>
+        <lastmod>{{ page.modified|date:"Y-m-d\TH:i:sO" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
