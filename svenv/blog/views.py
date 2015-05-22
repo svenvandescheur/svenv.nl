@@ -132,3 +132,16 @@ class PostViewSet(BaseBlogViewSet):
     queryset = Post.objects.all()
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
     template_name = 'blog/list.html'
+
+
+class SiteMapView(BaseBlogView, generic.TemplateView):
+    template_name = 'blog/sitemap.xml'
+
+    def get_categories(self):
+        return Category.objects.all()
+
+    def get_pages(self):
+        return Page.objects.all()
+
+    def get_posts(self):
+        return Post.objects.all()
