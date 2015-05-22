@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load formatting %}
 
+{% block title %}{{ post.title }}{% endblock %}
 {% block bodyclass %}postview{% endblock %}
 
 {% block content  %}

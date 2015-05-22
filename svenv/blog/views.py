@@ -60,7 +60,6 @@ class CategoryView(BaseBlogView, generic.ListView):
             return Post.objects.all().order_by('date').reverse()[:limit]
 
         category = get_object_or_404(Category, name=category_name)
-        print category_name
         return Post.objects.filter(category=category).order_by('date').reverse()[:limit]
 
 
