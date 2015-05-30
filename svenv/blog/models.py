@@ -1,8 +1,15 @@
 from django.contrib.auth.models import User
 from django.db import models
+from subprocess import call
 
 
-class Category(models.Model):
+class BaseModel():
+    def save(self):
+        call(['varnishadm', 'ban', 'req.url ~ /'])
+        return models.Model.save(self)
+
+
+class Category(BaseModel, models.Model):
     """
     Category model
 
@@ -17,7 +24,7 @@ class Category(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
 
-class Post(models.Model):
+class Post(BaseModel, models.Model):
     """
     Post model
 
@@ -39,7 +46,7 @@ class Post(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
 
-class Image(models.Model):
+class Image(BaseModel, models.Model):
     """
     Image model
 
@@ -58,7 +65,7 @@ class Image(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
 
-class Page(models.Model):
+class Page(BaseModel, models.Model):
     """
     Page model
 
