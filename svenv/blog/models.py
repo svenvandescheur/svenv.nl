@@ -26,7 +26,7 @@ class Post(models.Model):
     Posts contain an image
     """
     def __str__(self):
-        return self.url_title
+        return self.short_title
 
     author = models.ForeignKey(User)
     category = models.ForeignKey('Category')
