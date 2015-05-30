@@ -1,3 +1,6 @@
+BLOG_TITLE = 'Svenv.nl'
+BLOG_DESCRIPTION = 'Blogposts about tech related subject like Unix, Linux, Docker and programming.'
+
 BASE_URL = 'http://svenv.nl'
 
 REST_FRAMEWORK = {

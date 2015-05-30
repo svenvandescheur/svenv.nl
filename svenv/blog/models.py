@@ -12,6 +12,7 @@ class Category(models.Model):
         return self.name
 
     name = models.CharField(max_length=200)
+    description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -31,7 +32,8 @@ class Post(models.Model):
     category = models.ForeignKey('Category')
     image = models.ForeignKey('Image')
     title = models.CharField(max_length=200)
-    url_title = models.CharField(max_length=100)
+    short_title = models.CharField(max_length=100)
+    description = models.TextField()
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -60,7 +62,7 @@ class Page(models.Model):
     """
     Page model
 
-    Pages are simple (web) pasges
+    Pages are simple (web) pages
     Pages are written by Django users
     Pages contain an image
     """
@@ -72,6 +74,7 @@ class Page(models.Model):
     title = models.CharField(max_length=200)
     short_title = models.CharField(max_length=100)
     path = models.CharField(max_length=200)
+    description = models.TextField()
     content = models.TextField()
     position = models.IntegerField(unique=True)
     date = models.DateTimeField(auto_now_add=True)

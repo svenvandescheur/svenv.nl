@@ -15,13 +15,25 @@ class BaseBlogView():
     """
     def get_base_url(self):
         """
-        Method use to expose base url to templates
+        Method used to expose base url to templates
         """
         return settings.BASE_URL
 
+    def get_blog_title(self):
+        """
+        Method used to expose blog title to templates
+        """
+        return settings.BLOG_TITLE
+
+    def get_blog_description(self):
+        """
+        Method used to expose blog description
+        """
+        return settings.BLOG_DESCRIPTION
+
     def get_language_code(self):
         """
-        Method use to expose the Django language code to templates
+        Method used to expose the Django language code to templates
         """
         return settings.LANGUAGE_CODE
 
@@ -32,11 +44,14 @@ class BaseBlogView():
         return settings.MEDIA_URL
 
     def get_pages(self):
+        """
+        Method used to expose pages to templates
+        """
         return Page.objects.all().order_by('position');
 
     def is_in_debug_mode(self):
         """
-        Method use to expose DEBUG setting to templates
+        Method used to expose DEBUG setting to templates
         """
         return settings.DEBUG
 
@@ -47,6 +62,19 @@ class CategoryView(BaseBlogView, generic.ListView):
     """
     context_object_name = 'post_list'
     template_name = 'blog/list.html'
+
+    def get_name(self):
+        return self.get_property_or_default('name', 'Home')
+
+    def get_description(self):
+        return self.get_property_or_default('description', self.get_blog_description())
+
+    def get_property_or_default(self, property, default):
+        category_name = self.kwargs['category_name']
+        if not category_name == '':
+            category = Category.objects.get(name=category_name)
+            return getattr(category, property)
+        return default
 
     def get_queryset(self):
         """
@@ -74,10 +102,10 @@ class PostView(BaseBlogView, generic.DetailView):
 
     def get_object(self):
         """
-        Finds the correct post by category_name and url_title
+        Finds the correct post by category_name and short_title
         """
         category = Category.objects.get(name__icontains=self.kwargs['category_name'])
-        return get_object_or_404(Post, category=category, url_title__icontains=self.kwargs['url_title'])
+        return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'])
 
 
 class PageView(BaseBlogView, generic.DetailView):

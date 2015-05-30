@@ -1,7 +1,8 @@
 {% extends "blog/base.html" %}
 {% load formatting %}
 
-{% block title %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.title|title }} - {{ view.get_blog_title }}{% endblock %}
+{% block description %}{{ page.description }}{% endblock %}
 {% block bodyclass %}pageview{% endblock %}
 
 {% block content  %}

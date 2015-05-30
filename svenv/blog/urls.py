@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     url(r'^(?P<page_path>[a-zA-Z0-9-_]+)$', PageView.as_view(), name='page'),
     url(r'^sitemap.xml$', SiteMapView.as_view(), name='sitemap'),
     url(r'^(?P<category_name>[a-zA-Z0-9-_]+)?/$', CategoryView.as_view(), name='category'),
-    url(r'^(?P<category_name>[a-zA-Z0-9-_]+)/(?P<url_title>[a-zA-Z0-9-_]+)$', PostView.as_view(), name='post'),
+    url(r'^(?P<category_name>[a-zA-Z0-9-_]+)/(?P<short_title>[a-zA-Z0-9-_]+)$', PostView.as_view(), name='post'),
 )

@@ -1,7 +1,8 @@
 {% extends "blog/base.html" %}
 {% load formatting %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.title|title }} - {{ view.get_blog_title }}{% endblock %}
+{% block description %}{{ post.description }}{% endblock %}
 {% block bodyclass %}postview{% endblock %}
 
 {% block content  %}
@@ -16,7 +17,7 @@
         </section>
         <footer>
             <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
-            <a href="/{{ post.category.name }}/{{ post.url_title }}">Permalink</a>
+            <a href="/{{ post.category.name }}/{{ post.short_title }}">Permalink</a>
         </footer>
         <section id="disqus_thread"></section>
     </article>
