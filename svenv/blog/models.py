@@ -12,6 +12,7 @@ class Category(models.Model):
         return self.name
 
     name = models.CharField(max_length=200)
+    description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -32,6 +33,7 @@ class Post(models.Model):
     image = models.ForeignKey('Image')
     title = models.CharField(max_length=200)
     url_title = models.CharField(max_length=100)
+    description = models.TextField()
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -71,6 +73,7 @@ class Page(models.Model):
     image = models.ForeignKey('Image')
     title = models.CharField(max_length=200)
     short_title = models.CharField(max_length=100)
+    description = models.TextField()
     path = models.CharField(max_length=200)
     content = models.TextField()
     position = models.IntegerField(unique=True)
