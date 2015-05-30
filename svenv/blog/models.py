@@ -62,7 +62,7 @@ class Page(models.Model):
     """
     Page model
 
-    Pages are simple (web) pasges
+    Pages are simple (web) pages
     Pages are written by Django users
     Pages contain an image
     """
