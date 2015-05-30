@@ -22,6 +22,8 @@
     {% endfor %}
 {% endmacro %}
 
+{% block title %}{{ view.get_name|title }} - {{ view.get_blog_title }}{% endblock %}
+{% block description %}{{ view.get_description }}{% endblock %}
 {% block bodyclass %}categoryview{% endblock %}
 
 {% block content %}

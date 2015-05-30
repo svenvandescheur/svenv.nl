@@ -2,7 +2,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>{% block title %}Svenv.nl{% endblock %}</title>
+    <title>{% block title %}{{ view.get_blog_title }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if view.is_in_debug_mode %}
         <link rel="stylesheet" type="text/less" href="/static/blog/less/main.less">
