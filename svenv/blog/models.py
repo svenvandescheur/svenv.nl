@@ -32,7 +32,7 @@ class Post(models.Model):
     category = models.ForeignKey('Category')
     image = models.ForeignKey('Image')
     title = models.CharField(max_length=200)
-    url_title = models.CharField(max_length=100)
+    short_title = models.CharField(max_length=100)
     description = models.TextField()
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)

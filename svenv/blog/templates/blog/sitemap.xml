@@ -12,7 +12,7 @@
 
     {% for post in view.get_posts %}
     <url>
-        <loc>{{ view.get_base_url }}{% url 'post' post.category.name post.url_title %}</loc>
+        <loc>{{ view.get_base_url }}{% url 'post' post.category.name post.short_title %}</loc>
         <lastmod>{{ post.modified|date:"Y-m-d" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>

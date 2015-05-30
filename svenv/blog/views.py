@@ -102,10 +102,10 @@ class PostView(BaseBlogView, generic.DetailView):
 
     def get_object(self):
         """
-        Finds the correct post by category_name and url_title
+        Finds the correct post by category_name and short_title
         """
         category = Category.objects.get(name__icontains=self.kwargs['category_name'])
-        return get_object_or_404(Post, category=category, url_title__icontains=self.kwargs['url_title'])
+        return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'])
 
 
 class PageView(BaseBlogView, generic.DetailView):
