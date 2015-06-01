@@ -8,6 +8,7 @@
  * Logic for Google Analytics
  */
 function Analytics() {
+    'use strict';
     /**
      * Wrapper to setup tracking
      * @returns {Object} fluent interface
@@ -40,6 +41,7 @@ function Analytics() {
  * Provides main routine, called on ready
  */
 function analytics() {
+    'use strict';
     var analytics = new Analytics();
     analytics.setUpTracking();
 }

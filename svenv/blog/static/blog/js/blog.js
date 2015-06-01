@@ -37,10 +37,9 @@ function CategoryView() {
 
     /**
      * Fetches additional posts
-     * @param {number} page The page to load data from
      * @returns {Object} fluent interface
      */
-    this.fetchPosts = function (page) {
+    this.fetchPosts = function () {
         var self = this;
         $.ajax({
             url: self.api_url + 'posts/?format=html&ordering=-date&page=' + self.nextPage(),
@@ -121,8 +120,7 @@ function blog() {
     'use strict';
     // Get base view
     var view = new View(),
-        viewClass = view.getView(),
-        categoryview;
+        viewClass = view.getView();
 
     // view specific logic
     if (viewClass === 'categoryview') {
