@@ -9,11 +9,9 @@
  */
 function View() {
     'use strict';
-    this.prettyprint_target = $('code');
-
     /**
      * Finds the current view
-     * @returns {String} The current view
+     * @returns {string} The current view
      */
     this.getView = function () {
         if ($('body').hasClass('categoryview')) {
@@ -37,10 +35,9 @@ function CategoryView() {
 
     /**
      * Fetches additional posts
-     * @param {Number} page The page to load data from
      * @returns {Object} fluent interface
      */
-    this.fetchPosts = function (page) {
+    this.fetchPosts = function () {
         var self = this;
         $.ajax({
             url: self.api_url + 'posts/?format=html&ordering=-date&page=' + self.nextPage(),
@@ -70,7 +67,7 @@ function CategoryView() {
 
     /**
      * Calculates the next page
-     * @returns {Number} The next page
+     * @returns {number} The next page
      */
     this.nextPage = function () {
         return this.getPage() + 1;
@@ -78,7 +75,7 @@ function CategoryView() {
 
     /**
      * Gets the current page
-     * @returns {Number} the current page
+     * @returns {number} the current page
      */
     this.getPage = function () {
         return parseInt($('body').attr('data-page'), 10);
@@ -86,7 +83,7 @@ function CategoryView() {
 
     /**
      * Sets the current page
-     * @param {Number} page The new page value
+     * @param {number} page The new page value
      * @returns {Object} fluent interface
      */
     this.setPage = function (page) {
@@ -117,12 +114,11 @@ function PostView () {
 /**
  * Provides main routine, called on ready
  */
-function main() {
+function blog() {
     'use strict';
     // Get base view
     var view = new View(),
-        viewClass = view.getView(),
-        categoryview;
+        viewClass = view.getView();
 
     // view specific logic
     if (viewClass === 'categoryview') {
@@ -143,5 +139,5 @@ function main() {
  */
 $(document).ready(function () {
     'use strict';
-    main();
+    blog();
 });
