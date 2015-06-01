@@ -9,8 +9,6 @@
  */
 function View() {
     'use strict';
-    this.prettyprint_target = $('code');
-
     /**
      * Finds the current view
      * @returns {string} The current view
