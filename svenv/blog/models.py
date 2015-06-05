@@ -5,7 +5,10 @@ from subprocess import call
 
 class BaseModel():
     def save(self):
-        call(['varnishadm', 'ban', 'req.url ~ /'])
+        try:
+            call(['varnishadm', 'ban', 'req.url ~ /'])
+        except(OSError):
+            print "Could not clear varnish cache"
         return models.Model.save(self)
 
 
