@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+{% load formatting %}
+
+{% block title %}{{ page.title|title }} - {{ view.get_blog_title }}{% endblock %}
+{% block description %}{{ page.description }}{% endblock %}
+{% block bodyclass %}pageview{% endblock %}
+
+{% block content  %}
+    <article>
+        <header>
+            <a href="/">Home</a>
+            <img src="{{ view.get_media_url }}{{ view.get_page.image.url }}" width="{{ view.get_page.image.width }}" height="{{ page.image.height }}" alt="{{ page.image.title }}">
+        </header>
+        <section class="content">
+            <h3>{{ view.get_page.title }}</h3>
+            {{ view.get_page.content }}
+        </section>
+        <section class="contact">
+            <form action="" method="post">{% csrf_token %}
+                {{ form.name.errors }}
+                {{ form.email.errors }}
+                {{ form.message.errors }}
+                <label for="{{ form.name.id_for_label }}">Name</label>
+                {{ form.name }}
+                <label for="{{ form.email.id_for_label }}">E-mail</label>
+                {{ form.email }}
+                <label for="{{ form.message.id_for_label }}">Message</label>
+                {{ form.message }}
+                <label></label><input type="submit" value="Send me a message" />
+            </form>
+        </section>
+    </article>
+{% endblock %}

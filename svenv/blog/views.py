@@ -1,3 +1,4 @@
+from blog.forms import ContactForm
 from blog.models import Category, Image, Post, Page
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -159,6 +160,24 @@ class PostViewSet(BaseBlogViewSet):
     queryset = Post.objects.all()
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
     template_name = 'blog/list.html'
+
+
+class ContactView(BaseBlogView, generic.edit.FormView):
+    form_class = ContactForm
+    template_name = 'blog/contact.html'
+    success_url = settings.CONTACT_THANK_YOU_PAGE
+
+    def form_valid(self, form):
+        form.send_email()
+        return super(ContactView, self).form_valid(form)
+
+    def get_page(self):
+        """
+        Returns a page with content for this form
+        """
+        querySet = Page.objects.filter(path='contact')
+        if not len(querySet) == 0:
+            return querySet[0]
 
 
 class SiteMapView(BaseBlogView, generic.TemplateView):
