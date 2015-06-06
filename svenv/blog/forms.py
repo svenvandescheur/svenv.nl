@@ -22,5 +22,6 @@ class ContactForm(forms.Form):
         message = data['message']
 
         smtp = SMTP(settings.SMTP_HOST)
-        body = 'Subject: %s\n\n%s' % (settings.BLOG_TITLE + ': message from ' + name, message)
-        smtp.sendmail(email, settings.EMAIL, body)
+        subject = 'Subject: %s: message from %s <%s>' % (settings.BLOG_TITLE, name, email)
+        body = '%s\n\n%s' % (subject, message)
+        smtp.sendmail(settings.EMAIL_FROM, settings.EMAIL, body)

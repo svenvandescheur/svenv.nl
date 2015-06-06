@@ -5,6 +5,7 @@ BASE_URL = 'http://svenv.nl'
 
 CONTACT_THANK_YOU_PAGE = '/thankyou'
 EMAIL = 'svenvandescheur@gmail.com'
+EMAIL_FROM = 'noreply@svenv.nl'
 SMTP_HOST = 'localhost'
 
 REST_FRAMEWORK = {
