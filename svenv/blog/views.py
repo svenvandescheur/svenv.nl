@@ -44,11 +44,17 @@ class BaseBlogView():
         """
         return settings.MEDIA_URL
 
+    def get_navigation(self):
+        """
+        Method used to expose navigation to templates
+        """
+        return Page.objects.filter(navigation=True).order_by('position')
+
     def get_pages(self):
         """
         Method used to expose pages to templates
         """
-        return Page.objects.all().order_by('position');
+        return Page.objects.all().order_by('position')
 
     def is_in_debug_mode(self):
         """

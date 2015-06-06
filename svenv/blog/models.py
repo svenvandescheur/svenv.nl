@@ -88,4 +88,5 @@ class Page(BaseModel, models.Model):
     content = models.TextField()
     position = models.IntegerField(unique=True)
     date = models.DateTimeField(auto_now_add=True)
+    navigation = models.BooleanField()
     modified = models.DateTimeField(auto_now=True)
