@@ -11,3 +11,28 @@ body.categoryview #document {
 body.categoryview article {
     .cols(3.75);
 }
+
+body.pageview {
+    #document > section {
+        article {
+            section.contact {
+                form {
+                    label {
+                        .cols(3, min-width);
+                        .hmargin(0, 0);
+                    }
+
+                    input, textarea {
+                        .cols(9, min-width);
+                        .hmargin(0, 0);
+                    }
+
+                    input[type=submit] {
+                        .cols(5, min-width);
+                        .vmargin(0.5, 0);
+                    }
+                }
+            }
+        }
+    }
+}

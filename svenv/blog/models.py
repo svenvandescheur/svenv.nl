@@ -5,7 +5,10 @@ from subprocess import call
 
 class BaseModel():
     def save(self):
-        call(['varnishadm', 'ban', 'req.url ~ /'])
+        try:
+            call(['varnishadm', 'ban', 'req.url ~ /'])
+        except(OSError):
+            print "Could not clear varnish cache"
         return models.Model.save(self)
 
 
@@ -85,4 +88,5 @@ class Page(BaseModel, models.Model):
     content = models.TextField()
     position = models.IntegerField(unique=True)
     date = models.DateTimeField(auto_now_add=True)
+    navigation = models.BooleanField()
     modified = models.DateTimeField(auto_now=True)
