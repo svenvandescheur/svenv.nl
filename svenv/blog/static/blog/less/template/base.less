@@ -139,6 +139,14 @@ body.categoryview {
                 .hpadding(0.5);
             }
 
+            section.content {
+                img {
+                    display: block;
+                    margin: 40px auto;
+
+                }
+            }
+
             footer {
                 background: white;
                 overflow: hidden;
@@ -195,8 +203,12 @@ body.postview, body.pageview {
         background: @background;
 
         article {
-            h3 {
+            h1, h2, h3 {
                 color: @link-color;
+            }
+
+            h2 {
+                .vmargin(0, 1);
             }
 
             line-height: 1.5em;
@@ -228,14 +240,16 @@ body.postview, body.pageview {
                 .vpadding(1);
                 .shadow();
                 position: relative;
-
-                h1, h2, h3, h4, h5, h6 {
-                    .vmargin(0, 1);
-                }
             }
 
             section.content {
                 .vmargin(-3, 0);
+
+                img {
+                    display: block;
+                    margin: 40px auto;
+
+                }
             }
 
             section#disqus_thread {
