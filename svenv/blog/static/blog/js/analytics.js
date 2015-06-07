@@ -11,13 +11,28 @@ function Analytics() {
     'use strict';
     /**
      * Wrapper to setup tracking
+     * Check if user is expected to be a visitor first
      * @returns {Object} fluent interface
      */
     this.setUpTracking = function() {
-        this.googleAnalytics();
+        if (this.isVisitor()) {
+            this.googleAnalytics();
+        }
 
         return this;
     };
+
+    /**
+     * Returns whether the user is expected to be a visitor
+     * @returns {boolean}
+     */
+    this.isVisitor = function() {
+        if(typeof(Storage) !== "undefined") {
+            return localStorage.getItem("analytics.noVisitor") !== 'true';
+        } else {
+            return true;
+        }
+    }
 
     /**
      * Creates the Google Analytics cookie
