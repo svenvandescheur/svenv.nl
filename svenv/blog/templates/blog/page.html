@@ -12,7 +12,7 @@
             <img src="{{ view.get_media_url }}{{ page.image.url }}" width="{{ page.image.width }}" height="{{ page.image.height }}" alt="{{ page.image.title }}">
         </header>
         <section class="content">
-            <h3>{{ page.title }}</h3>
+            <h2>{{ page.title }}</h2>
             {{ page.content|markdown|safe }}
         </section>
     </article>
