@@ -48,13 +48,13 @@ class BaseBlogView():
         """
         Method used to expose navigation to templates
         """
-        return Page.objects.filter(navigation=True).order_by('position')
+        return Page.objects.filter(navigation=True, published=True).order_by('position')
 
     def get_pages(self):
         """
         Method used to expose pages to templates
         """
-        return Page.objects.all().order_by('position')
+        return Page.objects.filter(published=True).order_by('position')
 
     def is_in_debug_mode(self):
         """
@@ -79,7 +79,7 @@ class CategoryView(BaseBlogView, generic.ListView):
     def get_property_or_default(self, property, default):
         category_name = self.kwargs['category_name']
         if not category_name == '':
-            category = Category.objects.get(name=category_name)
+            category = Category.objects.get(name=category_name, published=True)
             return getattr(category, property)
         return default
 
@@ -92,10 +92,10 @@ class CategoryView(BaseBlogView, generic.ListView):
         limit = settings.REST_FRAMEWORK['PAGE_SIZE']
 
         if category_name == '':
-            return Post.objects.all().order_by('date').reverse()[:limit]
+            return Post.objects.filter(published=True, category__published=True).order_by('date').reverse()[:limit]
 
-        category = get_object_or_404(Category, name=category_name)
-        return Post.objects.filter(category=category).order_by('date').reverse()[:limit]
+        category = get_object_or_404(Category, name=category_name, published=True)
+        return Post.objects.filter(category=category, published=True).order_by('date').reverse()[:limit]
 
 
 
@@ -111,8 +111,8 @@ class PostView(BaseBlogView, generic.DetailView):
         """
         Finds the correct post by category_name and short_title
         """
-        category = Category.objects.get(name__icontains=self.kwargs['category_name'])
-        return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'])
+        category = get_object_or_404(Category, name__icontains=self.kwargs['category_name'], published=True)
+        return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'], published=True)
 
 
 class PageView(BaseBlogView, generic.DetailView):
@@ -129,7 +129,7 @@ class PageView(BaseBlogView, generic.DetailView):
         If no page is found, it attempts to load a category
         """
         path = self.kwargs['page_path']
-        return get_object_or_404(Page, path__icontains=path)
+        return get_object_or_404(Page, path__icontains=path, published=True)
 
 
 class BaseBlogViewSet(viewsets.ReadOnlyModelViewSet):
@@ -163,12 +163,15 @@ class PostViewSet(BaseBlogViewSet):
     """
     model = Post
     ordering = 'id'
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(published=True, category__published=True)
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
     template_name = 'blog/list.html'
 
 
 class ContactView(BaseBlogView, generic.edit.FormView):
+    """
+    Shows a page with a form
+    """
     form_class = ContactForm
     template_name = 'blog/contact.html'
     success_url = settings.CONTACT_THANK_YOU_PAGE
@@ -181,19 +184,22 @@ class ContactView(BaseBlogView, generic.edit.FormView):
         """
         Returns a page with content for this form
         """
-        querySet = Page.objects.filter(path='contact')
+        querySet = Page.objects.filter(path='contact', published=True)
         if not len(querySet) == 0:
             return querySet[0]
 
 
 class SiteMapView(BaseBlogView, generic.TemplateView):
+    """
+    Shows a xml sitemap for SEO
+    """
     template_name = 'blog/sitemap.xml'
 
     def get_categories(self):
-        return Category.objects.all()
+        return Category.objects.filter(published=True)
 
     def get_pages(self):
-        return Page.objects.all()
+        return Page.objects.filter(published=True)
 
     def get_posts(self):
-        return Post.objects.all()
+        return Post.objects.filter(published=True)

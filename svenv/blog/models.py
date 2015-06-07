@@ -24,6 +24,7 @@ class Category(BaseModel, models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField()
     modified = models.DateTimeField(auto_now=True)
 
 
@@ -46,6 +47,7 @@ class Post(BaseModel, models.Model):
     description = models.TextField()
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField()
     modified = models.DateTimeField(auto_now=True)
 
 
@@ -88,5 +90,6 @@ class Page(BaseModel, models.Model):
     content = models.TextField()
     position = models.IntegerField(unique=True)
     date = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField()
     navigation = models.BooleanField()
     modified = models.DateTimeField(auto_now=True)
