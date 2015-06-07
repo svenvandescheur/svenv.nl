@@ -66,7 +66,7 @@ code {
 body.categoryview {
     background: @background;
     line-height: 1.5em;
-    
+
     #document > header {
         .cols(12);
         .rows(1);
@@ -85,7 +85,7 @@ body.categoryview {
                 text-decoration: none;
             }
         }
-        
+
         nav {
             .cols(7);
             .rows(0, height);
@@ -111,7 +111,7 @@ body.categoryview {
     #document > section {
         .vmargin(1.25, 0);
         background: @background;
-        
+
         .fetch_posts {
             .cols(12);
             .rows(1, line-height);
@@ -119,7 +119,7 @@ body.categoryview {
             float: left;
             text-align: center;
         }
-        
+
         article {
             .shadow();
             float: left;
@@ -145,7 +145,7 @@ body.categoryview {
                 img {
                     display: block;
                     margin: 40px auto;
-
+                    max-width: 100%;
                 }
             }
 
@@ -174,7 +174,7 @@ body.categoryview {
 body.postview, body.pageview {
     background: @background;
     font-size: 160%;
-    
+
     #document > header {
         .cols(12);
         .rows(0, min-height);
@@ -250,7 +250,7 @@ body.postview, body.pageview {
                 img {
                     display: block;
                     margin: 40px auto;
-
+                    max-width: 100%;
                 }
             }
 
