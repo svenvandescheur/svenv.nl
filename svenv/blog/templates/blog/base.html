@@ -16,7 +16,7 @@
 <body class="{% block bodyclass %}{% endblock %}" data-page="1">
 <div id="document">
     <header>
-        {% include "blog/header.html" %}
+        {% block header %}{% endblock %}
     </header>
     <section id="content">
         {% block content %}{% endblock %}
