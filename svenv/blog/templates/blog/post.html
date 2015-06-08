@@ -4,6 +4,8 @@
 {% block title %}{{ post.title|title }} - {{ view.get_blog_title }}{% endblock %}
 {% block description %}{{ post.description }}{% endblock %}
 {% block bodyclass %}postview{% endblock %}
+{% block header %}<h1><a href="/">{{ view.get_blog_title }}</a></h1>{% endblock %}
+
 
 {% block content  %}
     <article>
