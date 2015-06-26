@@ -102,8 +102,14 @@ body.categoryview {
                     margin-right: 20px;
 
                     a {
+                        color: @default-color;
+                        font-size: 80%;
                         font-weight: bold;
-                        text-transform: capitalize;
+                        text-transform: uppercase;
+
+                        &:hover {
+                            color: @link-color;
+                        }
                     }
                 }
             }
@@ -168,6 +174,7 @@ body.categoryview {
 
                 a {
                     font-weight: bold;
+                    text-transform: uppercase;
                 }
             }
         }
