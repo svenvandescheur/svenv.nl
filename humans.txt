@@ -1,2 +1,2 @@
-Svenv.nl is build, designed and maintained by Sven van de Scheur.
-Source code is available at https://github.com/svenvandescheur/svenv.nl
+Svenv.nl is built, designed and maintained by Sven van de Scheur.
+Source code is available at https://github.com/svenvandescheur/svenv.nl.
