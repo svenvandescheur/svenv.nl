@@ -53,7 +53,7 @@ function CategoryView() {
      * adds the received data to the dom and update the current page value
      */
     this._fetchPostsSuccess = function (data) {
-        $(data).insertBefore(this.fetch_button).hide().fadeIn();
+        $(data).insertBefore(this.fetch_button);
         this.setPage(this.nextPage());
     };
 
