@@ -33,6 +33,7 @@ function CategoryView() {
     this.content_section = $('section#content');
     this.fetch_button = $('.fetch_posts');
     this.articles = this.content_section.children('article');
+    this.articleLinkSelector = 'header a';
     this.transitionInterval = 100;
 
     /**
@@ -111,6 +112,12 @@ function CategoryView() {
 
         return this;
     }
+
+    this.redirectToArticle = function (article) {
+        var a = article.find(this.articleLinkSelector);
+        window.location = a.attr('href');
+        console.dir(a.html());
+    };
 }
 
 /**
@@ -149,6 +156,10 @@ function blog() {
         categoryView.fetch_button.click(function (e) {
             e.preventDefault();
             categoryView.fetchPosts();
+        });
+
+        categoryView.articles.click(function () {
+            categoryView.redirectToArticle($(this));
         });
     } else if (viewClass === 'postview') {
         var postView = new PostView();
