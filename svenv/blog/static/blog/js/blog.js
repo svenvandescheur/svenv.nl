@@ -57,6 +57,12 @@ function CategoryView() {
      */
     this._fetchPostsSuccess = function (data) {
         $(data).insertBefore(this.fetch_button);
+
+        var nodes = $('article').filter(function() {
+            return $(this).css('opacity') !== '1';
+        });
+
+        this._fadeIn(nodes);
         this.setPage(this.nextPage());
     };
 
@@ -99,9 +105,18 @@ function CategoryView() {
      * @returns {Object} fluent interface
      */
     this.fadeInArticles = function () {
+        return this._fadeIn(this.articles);
+    };
+
+    /**
+     * Animates jQuery selected nodes fading in using CSS3 transitions
+     * @param {Object} set of jQuery nodes
+     * @returns {Object} fluent interface
+     */
+    this._fadeIn = function (nodes) {
         var self = this;
 
-        $.each(this.articles, function (index, article) {
+        $.each(nodes, function (index) {
             var delay = index * self.transitionInterval;
 
             $(this).transition({
@@ -111,12 +126,15 @@ function CategoryView() {
         });
 
         return this;
-    }
+    };
 
+    /**
+     * Redirect to the permalink of the article
+     * @param {Object} jQuery node
+     */
     this.redirectToArticle = function (article) {
         var a = article.find(this.articleLinkSelector);
         window.location = a.attr('href');
-        console.dir(a.html());
     };
 }
 
