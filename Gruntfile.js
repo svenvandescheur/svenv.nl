@@ -8,6 +8,7 @@ module.exports = function(grunt) {
       build: {
         src: [
           'svenv/blog/static/blog/js/jquery.min.js',
+          'svenv/blog/static/blog/js/jquery.transit.min.js',
           'svenv/blog/static/blog/js/blog.js',
           'svenv/blog/static/blog/js/analytics.js',
         ],

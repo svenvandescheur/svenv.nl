@@ -32,6 +32,9 @@ function CategoryView() {
     this.api_url = '/api/';
     this.content_section = $('section#content');
     this.fetch_button = $('.fetch_posts');
+    this.articles = this.content_section.children('article');
+    this.articleLinkSelector = 'header a';
+    this.transitionInterval = 100;
 
     /**
      * Fetches additional posts
@@ -48,16 +51,22 @@ function CategoryView() {
         return this;
     };
 
-   /**
+    /**
      * Success callback for fetchPosts
      * adds the received data to the dom and update the current page value
      */
     this._fetchPostsSuccess = function (data) {
         $(data).insertBefore(this.fetch_button);
+
+        var nodes = $('article').filter(function() {
+            return $(this).css('opacity') !== '1';
+        });
+
+        this._fadeIn(nodes);
         this.setPage(this.nextPage());
     };
 
-   /**
+    /**
      * Error callback for fetchPosts
      * notifies the user that fetching posts has failed
      */
@@ -89,6 +98,43 @@ function CategoryView() {
     this.setPage = function (page) {
         $('body').attr('data-page', page);
         return this;
+    };
+
+    /**
+     * Animates articles fading in using CSS3 transitions
+     * @returns {Object} fluent interface
+     */
+    this.fadeInArticles = function () {
+        return this._fadeIn(this.articles);
+    };
+
+    /**
+     * Animates jQuery selected nodes fading in using CSS3 transitions
+     * @param {Object} set of jQuery nodes
+     * @returns {Object} fluent interface
+     */
+    this._fadeIn = function (nodes) {
+        var self = this;
+
+        $.each(nodes, function (index) {
+            var delay = index * self.transitionInterval;
+
+            $(this).transition({
+                'opacity': 1,
+                'delay': delay
+            });
+        });
+
+        return this;
+    };
+
+    /**
+     * Redirect to the permalink of the article
+     * @param {Object} jQuery node
+     */
+    this.redirectToArticle = function (article) {
+        var a = article.find(this.articleLinkSelector);
+        window.location = a.attr('href');
     };
 }
 
@@ -123,10 +169,15 @@ function blog() {
     // view specific logic
     if (viewClass === 'categoryview') {
         var categoryView = new CategoryView();
+        categoryView.fadeInArticles();
 
         categoryView.fetch_button.click(function (e) {
             e.preventDefault();
             categoryView.fetchPosts();
+        });
+
+        categoryView.articles.click(function () {
+            categoryView.redirectToArticle($(this));
         });
     } else if (viewClass === 'postview') {
         var postView = new PostView();
