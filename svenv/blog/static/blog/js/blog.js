@@ -32,6 +32,8 @@ function CategoryView() {
     this.api_url = '/api/';
     this.content_section = $('section#content');
     this.fetch_button = $('.fetch_posts');
+    this.articles = this.content_section.children('article');
+    this.transitionInterval = 100;
 
     /**
      * Fetches additional posts
@@ -48,7 +50,7 @@ function CategoryView() {
         return this;
     };
 
-   /**
+    /**
      * Success callback for fetchPosts
      * adds the received data to the dom and update the current page value
      */
@@ -57,7 +59,7 @@ function CategoryView() {
         this.setPage(this.nextPage());
     };
 
-   /**
+    /**
      * Error callback for fetchPosts
      * notifies the user that fetching posts has failed
      */
@@ -90,6 +92,25 @@ function CategoryView() {
         $('body').attr('data-page', page);
         return this;
     };
+
+    /**
+     * Animates articles fading in using CSS3 transitions
+     * @returns {Object} fluent interface
+     */
+    this.fadeInArticles = function () {
+        var self = this;
+
+        $.each(this.articles, function (index, article) {
+            var delay = index * self.transitionInterval;
+
+            $(this).transition({
+                'opacity': 1,
+                'delay': delay
+            });
+        });
+
+        return this;
+    }
 }
 
 /**
@@ -123,6 +144,7 @@ function blog() {
     // view specific logic
     if (viewClass === 'categoryview') {
         var categoryView = new CategoryView();
+        categoryView.fadeInArticles();
 
         categoryView.fetch_button.click(function (e) {
             e.preventDefault();
