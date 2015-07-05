@@ -1,7 +1,7 @@
 import dateutil.parser
 from django import template
 from re import sub, findall
-import markdown2
+from markdown2 import Markdown
 
 
 register = template.Library()
@@ -17,37 +17,37 @@ def datetime(value):
 
 @register.filter
 def markdown(value):
-    value = markdown2.markdown(value, extras=['fenced-code-blocks'])
-    value = markdown_class_image(value)
-    return value
-
-
-def markdown_class_image(value):
     """
-    Extends markdown image syntax with additional class parameter
-    Syntax: ![Alt text](/path/to/img.jpg "Title" "Class")
-    Replacement is ignored within <code> and <pre>
+    Runs "svenv flavored markdown" on value
     """
-    return sub(r'([\s\S]+?)!\[(.+?)]\((.+?)\s+["\'](.+)["\']\s["\'](.+?)["\']\)',
-                  parse_markdown_class_image, value)
+    md = svenv_flavored_markdown(extras=['fenced-code-blocks'])
+    return md.convert(value)
 
 
-def parse_markdown_class_image(match):
-    """
-    Replaces the match with correct image tag if necessary
-    If the match is fenched in either a <code>, or <pre> block it should be left intact
-    """
-    if is_fenched_in_block('code', match) or is_fenched_in_block('pre', match):
-        return match.group(0)
-    return r'<img alt="\2" src="\3" title="\4" class="\5" />'
+class svenv_flavored_markdown(Markdown):
+    def _do_links(self, value):
+        """
+        Extends markdown image syntax with additional class parameter
+        Syntax: ![Alt text](/path/to/img.jpg "Title" "Class")
+        """
+        value = sub(r'!\[(.+?)]\((.+?)\s+?["\'](.+?)["\']\s*?(?:["\'](.+?)["\'])?\)',
+                      self.parse_markdown_class_image, value)
+
+        return super(svenv_flavored_markdown, self)._do_links(value)
 
 
-def is_fenched_in_block(tag, match):
-    """
-    Compares number of tag starts with number of tag ends
-    Returns True if number of tag starts is greater than number of tag ends
-    """
-    code_starts = findall(r'<'+tag, match.group(1))
-    code_ends = findall(r'<\/'+tag, match.group(1))
+    def parse_markdown_class_image(self, match):
+        """
+        Replaces the match with correct image tag
+        """
+        alt = match.group(1)
+        src = match.group(2)
+        title = match.group(3)
+        classname = match.group(4)
 
-    return len(code_starts) > len(code_ends)
+        if classname != None:
+            html = '<img alt="%s" src="%s" title="%s" class="%s" />' % (alt, src, title, classname)
+        else:
+            html = '<img alt="%s" src="%s" title="%s" />' % (alt, src, title)
+
+        return self._escape_special_chars(html)
