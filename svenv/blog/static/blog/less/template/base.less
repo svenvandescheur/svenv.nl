@@ -81,6 +81,7 @@ body.categoryview {
         .vmargin(0, 0.25);
         .shadow();
         background: @header;
+        display: -webkit-flex;
         display: flex;
         position: fixed;
         z-index: 1;
@@ -100,6 +101,7 @@ body.categoryview {
 
         nav {
             .rows(0, height);
+            -webkit-flex-grow: 2;
             flex-grow: 2;
             float: left;
 
