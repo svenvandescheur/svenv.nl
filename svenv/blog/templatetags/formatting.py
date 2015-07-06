@@ -46,8 +46,8 @@ class svenv_flavored_markdown(Markdown):
         classname = match.group(4)
 
         if classname != None:
-            html = '<img alt="%s" src="%s" title="%s" class="%s" />' % (alt, src, title, classname)
+            html = '<img src="%s" alt="%s" title="%s" class="%s" />' % (src, alt, title, classname)
         else:
-            html = '<img alt="%s" src="%s" title="%s" />' % (alt, src, title)
+            html = '<img src="%s" alt="%s" title="%s" />' % (src, alt, title)
 
         return self._escape_special_chars(html)
