@@ -81,14 +81,17 @@ body.categoryview {
         .vmargin(0, 0.25);
         .shadow();
         background: @header;
+        display: flex;
         position: fixed;
         z-index: 1;
 
         h1 {
-            .vmargin(0.3, 0.3);
-
+            .rows(1, line-height);
+            .vmargin(0, 0);
             float: left;
             font-family: 'Lobster', cursive;
+            font-size: 15px;
+            padding-right: 15px;
 
             a:hover {
                 text-decoration: none;
@@ -96,13 +99,13 @@ body.categoryview {
         }
 
         nav {
-            .cols(7);
             .rows(0, height);
+            flex-grow: 2;
             float: left;
 
             ul {
                 .rows(1, line-height);
-                .hmargin(1);
+                .hmargin(0, 1);
                 list-style-type: none;
 
                 li {
