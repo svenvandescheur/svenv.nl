@@ -5,9 +5,9 @@ from smtplib import SMTP
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'test'}))
-    email = forms.CharField(validators=[validate_email], widget=forms.TextInput(attrs={'placeholder': 'test'}))
-    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'test'}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Real or nickname'}))
+    email = forms.CharField(validators=[validate_email], widget=forms.TextInput(attrs={'placeholder': 'Kept private'}))
+    message = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Feel free to ask me anything'}))
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
