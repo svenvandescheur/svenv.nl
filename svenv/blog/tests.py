@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase, Client
-from mock import patch
 from os.path import isfile
 from unittest import skipIf
 
@@ -47,6 +46,7 @@ class ContactFormTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Enter a valid email address.')
 
+    @skipIf(not isfile('/.dockerinit'), 'This test requires the docker environment')
     def test_submit_valid(self):
         response = self.c.post('/contact', {'name': 'John', 'email': 'john@example.com', 'message': 'message'})
         self.assertRedirects(response, '/thankyou', status_code=302, target_status_code=404)
