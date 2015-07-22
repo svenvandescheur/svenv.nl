@@ -1,6 +1,7 @@
 from base import *
 
 
+X_FRAME_OPTIONS = 'ALLOW'
 random = open('/random.txt').read().splitlines()[0]
 SECRET_KEY = random
 DATABASES = {
