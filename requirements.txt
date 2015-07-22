@@ -2,6 +2,7 @@ django
 djangorestframework
 markdown
 markdown2
+mock
 pillow
 pygments
 python-dateutil
