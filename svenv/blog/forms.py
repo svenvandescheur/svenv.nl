@@ -17,9 +17,9 @@ class ContactForm(forms.Form):
 
     def send_email(self):
         data = self.cleaned_data
-        name =  data['name']
-        email =  data['email']
-        message = data['message']
+        name = data['name'].encode('utf-8')
+        email = data['email'].encode('utf-8')
+        message = data['message'].encode('utf-8')
 
         smtp = SMTP(settings.SMTP_HOST)
         subject = 'Subject: %s: message from %s <%s>' % (settings.BLOG_TITLE, name, email)
