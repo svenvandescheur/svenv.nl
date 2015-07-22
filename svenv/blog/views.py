@@ -98,7 +98,6 @@ class CategoryView(BaseBlogView, generic.ListView):
         return Post.objects.filter(category=category, published=True).order_by('date').reverse()[:limit]
 
 
-
 class PostView(BaseBlogView, generic.DetailView):
     """
     Shows a specific post
@@ -137,7 +136,6 @@ class BaseBlogViewSet(viewsets.ReadOnlyModelViewSet):
     Base class for viewsets
     """
     ordering_fields = ('__all__')
-
 
     def get_serializer_class(self):
         """

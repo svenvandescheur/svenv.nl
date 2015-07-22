@@ -236,7 +236,6 @@ class MarkdownTest(TestCase):
         )
         self.assert_markdown(markdown, html)
 
-
     def test_code_backticks(self):
         markdown = dedent(
             """
@@ -324,7 +323,6 @@ you've got to put paragraph tags in your blockquotes:
         """
         self.assert_markdown2(markdown, html, msg)
         self.assert_svenv_flavored_markdown(markdown, html, msg)
-
 
     def assert_markdown2(self, markdown, html, msg=None):
         """
