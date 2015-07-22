@@ -25,11 +25,11 @@ register = template.Library()
 
 
 def _setup_macros_dict(parser):
-    ## Metadata of each macro are stored in a new attribute
-    ## of 'parser' class. That way we can access it later
-    ## in the template when processing 'usemacro' tags.
+    # Metadata of each macro are stored in a new attribute
+    # of 'parser' class. That way we can access it later
+    # in the template when processing 'usemacro' tags.
     try:
-        ## Only try to access it to eventually trigger an exception
+        # Only try to access it to eventually trigger an exception
         parser._macros
     except AttributeError:
         parser._macros = {}
@@ -50,7 +50,7 @@ class DefineMacroNode(template.Node):
                 self.kwargs[name] = value
 
     def render(self, context):
-        ## empty string - {% macro %} tag does no output
+        # empty string - {% macro %} tag does no output
         return ''
 
 
@@ -60,17 +60,17 @@ def do_macro(parser, token):
         args = token.split_contents()
         tag_name, macro_name, args = args[0], args[1], args[2:]
     except IndexError:
-        m = ("'%s' tag requires at least one argument (macro name)"
-            % token.contents.split()[0])
+        m = (u"'{0:s}' tag requires at least one argument (macro name)"
+             .format(token.contents.split()[0]))
         raise template.TemplateSyntaxError, m
     # TODO: could do some validations here,
     # for now, "blow your head clean off"
     nodelist = parser.parse(('endmacro', ))
     parser.delete_first_token()
 
-    ## Metadata of each macro are stored in a new attribute
-    ## of 'parser' class. That way we can access it later
-    ## in the template when processing 'usemacro' tags.
+    # Metadata of each macro are stored in a new attribute
+    # of 'parser' class. That way we can access it later
+    # in the template when processing 'usemacro' tags.
     _setup_macros_dict(parser)
     parser._macros[macro_name] = DefineMacroNode(macro_name, nodelist, args)
     return parser._macros[macro_name]
@@ -78,7 +78,7 @@ def do_macro(parser, token):
 
 class LoadMacrosNode(template.Node):
     def render(self, context):
-        ## empty string - {% loadmacros %} tag does no output
+        # empty string - {% loadmacros %} tag does no output
         return ''
 
 
@@ -88,15 +88,15 @@ def do_loadmacros(parser, token):
         tag_name, filename = token.split_contents()
     except IndexError:
         m = ("'%s' tag requires at least one argument (macro name)"
-            % token.contents.split()[0])
+             % token.contents.split()[0])
         raise template.TemplateSyntaxError, m
     if filename[0] in ('"', "'") and filename[-1] == filename[0]:
         filename = filename[1:-1]
     t = get_template(filename)
     macros = t.nodelist.get_nodes_by_type(DefineMacroNode)
-    ## Metadata of each macro are stored in a new attribute
-    ## of 'parser' class. That way we can access it later
-    ## in the template when processing 'usemacro' tags.
+    # Metadata of each macro are stored in a new attribute
+    # of 'parser' class. That way we can access it later
+    # in the template when processing 'usemacro' tags.
     _setup_macros_dict(parser)
     for macro in macros:
         parser._macros[macro.name] = macro

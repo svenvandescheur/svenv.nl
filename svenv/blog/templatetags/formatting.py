@@ -31,10 +31,9 @@ class svenv_flavored_markdown(Markdown):
         Syntax: ![Alt text](/path/to/img.jpg "Title" "Class")
         """
         value = sub(r'!\[(.+?)]\((.+?)\s+?["\'](.+?)["\']\s*?(?:["\'](.+?)["\'])?\)',
-                      self.parse_markdown_class_image, value)
+                    self.parse_markdown_class_image, value)
 
         return super(svenv_flavored_markdown, self)._do_links(value)
-
 
     def parse_markdown_class_image(self, match):
         """
@@ -45,7 +44,7 @@ class svenv_flavored_markdown(Markdown):
         title = match.group(3)
         classname = match.group(4)
 
-        if classname != None:
+        if classname is not None:
             html = '<img src="%s" alt="%s" title="%s" class="%s" />' % (src, alt, title, classname)
         else:
             html = '<img src="%s" alt="%s" title="%s" />' % (src, alt, title)
