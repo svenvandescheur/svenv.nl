@@ -7,6 +7,7 @@ from django.views import generic
 from rest_framework import viewsets
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer
 from rest_framework.utils import formatting
+from socket import getfqdn
 import serializers
 
 
@@ -31,6 +32,12 @@ class BaseBlogView():
         Method used to expose blog description
         """
         return settings.BLOG_DESCRIPTION
+
+    def get_fqdn(self):
+        """
+        Method used to expose fully qualified domain name (fqdn)
+        """
+        return getfqdn()
 
     def get_language_code(self):
         """
