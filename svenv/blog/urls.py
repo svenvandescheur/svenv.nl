@@ -1,8 +1,7 @@
-from django.conf.urls import patterns, include, url
-
-from rest_framework import routers
-
 from blog.views import *
+from django.conf import settings
+from django.conf.urls import patterns, include, url
+from rest_framework import routers
 
 
 router = routers.DefaultRouter()
@@ -11,7 +10,7 @@ router.register(r'posts', PostViewSet)
 urlpatterns = patterns('',
                        url(r'^api/', include(router.urls)),
                        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-                       url(r'^contact$', ContactView.as_view(), name='contact'),
+                       url(settings.CONTACT_PAGE_PATH, ContactView.as_view(), name='contact'),
                        url(r'^sitemap.xml$', SiteMapView.as_view(), name='sitemap'),
 
                        url(r'^(?P<page_path>[a-zA-Z0-9-_]+)$', PageView.as_view(), name='page'),
