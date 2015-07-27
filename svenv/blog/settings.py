@@ -3,6 +3,7 @@ BLOG_DESCRIPTION = 'Blogposts about tech related subject like Unix, Linux, Docke
 
 BASE_URL = 'http://svenv.nl'
 
+CONTACT_PAGE_PATH = 'contact'
 CONTACT_THANK_YOU_PAGE = '/thankyou'
 EMAIL = 'svenvandescheur@gmail.com'
 EMAIL_FROM = 'noreply@svenv.nl'
