@@ -189,7 +189,7 @@ class ContactView(BaseBlogView, generic.edit.FormView):
         """
         Returns a page with content for this form
         """
-        querySet = Page.objects.filter(path='contact', published=True)
+        querySet = Page.objects.filter(path=settings.CONTACT_PAGE_PATH, published=True)
         if not len(querySet) == 0:
             return querySet[0]
 
