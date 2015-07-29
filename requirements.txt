@@ -1,4 +1,5 @@
 django
+django-debug-toolbar
 djangorestframework
 markdown
 markdown2
