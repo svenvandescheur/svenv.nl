@@ -1,6 +1,6 @@
 import dateutil.parser
 from django import template
-from re import sub, findall
+from re import finditer, search, sub, MULTILINE
 from markdown2 import Markdown
 
 
@@ -50,3 +50,33 @@ class svenv_flavored_markdown(Markdown):
             html = '<img src="%s" alt="%s" title="%s" />' % (src, alt, title)
 
         return self._escape_special_chars(html)
+
+    def _do_lists(self, text):
+        """
+        Replace the markdown2 _do_lists function
+        Uses the same syntax but respects user's list start
+        """
+        matches = finditer(r'(\d+\.\s+?.+\n|\r)+', text, MULTILINE)
+
+        for match in matches:
+            list = match.group(0)
+            text = text.replace(list, self.parse_markdown_sane_list(list))
+
+        return super(svenv_flavored_markdown, self)._do_lists(text)
+
+    def parse_markdown_sane_list(self, list):
+        """
+        Find the first item in the lists and uses it as start
+        Returns the html version of the list
+        """
+        lines = list.splitlines()
+        match_start = search(r'(\d+)\.', lines[0])
+        start = match_start.group(1)
+        html = '<ol start="' + start + '">'
+
+        for line in lines:
+            match_content = search(r'\d+\.\s(.+)', line)
+            html += '<li>' + match_content.group(1) + '</li>'
+        html += '</ol>'
+
+        return html
