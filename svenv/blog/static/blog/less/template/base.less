@@ -332,8 +332,6 @@ body.postview, body.pageview {
                     input, textarea {
                         .hmargin(0, 0);
                         .vmargin(0, 0);
-                        border: 0;
-                        border-bottom: @input-border;
                         font-size: 24px;
                         font-weight: 300;
                         line-height: initial;
@@ -347,6 +345,11 @@ body.postview, body.pageview {
                         &:-ms-input-placeholder {
                             font-weight: 300;
                         }
+                    }
+
+                    input[type=text], textarea {
+                        border: 0;
+                        border-bottom: @input-border;
                     }
 
                     textarea {
