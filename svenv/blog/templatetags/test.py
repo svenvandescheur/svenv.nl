@@ -126,24 +126,36 @@ class MarkdownTest(TestCase):
         self.assert_markdown(hyphen, html, 'Hyphen style list did not parse correctly')
 
     def test_ordered_lists(self):
+        """
+        Svenv flavored markdown respects list start
+        """
         markdown = dedent(
             """
             1.  Red
             2.  Green
             3.  Blue
+
+            4.  Red
+            5.  Green
+            6.  Blue
             """
         )
 
         html = dedent(
             """
-            <ol>
+            <ol start="1">
+            <li>Red</li>
+            <li>Green</li>
+            <li>Blue</li>
+            </ol>
+            <ol start="4">
             <li>Red</li>
             <li>Green</li>
             <li>Blue</li>
             </ol>
             """
         )
-        self.assert_markdown(markdown, html)
+        self.assert_svenv_flavored_markdown(markdown, html)
 
     def test_paragraph_list(self):
         markdown = dedent(
