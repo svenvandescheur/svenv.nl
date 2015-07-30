@@ -326,15 +326,34 @@ body.postview, body.pageview {
                     }
 
                     label {
-                        .cols(12, min-width);
                         .hmargin(0, 0);
                     }
 
                     input, textarea {
-                        .cols(12, min-width);
                         .hmargin(0, 0);
+                        .vmargin(0, 0);
+                        border: 0;
+                        border-bottom: @input-border;
                         font-size: 24px;
+                        font-weight: 300;
                         line-height: initial;
+                        resize: vertical;
+
+                        &::-webkit-input-placeholder {
+                            font-weight: 300;
+                        }
+                        &:-moz-placeholder {
+                            font-weight: 300;
+                        }
+                        &:-ms-input-placeholder {
+                            font-weight: 300;
+                        }
+                    }
+
+                    textarea {
+                        .rows(3);
+                        padding-top: 15px;
+
                     }
                 }
 
