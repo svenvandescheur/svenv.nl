@@ -1,7 +1,7 @@
 BLOG_TITLE = 'Svenv.nl'
 BLOG_DESCRIPTION = 'Blogposts about tech related subject like Unix, Linux, Docker and programming.'
 
-BASE_URL = 'http://svenv.nl'
+BASE_URL = 'https://svenv.nl'
 
 CONTACT_PAGE_PATH = 'contact'
 CONTACT_THANK_YOU_PAGE = '/thankyou'
