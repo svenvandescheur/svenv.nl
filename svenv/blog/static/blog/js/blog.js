@@ -15,11 +15,11 @@ function View() {
      */
     this.getView = function () {
         if ($('body').hasClass('categoryview')) {
-            return 'categoryview';
+            return new CategoryView();
         }
 
-        if ($('body').hasClass('postview')) {
-            return 'postview';
+        if ($('body').hasClass('postview') || $('body').hasClass('pageview')) {
+            return new PostView();
         }
     };
 }
@@ -35,6 +35,32 @@ function CategoryView() {
     this.articles = this.content_section.children('article');
     this.articleLinkSelector = 'header a';
     this.transitionInterval = 100;
+
+    /**
+     * Runs the logic for this view
+     * @returns {Object} fluent interface
+     */
+    this.construct = function () {
+        this.setUpFetchPosts()
+            .fadeInArticles()
+            .setUpRedirectToArticle();
+
+        return this;
+    };
+
+    /**
+     * Binds the fetch button to fetchPosts()
+     * @returns {Object} fluent interface
+     */
+    this.setUpFetchPosts = function () {
+        var self = this;
+        this.fetch_button.click(function (e) {
+            e.preventDefault();
+            self.fetchPosts();
+        });
+
+        return this;
+    };
 
     /**
      * Fetches additional posts
@@ -129,6 +155,19 @@ function CategoryView() {
     };
 
     /**
+     * Binds articles to redirectToArticle()
+     * @returns {Object} fluent interface
+     */
+    this.setUpRedirectToArticle = function () {
+        var self = this;
+        this.articles.click(function () {
+            self.redirectToArticle($(this));
+        });
+
+        return this;
+    };
+
+    /**
      * Redirect to the permalink of the article
      * @param {Object} jQuery node
      */
@@ -144,17 +183,49 @@ function CategoryView() {
 function PostView () {
     'use strict';
     this.disqus_shortname = 'svenv';
+    this.article_header_image = $('article header img');
+    this.parallax_ratio = 0.3;
+
+    /**
+     * Runs the logic for this view
+     * @returns {Object} fluent interface
+     */
+    this.construct = function () {
+        this.disqus();
+        this.parallaxHeader();
+
+        return this;
+    };
 
     /**
      * Add Disqus to the current page
      * @returns {Object} fluent interface
      */
     this.disqus = function () {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + this.disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if ($('body').hasClass('postview')) {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + this.disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }
+
         return this;
-    }
+    };
+
+
+    /**
+     * Create a parallax effect on the header
+     * @returns {Object} fluent interface
+     */
+    this.parallaxHeader = function () {
+        var self = this;
+        $(window).scroll(function(){
+            self.article_header_image.css({
+                'top': self.parallax_ratio * $(window).scrollTop()
+            });
+        });
+
+        return this;
+    };
 }
 
 /**
@@ -163,26 +234,10 @@ function PostView () {
 function blog() {
     'use strict';
     // Get base view
-    var view = new View(),
-        viewClass = view.getView();
+    var baseView = new View(),
+        view = baseView.getView();
 
-    // view specific logic
-    if (viewClass === 'categoryview') {
-        var categoryView = new CategoryView();
-        categoryView.fadeInArticles();
-
-        categoryView.fetch_button.click(function (e) {
-            e.preventDefault();
-            categoryView.fetchPosts();
-        });
-
-        categoryView.articles.click(function () {
-            categoryView.redirectToArticle($(this));
-        });
-    } else if (viewClass === 'postview') {
-        var postView = new PostView();
-        postView.disqus();
-    }
+    view.construct();
 }
 
 /**
