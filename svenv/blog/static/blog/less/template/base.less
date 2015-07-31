@@ -273,7 +273,7 @@ body.postview, body.pageview {
 
             header {
                 .cols(12, width);
-                .rows(8, max-height);
+                .rows(9, max-height);
                 overflow: hidden;
 
                 a {
@@ -286,8 +286,9 @@ body.postview, body.pageview {
                 }
 
                 img {
-                    .blur();
+                    //.blur();
                     height: inherit;
+                    position: relative;
                     width: inherit;
                 }
             }
@@ -301,7 +302,7 @@ body.postview, body.pageview {
             }
 
             section.content {
-                .vmargin(-3, 0);
+                .vmargin(-5, 0);
 
                 img {
                     display: block;
