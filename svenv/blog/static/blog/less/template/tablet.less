@@ -20,12 +20,25 @@ body.postview, body.pageview {
     #document > section {
         article {
             header {
+                .rows(9, max-height);
+                height: auto;
+
                 a {
                     .cols(3);
+                    .rows(1, line-height);
                     .rows(2, top);
+                    background: @link-color;
+                    color: white;
+                    display: block;
+                    float: left;
                     position: absolute;
+                    text-align: center;
                     z-index: 1;
                 }
+            }
+
+            section.content {
+                .vmargin(-5, 0);
             }
 
             section, footer {

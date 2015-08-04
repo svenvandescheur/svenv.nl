@@ -41,6 +41,22 @@ body.categoryview  {
 body.postview, body.pageview {
     #document > section {
         article {
+            header {
+                .rows(5, height);
+
+                a {
+                    .cols(6);
+                    .rows(1, line-height);
+                    .rows(4, top);
+                    background: @link-color;
+                    color: white;
+                    float: left;
+                    position: absolute;
+                    text-align: center;
+                    z-index: 1;
+                }
+            }
+
             section.contact {
                 form {
                     label {
