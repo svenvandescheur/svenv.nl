@@ -249,7 +249,7 @@ body.postview, body.pageview {
                 color: white;
 
                 &:hover {
-                    text-decoration: none;
+                    text-decoration: underline;
                 }
             }
         }
@@ -273,17 +273,7 @@ body.postview, body.pageview {
 
             header {
                 .cols(12, width);
-                .rows(9, max-height);
                 overflow: hidden;
-
-                a {
-                    .cols(12);
-                    .rows(1, line-height);
-                    background: @link-color;
-                    color: white;
-                    float: left;
-                    text-align: center;
-                }
 
                 img {
                     //.blur();
@@ -302,8 +292,6 @@ body.postview, body.pageview {
             }
 
             section.content {
-                .vmargin(-5, 0);
-
                 img {
                     display: block;
                     margin: 40px auto;
