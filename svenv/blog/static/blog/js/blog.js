@@ -194,6 +194,16 @@ function PostView () {
         this.disqus();
         this.parallaxHeader();
 
+        // Universal requestAnimationFrame
+        window.requestAnimFrame = (function(){
+            return  window.requestAnimationFrame       ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame    ||
+                    function (callback){
+                        window.setTimeout(callback, 1000 / 60);
+                    };
+        })();
+
         return this;
     };
 
@@ -211,17 +221,26 @@ function PostView () {
         return this;
     };
 
-
     /**
-     * Create a parallax effect on the header
+     * Create a parallax effect on the header by utilizing requestAnimationFrame
      * @returns {Object} fluent interface
      */
     this.parallaxHeader = function () {
         var self = this;
         $(window).scroll(function(){
-            self.article_header_image.css({
-                'top': self.parallax_ratio * $(window).scrollTop()
-            });
+            requestAnimFrame(self._parallaxHeader());
+        });
+
+        return this;
+    };
+
+    /**
+     * Sets the parallax position of the header
+     * @returns {Object} fluent interface
+     */
+    this._parallaxHeader = function () {
+        this.article_header_image.css({
+            'top': this.parallax_ratio * $(window).scrollTop()
         });
 
         return this;
