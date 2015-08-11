@@ -1,0 +1,49 @@
+.navbar {
+    .cols(12);
+    .rows(1);
+    .vmargin(0, 0.25);
+    .shadow();
+
+    h1 {
+        .rows(1, line-height);
+        .hmargin(0.25, 0.25);
+        .vmargin(0, 0);
+        float: left;
+        font-family: 'Lobster', cursive;
+        font-size: 15px;
+        padding-right: 15px;
+
+        a:hover {
+            text-decoration: none;
+        }
+    }
+
+    nav {
+        .rows(1, line-height);
+        float: left;
+    }
+
+
+    ul {
+        .cols(12);
+        list-style-type: none;
+        display: flex;
+        display: -webkit-flex;
+    }
+
+    li {
+        margin-right: 15px;
+
+        a {
+            color: @default-color;
+            font-size: 80%;
+            font-weight: 300;
+            text-transform: uppercase;
+
+            &:hover {
+                color: @link-color;
+                text-decoration: none;
+            }
+        }
+    }
+}
