@@ -22,7 +22,6 @@
         font-weight: 300;
         line-height: 1.5em;
         //opacity: 0;
-        overflow: hidden;
         transition: all .2s;
 
         &:hover {
@@ -46,6 +45,7 @@
         .rows(4);
         .rows(4, max-height);
         .hpadding(0.5, 0.5);
+        overflow: hidden;
 
         h2 {
             a {
@@ -68,14 +68,27 @@
         .hpadding(0.5, 0.5);
         background: white;
         color: rgb(134, 140, 144);
-        overflow: hidden;
-        position: relative;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        -webkit-flex-direction: row;
+        -webkit-flex-wrap: wrap;
         white-space: nowrap;
+        position: relative;
+
+        em {
+            flex-grow: 1;
+            -webkit-flex-grow: 1;
+            overflow: hidden;
+        }
 
         a {
-            float: right;
+            flex-grow: 2;
+            -webkit-flex-grow: 2;
             font-size: 80%;
             font-weight: 500;
+            text-align: right;
             text-transform: uppercase;
         }
     }
