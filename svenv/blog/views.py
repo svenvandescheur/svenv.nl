@@ -74,7 +74,7 @@ class CategoryView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
-    context_object_name = 'post_list'
+    context_object_name = 'posts_list'
     template_name = 'blog/list.html'
 
     def get_name(self):
