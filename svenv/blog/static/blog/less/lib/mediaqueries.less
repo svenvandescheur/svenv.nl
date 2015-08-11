@@ -35,27 +35,27 @@
 .progressive-enhancement() {
   // Mobile layout
   @media only screen {
-    @import (multiple) "../template/mobile";
+    @import (less) "../template/mobile";
   }
 
   // Wide mobile layout
   @media only screen and (min-width: @widemobile-min) {
-    @import (multiple) "../template/widemobile";
+    @import (less) "../template/widemobile";
   }
 
   // Tablet layout
   @media only screen and (min-width: @tablet-min) {
-    @import (multiple) "../template/tablet";
+    @import (less) "../template/tablet";
   }
 
   // Widescreen layout
   @media only screen and (min-width: @widescreen-min) {
-    @import (multiple) "../template/widescreen";
+    @import (less) "../template/widescreen";
   }
 
   // Huge-screen layout
   @media only screen and (min-width: @hugescreen-min) {
-    @import (multiple) "../template/hugescreen";
+    @import (less) "../template/hugescreen";
   }
 }
 
@@ -71,27 +71,27 @@
 .graceful-degradation() {
   // Huge-screen layout
   @media only screen {
-    @import (multiple) "../template/hugescreen";
+    @import (less) "../template/hugescreen";
   }
 
   // Widescreen layout
   @media only screen and (max-width: @widescreen-max) {
-    @import (multiple) "../template/widescreen";
+    @import (less) "../template/widescreen";
   }
 
   // Tablet layout
   @media only screen and (max-width: @tablet-max) {
-    @import (multiple) "../template/tablet";
+    @import (less) "../template/tablet";
   }
 
   // Wide mobile layout
   @media only screen and (max-width: @widemobile-max) {
-    @import (multiple) "../template/widemobile";
+    @import (less) "../template/widemobile";
   }
 
   // Mobile layout
   @media only screen and (max-width: @mobile-max) {
-    @import (multiple) "../template/mobile";
+    @import (less) "../template/mobile";
   }
 }
 
@@ -107,26 +107,26 @@
 .independent-themes() {
   // Mobile layout
   @media only screen and (max-width: @mobile-max) {
-    @import (multiple) "../template/mobile";
+    @import (less) "../template/mobile";
   }
 
   // Wide mobile layout
   @media only screen and (min-width: @widemobile-min) and (max-width: @widemobile-max) {
-    @import (multiple) "../template/widemobile";
+    @import (less) "../template/widemobile";
   }
 
   // Tablet layout
   @media only screen and (min-width: @tablet-min) and (max-width: @tablet-max) {
-    @import (multiple) "../template/tablet";
+    @import (less) "../template/tablet";
   }
 
   // Widescreen layout
   @media only screen and (min-width: @widescreen-min) and (max-width: @widescreen-max) {
-    @import (multiple) "../template/widescreen";
+    @import (less) "../template/widescreen";
   }
 
   // Huge-screen layout
   @media only screen and (min-width: @hugescreen-min) {
-    @import (multiple) "../template/hugescreen";
+    @import (less) "../template/hugescreen";
   }
 }
