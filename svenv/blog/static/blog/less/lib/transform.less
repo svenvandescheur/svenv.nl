@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Transformations lib
+   ========================================================================== */
+
+/**
+ * Settings
+ */
+@blur-length: 5;
+@shadow-h: 0;
+@shadow-v: 1;
+@shadow-blur: 2;
+@shadow-spread: 0;
+@shadow-color: rgba(0, 0, 0, 0.14902);
+
+
+/**
+ * Transformations
+ */
+.blur(@length: @blur-length) {
+    -webkit-filter: blur(@length);
+    -moz-filter: blur(@length);
+    -o-filter: blur(@length);
+    -ms-filter: blur(@length);
+    filter: blur(@length);
+}
+
+.origin(@h: 50, @v: 50) {
+  transform-origin: @h * 1% @v * 1%;
+  -ms-transform-origin: @h * 1% @v * 1%; /* IE 9 */
+  -webkit-transform-origin: @h * 1% @v * 1%; /* Safari and Chrome */
+  -moz-transform-origin: @h * 1% @v * 1%; /* Firefox */
+}
+
+.rotate(@angle) {
+  transform: rotate();
+  -ms-transform: rotate(@angle * 1deg); /* IE 9 */
+  -moz-transform: rotate(@angle * 1deg); /* Firefox */
+  -webkit-transform: rotate(@angle * 1deg); /* Safari */
+}
+
+.shadow(@h: @shadow-h, @v: @shadow-v, @blur: @shadow-blur, @spread: @shadow-spread, @color: @shadow-color){
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 2px 0px;
+}
