@@ -12,23 +12,6 @@
 /**
  * Settings
  */
-@alert-border: solid 1px transparent;
-@alert-height: 1 * @row-height;
-@alert-margin: @paragraph-margin;
-@alert-padding: 0 5px;
-@alert-danger-color: rgb(239, 214, 214);
-@alert-danger-border-color: darken(@alert-danger-color, 10%);
-@alert-danger-text-color: darken(@alert-danger-color, 50%);
-@alert-info-color: rgb(208, 232, 246);
-@alert-info-border-color: darken(@alert-info-color, 10%);
-@alert-info-text-color: darken(@alert-info-color, 50%);
-@alert-warning-color: rgb(252, 248, 227);
-@alert-warning-border-color: darken(@alert-warning-color, 10%);
-@alert-warning-text-color: darken(@alert-warning-color, 50%);
-@alert-success-color: rgb(223, 240, 216);
-@alert-success-border-color: darken(@alert-success-color, 10%);
-@alert-success-text-color: darken(@alert-success-color, 50%);
-
 @footer-background-color: rgb(60, 63,65);
 @footer-height: 0;
 @footer-margin: 0;
@@ -67,24 +50,6 @@
 /**
  * Component mixins
  */
-.alert(@type: 'warning') {
-  .cols(@column-count);
-  border: @alert-border;
-  display: inline-block;
-  height: @alert-height;
-  line-height: @alert-height;
-  padding: @alert-padding;
-  margin: @alert-margin;
-  background-color: ~"@{alert-@{type}-color}";
-  color: ~"@{alert-@{type}-text-color}";
-  border-color: ~"@{alert-@{type}-border-color}";
-
-  a, a:hover {
-    text-decoration: underline;
-    color: ~"@{alert-@{type}-text-color}";
-  };
-}
-
 .avatar-rounded() {
   border-radius: 50%;
   -moz-border-radius: 50%; /* Firefox */
@@ -181,22 +146,6 @@
 /**
  * Component presets
  */
-.alert, .alert-warning {
-  .alert('warning');
-}
-
-.alert-danger {
-  .alert('danger');
-}
-
-.alert-info {
-  .alert('info');
-}
-
-.alert-success {
-  .alert('success');
-}
-
 .avatar-rounded {
   .avatar-rounded();
 }
