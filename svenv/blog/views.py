@@ -186,6 +186,11 @@ class ContactView(BaseBlogView, generic.edit.FormView):
         form.send_email()
         return super(ContactView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(ContactView, self).get_context_data(**kwargs)
+        context['post'] = self.get_page()
+        return context
+
     def get_page(self):
         """
         Returns a page with content for this form
