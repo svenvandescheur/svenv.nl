@@ -125,6 +125,7 @@ class PageView(BaseBlogView, generic.DetailView):
     """
     Shows a specific page
     """
+    context_object_name = 'post'
     queryset = Page.objects.all()
     model = Page
     template_name = 'blog/page.html'

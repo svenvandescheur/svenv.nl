@@ -15,11 +15,17 @@
 @import (less) "../components/articleslist/mobile.less";
 @import (less) "../components/footer/mobile.less";
 
+@import (less) "../components/article/mobile.less";
+@import (less) "../components/disqus/mobile.less";
+
 
 /**
  * Styling
  */
 body {
-   .vmargin(1, 0);
    background: @background;
+}
+
+body.categoryview {
+   .vmargin(1, 0);
 }

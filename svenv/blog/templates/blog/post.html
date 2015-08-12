@@ -1,26 +1,15 @@
 {% extends "blog/base.html" %}
-{% load formatting %}
+
 
 {% block title %}{{ post.title|title }} - {{ view.get_blog_title }}{% endblock %}
 {% block description %}{{ post.description }}{% endblock %}
 {% block bodyclass %}postview{% endblock %}
-{% block header %}<h1><a href="/">{{ view.get_blog_title }}</a></h1>{% endblock %}
 
 
+<main>
 {% block content  %}
-    <article>
-        <header>
-            <a href="/">Home</a>
-            <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
-        </header>
-        <section class="content">
-            <h2>{{ post.title }}</h2>
-            {{ post.content|markdown|safe }}
-        </section>
-        <footer>
-            <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
-            <a href="/{{ post.category.name }}/{{ post.short_title }}">Permalink</a>
-        </footer>
-        <section id="disqus_thread"></section>
-    </article>
+    {% include "blog/components/article.html" %}
+    {% include "blog/components/disqus.html" %}
+    {% include "blog/components/footer.html" %}
 {% endblock %}
+</main>

@@ -1,21 +1,14 @@
 {% extends "blog/base.html" %}
-{% load formatting %}
-
-{% block title %}{{ page.title|title }} - {{ view.get_blog_title }}{% endblock %}
-{% block description %}{{ page.description }}{% endblock %}
-{% block bodyclass %}pageview{% endblock %}
-{% block header %}<h1><a href="/">{{ view.get_blog_title }}</a></h1>{% endblock %}
 
 
+{% block title %}{{ post.title|title }} - {{ view.get_blog_title }}{% endblock %}
+{% block description %}{{ post.description }}{% endblock %}
+{% block bodyclass %}postview{% endblock %}
+
+
+<main>
 {% block content  %}
-    <article>
-        <header>
-            <a href="/">Home</a>
-            <img src="{{ view.get_media_url }}{{ page.image.url }}" width="{{ page.image.width }}" height="{{ page.image.height }}" alt="{{ page.image.title }}">
-        </header>
-        <section class="content">
-            <h2>{{ page.title }}</h2>
-            {{ page.content|markdown|safe }}
-        </section>
-    </article>
+    {% include "blog/components/article.html" %}
+    {% include "blog/components/footer.html" %}
 {% endblock %}
+</main>
