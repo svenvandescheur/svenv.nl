@@ -2,51 +2,12 @@
    Wide screen overrides
    ========================================================================== */
 
-body.categoryview #document {
-    section#content {
-        .cols(12);
-    }
-}
+/**
+ * Imports
+ */
+@import (less) "../components/articleslist/widescreen.less";
 
-body.categoryview article {
-    .cols(3.75);
-}
+@import (less) "../components/article/widescreen.less";
+@import (less) "../components/disqus/widescreen.less";
 
-body.pageview {
-    #document > section {
-        article {
-            section.contact {
-                form {
-                    label {
-                        .cols(3, min-width);
-                        .hmargin(0, 0);
-                    }
-
-                    input, textarea {
-                        .cols(9, min-width);
-                        .hmargin(0, 0);
-                    }
-
-                    input[type=submit] {
-                        .cols(5, min-width);
-                        .vmargin(0.5, 0);
-                    }
-                }
-            }
-        }
-    }
-}
-
-body.postview, body.pageview {
-    #document > section {
-        article {
-            section.contact {
-                form {
-                    input, textarea {
-                        .cols(6);
-                    }
-                }
-            }
-        }
-    }
-}
+@import (less) "../components/contact/widescreen.less";

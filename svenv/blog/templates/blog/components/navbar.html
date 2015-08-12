@@ -1,0 +1,10 @@
+<header class="navbar">
+    <h1><a href="/">{{ view.get_blog_title }}</a></h1>
+    <nav>
+        <ul>
+            {% for page in view.get_navigation %}
+            <li><a href="/{{ page.path}}">{{ page.short_title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

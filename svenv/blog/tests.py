@@ -59,19 +59,28 @@ class ContactFormTestCase(TestCase):
         response = self.c.post('/contact', {'name': 'JohnȈ', 'email': 'john@exampleȈ.com', 'message': 'messageȈ'})
         self.assertRedirects(response, '/thankyou', status_code=302, target_status_code=404)
 
+    def test_permalink_not_present(self):
+        response = self.c.get('/contact')
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'Permalink')
+
 
 class PostTestCase(TestCase):
+    def setUp(self):
+        self.c = Client()
+
+        self.author = User()
+        self.author.save()
+        self.category = Category(published=1, name="cat1")
+        self.category.save()
+        self.image = Image()
+        self.image.save()
+
     @patch('blog.models.call')
     def test_clear_varnish_cache_on_save(self, mock_call):
-        author = User()
-        author.save()
-        category = Category(published=1)
-        category.save()
-        image = Image()
-        image.save()
-        post = Post(author=author, category=category, image=image, published=1)
+        post = Post(author=self.author, category=self.category, image=self.image, published=1)
         post.save()
-        self.assertEqual(mock_call.call_count, 3)
+        self.assertEqual(mock_call.call_count, 1)
 
 
 class ViewTestCase(TestCase):
@@ -144,6 +153,11 @@ class PostViewTestCase(ViewTestCase):
         response = self.c.get('/cat1/404')
         self.assertEqual(response.status_code, 404)
 
+    def test_permalink_present(self):
+        response = self.c.get('/cat1/post1')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Permalink')
+
 
 class PageViewTestCase(ViewTestCase):
     def test_post(self):
@@ -166,6 +180,11 @@ class PageViewTestCase(ViewTestCase):
     def test_404(self):
         response = self.c.get('/404')
         self.assertEqual(response.status_code, 404)
+
+    def test_permalink_present(self):
+        response = self.c.get('/page1')
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'Permalink')
 
 
 class PostViewSetTestCase(ViewTestCase):

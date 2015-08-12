@@ -69,12 +69,18 @@ class BaseBlogView():
         """
         return settings.DEBUG
 
+    def is_post(self):
+        """
+        Returns whether the view belongs to a blog post
+        """
+        return False
+
 
 class CategoryView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
-    context_object_name = 'post_list'
+    context_object_name = 'articles_list'
     template_name = 'blog/list.html'
 
     def get_name(self):
@@ -120,11 +126,18 @@ class PostView(BaseBlogView, generic.DetailView):
         category = get_object_or_404(Category, name__icontains=self.kwargs['category_name'], published=True)
         return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'], published=True)
 
+    def is_post(self):
+        """
+        Returns whether the view belongs to a blog post
+        """
+        return True
+
 
 class PageView(BaseBlogView, generic.DetailView):
     """
     Shows a specific page
     """
+    context_object_name = 'post'
     queryset = Page.objects.all()
     model = Page
     template_name = 'blog/page.html'
@@ -184,6 +197,11 @@ class ContactView(BaseBlogView, generic.edit.FormView):
     def form_valid(self, form):
         form.send_email()
         return super(ContactView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactView, self).get_context_data(**kwargs)
+        context['post'] = self.get_page()
+        return context
 
     def get_page(self):
         """

@@ -2,49 +2,10 @@
    Tablet overrides
    ========================================================================== */
 
-body.categoryview #document > header {
-    h1 {
-        font-size: 2em;
-        .hmargin(0.125, 0.125);
-    }
-}
+/**
+ * Imports
+ */
+@import (less) "../components/navbar/tablet.less";
+@import (less) "../components/articleslist/tablet.less";
 
-body.categoryview article {
-    .cols(5.75);
-    .hmargin(0.125, 0.125);
-    .vmargin(0.125, 0.125);
-}
-
-
-body.postview, body.pageview {
-    #document > section {
-        article {
-            header {
-                .rows(9, max-height);
-                height: auto;
-
-                a {
-                    .cols(3);
-                    .rows(1, line-height);
-                    .rows(2, top);
-                    background: @link-color;
-                    color: white;
-                    display: block;
-                    float: left;
-                    position: absolute;
-                    text-align: center;
-                    z-index: 1;
-                }
-            }
-
-            section.content {
-                .vmargin(-5, 0);
-            }
-
-            section, footer {
-                .cols(10);
-                .hmargin(1, 1);
-            }
-        }
-    }
-}
+@import (less) "../components/article/tablet.less";

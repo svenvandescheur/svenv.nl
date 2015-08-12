@@ -1,0 +1,33 @@
+{% load macros %}
+{% load formatting %}
+
+
+{% macro articles_list data %}
+    {% for post in data %}
+    <article>
+        <header>
+            <a href="/{{ post.category.name }}/{{ post.short_title }}">
+                <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
+            </a>
+        </header>
+        <section>
+            <h2><a href="/{{ post.category.name }}/{{ post.short_title }}">{{ post.title }}</a></h2>
+            {{ post.content|markdown|safe }}
+        </section>
+        <footer>
+            <em>Written by {{ post.author.username }} on {{ post.date|datetime|date }}</em>
+            <a href="/{{ post.category.name }}/{{ post.short_title }}">Read more</a>
+        </footer>
+    </article>
+    {% endfor %}
+{% endmacro %}
+
+
+<section class="articleslist">
+{% if results %}
+    {% usemacro articles_list results %}
+{% else %}
+    {% usemacro articles_list articles_list %}
+    <a class="fetchposts" href="#">Load more</a>
+{% endif %}
+</section>

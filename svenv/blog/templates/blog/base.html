@@ -14,17 +14,7 @@
     {% endif %}
 </head>
 <body class="{% block bodyclass %}{% endblock %}" data-page="1">
-<div id="document">
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-    <section id="content">
-        {% block content %}{% endblock %}
-    </section>
-    <footer>
-        {% include "blog/footer.html" %}
-    </footer>
-</div>
+{% block content %}{% endblock %}
 {% if view.is_in_debug_mode %}
     <script src="/static/blog/js/jquery.min.js"></script>
     <script src="/static/blog/js/jquery.transit.min.js"></script>

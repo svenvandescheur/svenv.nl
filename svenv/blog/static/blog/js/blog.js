@@ -31,7 +31,7 @@ function CategoryView() {
     'use strict';
     this.api_url = '/api/';
     this.content_section = $('section#content');
-    this.fetch_button = $('.fetch_posts');
+    this.fetch_button = $('.fetchposts');
     this.articles = this.content_section.children('article');
     this.articleLinkSelector = 'header a';
     this.transitionInterval = 100;
