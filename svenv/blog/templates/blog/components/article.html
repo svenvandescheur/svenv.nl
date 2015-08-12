@@ -11,8 +11,10 @@
         <h2>{{ post.title }}</h2>
         {{ post.content|markdown|safe }}
     </section>
+    {% if view.is_post %}
     <footer>
         <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
         <a href="/{{ post.category.name }}/{{ post.short_title }}">Permalink</a>
     </footer>
+    {% endif %}
 </article>

@@ -69,6 +69,12 @@ class BaseBlogView():
         """
         return settings.DEBUG
 
+    def is_post(self):
+        """
+        Returns whether the view belongs to a blog post
+        """
+        return False
+
 
 class CategoryView(BaseBlogView, generic.ListView):
     """
@@ -119,6 +125,12 @@ class PostView(BaseBlogView, generic.DetailView):
         """
         category = get_object_or_404(Category, name__icontains=self.kwargs['category_name'], published=True)
         return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'], published=True)
+
+    def is_post(self):
+        """
+        Returns whether the view belongs to a blog post
+        """
+        return True
 
 
 class PageView(BaseBlogView, generic.DetailView):
