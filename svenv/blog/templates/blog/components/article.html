@@ -1,0 +1,18 @@
+{% load formatting %}
+
+
+<article class="article">
+    <header>
+        <h1><a href="/">{{ view.get_blog_title }}</a></h1>
+        <a href="/">Home</a>
+        <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
+    </header>
+    <section class="content">
+        <h2>{{ post.title }}</h2>
+        {{ post.content|markdown|safe }}
+    </section>
+    <footer>
+        <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
+        <a href="/{{ post.category.name }}/{{ post.short_title }}">Permalink</a>
+    </footer>
+</article>
