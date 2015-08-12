@@ -1,0 +1,80 @@
+.article {
+    .shadow();
+    font-size: 160%;
+    font-weight: 300;
+
+    header {
+        > a {
+            .cols(6);
+            .rows(1, line-height);
+            .rows(4, top);
+            background: @link-color;
+            color: white;
+            position: absolute;
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            .rows(5, line-height);
+            .vmargin(0,0);
+            font-family: 'Lobster', cursive;
+            font-size: 300%;
+            position: relative;
+            text-align: center;
+            z-index: 10;
+
+            a {
+                color: white;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        img {
+            .cols(12);
+            .rows(9);
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    section, footer {
+        .cols(12);
+        .hpadding(0.5, 0.5);
+        .vpadding(0, 2);
+        background: white;
+        float: left;
+        position: relative;
+        line-height: 1.5em;
+        z-index: 20;
+
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+
+        h2 {
+            .vmargin(1, 1);
+
+            a {
+                color: @heading-color;
+                font-weight: bold;
+
+                &:hover {
+                    color: @link-color;
+                }
+            }
+        }
+
+        p {
+            line-height: 1.5em;
+        }
+    }
+
+    footer {
+        color: rgb(134, 140, 144);
+        text-align: center;
+    }
+}
