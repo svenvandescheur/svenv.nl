@@ -1,12 +1,14 @@
 .contact {
     .cols(10);
     .hmargin(1, 1);
-    .hpadding(0.5, 0.5);
+    .hpadding(1, 1);
 
     form {
+        .cols(12);
+        float: left;
+
         label {
-            .cols(3);
-            .hmargin(0, 0);
+            .cols(3, min-width);
         }
 
         input, textarea {
