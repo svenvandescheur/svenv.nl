@@ -8,6 +8,11 @@ module.exports = function(grunt) {
           {
             src: 'node_modules/jquery/dist/jquery.min.js',
             dest: 'svenv/blog/static/blog/js/jquery.min.js',
+          },
+
+          {
+            src: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+            dest: 'svenv/blog/static/blog/js/jasmine-jquery.js',
           }
         ]
       }
@@ -39,10 +44,26 @@ module.exports = function(grunt) {
         dest: 'svenv/blog/static/blog/js/svenv.min.js'
       }
     },
+
+    jasmine: {
+      blog: {
+          src: 'svenv/blog/static/blog/js/blog.js',
+          options: {
+            //template: 'svenv/blog/static/blog/js/test/fixtures/default.tmpl',
+            vendor: [
+              'svenv/blog/static/blog/js/jquery.min.js',
+              'svenv/blog/static/blog/js/jasmine-jquery.js'
+            ],
+            specs: 'svenv/blog/static/blog/js/test/spec/blog.spec.js',
+
+          }
+        },
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.registerTask('default', ['copy', 'less', 'uglify']);
 };
