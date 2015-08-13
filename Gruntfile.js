@@ -8,6 +8,7 @@ module.exports = function(grunt) {
           {
             src: 'node_modules/jquery/dist/jquery.min.js',
             dest: 'svenv/blog/static/blog/js/jquery.min.js',
+          }
         ]
       }
     },

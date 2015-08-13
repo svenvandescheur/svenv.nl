@@ -9,8 +9,6 @@
     "grunt-contrib-copy": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "latest",
-    "jquery": "latest",
-    "jasmine": "latest",
-    "jasmine-jquery": "latest"
+    "jquery": "latest"
   }
 }
