@@ -1,6 +1,18 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    copy: {
+      main: {
+        files: [
+          {
+            src: 'node_modules/jquery/dist/jquery.min.js',
+            dest: 'svenv/blog/static/blog/js/jquery.min.js',
+          },
+        ]
+      }
+    },
+
     uglify: {
       options: {
         banner: '/*! Generated: <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> */\n'
@@ -8,7 +20,6 @@ module.exports = function(grunt) {
       build: {
         src: [
           'svenv/blog/static/blog/js/jquery.min.js',
-          'svenv/blog/static/blog/js/jquery.transit.min.js',
           'svenv/blog/static/blog/js/blog.js',
           'svenv/blog/static/blog/js/analytics.js',
         ],
@@ -29,7 +40,8 @@ module.exports = function(grunt) {
     },
   });
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.registerTask('default', ['uglify', 'less']);
+  grunt.registerTask('default', ['copy', 'uglify', 'less']);
 };
