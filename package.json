@@ -1,5 +1,9 @@
 {
   "name": "Svenv.nl",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/svenvandescheur/svenv.nl-app"
+  },
   "devDependencies": {
     "grunt": "latest",
     "grunt-contrib-uglify": "latest",
