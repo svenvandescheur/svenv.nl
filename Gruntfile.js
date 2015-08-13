@@ -9,6 +9,14 @@ module.exports = function(grunt) {
             src: 'node_modules/jquery/dist/jquery.min.js',
             dest: 'svenv/blog/static/blog/js/jquery.min.js',
           },
+          {
+            src: 'node_modules/jasmine/lib/jasmine.js',
+            dest: 'svenv/blog/static/blog/js/jasmine.js',
+          },
+          {
+            src: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+            dest: 'svenv/blog/static/blog/js/jasmine-jquery.js',
+          },
         ]
       }
     },
