@@ -7,6 +7,7 @@
   "dependencies": {
     "grunt": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-less": "latest"
+    "grunt-contrib-less": "latest",
+    "jquery": "latest",
   }
 }
