@@ -1,14 +1,14 @@
 {
   "name": "Svenv.nl",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/svenvandescheur/svenv.nl-app"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/svenvandescheur/svenv.nl-app"
   },
   "dependencies": {
     "grunt": "latest",
     "grunt-contrib-copy": "latest",
-    "grunt-contrib-uglify": "latest",
     "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
     "jquery": "latest",
     "jasmine": "latest",
     "jasmine-jquery": "latest"
