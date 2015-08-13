@@ -1,6 +1,5 @@
 {
   "name": "Svenv.nl",
-  "version": "0.1.0",
   "devDependencies": {
     "grunt": "latest",
     "grunt-contrib-uglify": "latest",
