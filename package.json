@@ -9,5 +9,7 @@
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-less": "latest",
     "jquery": "latest",
+    "jasmine": "latest",
+    "jasmine-jquery": "latest"
   }
 }
