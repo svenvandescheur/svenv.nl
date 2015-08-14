@@ -1,22 +1,25 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    uglify: {
-      options: {
-        banner: '/*! Generated: <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> */\n'
-      },
-      build: {
-        src: [
-          'svenv/blog/static/blog/js/jquery.min.js',
-          'svenv/blog/static/blog/js/jquery.transit.min.js',
-          'svenv/blog/static/blog/js/blog.js',
-          'svenv/blog/static/blog/js/analytics.js',
-        ],
-        dest: 'svenv/blog/static/blog/js/svenv.min.js'
+
+    copy: {
+      main: {
+        files: [
+          {
+            src: 'node_modules/jquery/dist/jquery.min.js',
+            dest: 'svenv/blog/static/blog/js/jquery.min.js',
+          },
+
+          {
+            src: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+            dest: 'svenv/blog/static/blog/js/jasmine-jquery.js',
+          }
+        ]
       }
     },
+
     less: {
-      development: {
+      production: {
         options: {
           compress: true,
           yuicompress: true,
@@ -27,9 +30,40 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    uglify: {
+      options: {
+        banner: '/*! Generated: <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> */\n'
+      },
+      build: {
+        src: [
+          'svenv/blog/static/blog/js/jquery.min.js',
+          'svenv/blog/static/blog/js/blog.js',
+          'svenv/blog/static/blog/js/analytics.js',
+        ],
+        dest: 'svenv/blog/static/blog/js/svenv.min.js'
+      }
+    },
+
+    jasmine: {
+      blog: {
+          src: 'svenv/blog/static/blog/js/blog.js',
+          options: {
+            //template: 'svenv/blog/static/blog/js/test/fixtures/default.tmpl',
+            vendor: [
+              'svenv/blog/static/blog/js/jquery.min.js',
+              'svenv/blog/static/blog/js/jasmine-jquery.js'
+            ],
+            specs: 'svenv/blog/static/blog/js/test/spec/blog.spec.js',
+
+          }
+        },
+    },
   });
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.registerTask('default', ['uglify', 'less']);
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.registerTask('default', ['copy', 'less', 'uglify']);
 };

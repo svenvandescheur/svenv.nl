@@ -7,20 +7,10 @@
  */
 @header: white;
 @background: darken(white, 10);
+@background-text: rgb(134, 140, 144);
+@panel: white;
 @zoom-scale: 1.005;
 
-.shadow(){
-    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 2px 0px;
-}
-
-
-
-/**
- * Defaults
- */
-* {
-  .border-box();
-}
 
 .avatar {
     .center();
@@ -28,6 +18,18 @@
     width: 150px;
     height: 150px;
     border-radius: 75px;
+}
+
+.shadow(){
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 2px 0px;
+}
+
+
+/**
+ * Defaults
+ */
+* {
+  .border-box();
 }
 
 code {

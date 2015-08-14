@@ -14,7 +14,9 @@
     {% endif %}
 </head>
 <body class="{% block bodyclass %}{% endblock %}" data-page="1">
-{% block content %}{% endblock %}
+<main>
+    {% block content %}{% endblock %}
+</main>
 {% if view.is_in_debug_mode %}
     <script src="/static/blog/js/jquery.min.js"></script>
     <script src="/static/blog/js/jquery.transit.min.js"></script>
