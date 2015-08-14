@@ -30,9 +30,9 @@ function View() {
 function CategoryView() {
     'use strict';
     this.api_url = '/api/';
-    this.content_section = $('section#content');
+    this.content_section = $('main');
     this.fetch_button = $('.fetchposts');
-    this.articles = this.content_section.children('article');
+    this.articles = this.content_section.find('article');
     this.articleLinkSelector = 'header a';
     this.transitionInterval = 100;
 
@@ -145,7 +145,7 @@ function CategoryView() {
         $.each(nodes, function (index) {
             var delay = index * self.transitionInterval;
 
-            $(this).transition({
+            $(this).css({  // $(this).transition({
                 'opacity': 1,
                 'delay': delay
             });
