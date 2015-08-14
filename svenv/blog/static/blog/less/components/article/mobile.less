@@ -9,7 +9,7 @@
             .rows(1, line-height);
             .rows(4, top);
             background: @link-color;
-            color: white;
+            color: @panel;
             position: absolute;
             text-align: center;
             z-index: 10;
@@ -25,7 +25,7 @@
             z-index: 10;
 
             a {
-                color: white;
+                color: @panel;
 
                 &:hover {
                     text-decoration: underline;
@@ -46,7 +46,7 @@
         .cols(12);
         .hpadding(0.5, 0.5);
         .vpadding(0, 2);
-        background: white;
+        background: @panel;
         float: left;
         position: relative;
         line-height: 1.5em;
@@ -82,7 +82,7 @@
     }
 
     footer {
-        color: rgb(134, 140, 144);
+        color: @background-text;
         text-align: center;
     }
 }

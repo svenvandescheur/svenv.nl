@@ -17,7 +17,7 @@
         .vmargin(0.25, 0.25);
         .shadow();
         float: left;
-        background: white;
+        background: @panel;
         font-size: 120%;
         font-weight: 300;
         line-height: 1.5em;
@@ -66,8 +66,8 @@
     footer {
         .rows(1, line-height);
         .hpadding(0.5, 0.5);
-        background: white;
-        color: rgb(134, 140, 144);
+        background: @panel;
+        color: @background-text;
         display: flex;
         display: -webkit-flex;
         flex-direction: row;
