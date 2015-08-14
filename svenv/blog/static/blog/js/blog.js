@@ -192,7 +192,6 @@ function PostView () {
      */
     this.construct = function () {
         this.disqus();
-        this.parallaxHeader();
 
         // Universal requestAnimationFrame
         window.requestAnimFrame = (function(){
@@ -204,6 +203,7 @@ function PostView () {
                     };
         })();
 
+        this.parallaxHeader();
         return this;
     };
 
@@ -228,7 +228,7 @@ function PostView () {
     this.parallaxHeader = function () {
         var self = this;
         $(window).scroll(function(){
-            requestAnimFrame(self._parallaxHeader());
+            requestAnimFrame(self._parallaxHeader.bind(self));
         });
 
         return this;
