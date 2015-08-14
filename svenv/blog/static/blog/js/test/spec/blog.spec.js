@@ -70,3 +70,17 @@ describe('CategoryView', function() {
     });
 });
 
+describe('PostView', function() {
+    beforeEach(function() {
+        loadFixtures('postview.html');
+    });
+
+    it('should load disqus when body has class "postview"', function() {
+        var view = new PostView();
+        $('body').removeClass();
+        $('body').addClass('postview');
+        $('script').remove();
+        view.construct();
+        expect($('script[src="//svenv.disqus.com/embed.js"]').length).toBe(1);
+    });
+});
