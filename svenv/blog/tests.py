@@ -94,7 +94,7 @@ class ViewTestCase(TestCase):
         category1.save()
         category2 = Category(published=1, name="cat2")
         category2.save()
-        image = Image()
+        image = Image(copyright="some artist")
         image.save()
         post1 = Post(author=author, category=category1, image=image, published=1, content="Post 1", short_title="post1")
         post1.save()
@@ -157,6 +157,11 @@ class PostViewTestCase(ViewTestCase):
         response = self.c.get('/cat1/post1')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Permalink')
+
+    def test_image_copyright_notice(self):
+        response = self.c.get('/cat1/post1')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'some artist')
 
 
 class PageViewTestCase(ViewTestCase):
