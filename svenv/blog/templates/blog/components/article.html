@@ -15,6 +15,10 @@
     <footer>
         <em>Written by {{ post.author.username }} on {{ post.date|date }}</em>
         <a href="/{{ post.category.name }}/{{ post.short_title }}">Permalink</a>
+        {% if post.image.copyright %}
+        <br>
+        <em>Image: {{ post.image.copyright }}</em>
+        {% endif %}
     </footer>
     {% endif %}
 </article>
