@@ -94,21 +94,23 @@ class ViewTestCase(TestCase):
         category1.save()
         category2 = Category(published=1, name="cat2")
         category2.save()
-        image = Image(copyright="some artist")
-        image.save()
-        post1 = Post(author=author, category=category1, image=image, published=1, content="Post 1", short_title="post1")
+        image1 = Image(copyright="some artist")
+        image1.save()
+        image2 = Image()
+        image2.save()
+        post1 = Post(author=author, category=category1, image=image1, published=1, content="Post 1", short_title="post1")
         post1.save()
-        post2 = Post(author=author, category=category1, image=image, published=1, content="Post 2", short_title="post2")
+        post2 = Post(author=author, category=category1, image=image2, published=1, content="Post 2", short_title="post2")
         post2.save()
-        post3 = Post(author=author, category=category2, image=image, published=1, content="Post 3", short_title="post3")
+        post3 = Post(author=author, category=category2, image=image1, published=1, content="Post 3", short_title="post3")
         post3.save()
-        post4 = Post(author=author, category=category2, image=image, published=1, content="Post 4", short_title="post4")
+        post4 = Post(author=author, category=category2, image=image1, published=1, content="Post 4", short_title="post4")
         post4.save()
-        page1 = Page(author=author, image=image, position=1, navigation=1, published=1, content="Page 1", path="page1", short_title="Page 1")
+        page1 = Page(author=author, image=image1, position=1, navigation=1, published=1, content="Page 1", path="page1", short_title="Page 1")
         page1.save()
-        page2 = Page(author=author, image=image, position=2, navigation=1, published=1, content="Page 2", path="page2", short_title="Page 2")
+        page2 = Page(author=author, image=image1, position=2, navigation=1, published=1, content="Page 2", path="page2", short_title="Page 2")
         page2.save()
-        page3 = Page(author=author, image=image, position=3, navigation=0, published=1, content="Page 3", path="page3", short_title="Page 2")
+        page3 = Page(author=author, image=image1, position=3, navigation=0, published=1, content="Page 3", path="page3", short_title="Page 2")
         page3.save()
 
 
@@ -158,10 +160,15 @@ class PostViewTestCase(ViewTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Permalink')
 
-    def test_image_copyright_notice(self):
+    def test_image_copyright_notice_present(self):
         response = self.c.get('/cat1/post1')
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'some artist')
+        self.assertContains(response, 'Image: some artist')
+
+    def test_image_copyright_notice_absent(self):
+        response = self.c.get('/cat1/post2')
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'Image:')
 
 
 class PageViewTestCase(ViewTestCase):
