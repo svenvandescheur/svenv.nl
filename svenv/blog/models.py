@@ -18,6 +18,9 @@ class Category(BaseModel, models.Model):
 
     Categories contain posts
     """
+    class Meta:
+        verbose_name_plural = 'categories'
+
     def __str__(self):
         return self.name
 

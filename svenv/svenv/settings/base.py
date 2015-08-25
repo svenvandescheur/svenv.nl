@@ -16,7 +16,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SESSION_COOKIE_SECURE = False
 STATIC_ROOT = os.path.join('static')
 STATIC_URL = '/static/'
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TIME_ZONE = 'UTC'
 TEMPLATE_DEBUG = DEBUG
 USE_I18N = True
@@ -33,6 +32,10 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
+    'admin_tools',
+    'admin_tools.dashboard',
+    'admin_tools.menu',
+    'admin_tools.theming',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,3 +58,25 @@ MIDDLEWARE_CLASSES = (
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
 )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            '/templates',
+            # insert your TEMPLATE_DIRS here
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]

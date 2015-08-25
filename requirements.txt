@@ -2,6 +2,7 @@ django
 django-debug-toolbar
 django-htmlmin
 djangorestframework
+feedparser
 markdown
 markdown2
 mock
