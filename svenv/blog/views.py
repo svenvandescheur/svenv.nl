@@ -8,7 +8,7 @@ from rest_framework import viewsets
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer
 from rest_framework.utils import formatting
 from socket import getfqdn
-import serializers
+from . import serializers
 
 
 class BaseBlogView():

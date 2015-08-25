@@ -185,8 +185,8 @@ class PageViewTestCase(ViewTestCase):
     def test_navigation_position(self):
         response = self.c.get('/')
         content = response.content
-        page1_index = content.index('Page 1')
-        page2_index = content.index('Page 2')
+        page1_index = content.index(b'Page 1')
+        page2_index = content.index(b'Page 2')
         self.assertLess(page1_index, page2_index)
 
     def test_404(self):
@@ -200,11 +200,6 @@ class PageViewTestCase(ViewTestCase):
 
 
 class PostViewSetTestCase(ViewTestCase):
-    def test_api_root(self):
-        response = self.c.get('/api/?format=json')
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, '{"posts":"http://testserver/api/posts/"}')
-
     def test_api_posts(self):
         response = self.c.get('/api/posts/?format=json')
         self.assertEqual(response.status_code, 200)
