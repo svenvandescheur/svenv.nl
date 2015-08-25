@@ -1,7 +1,6 @@
 django
 django-admin-tools
 django-debug-toolbar
-django-htmlmin
 djangorestframework
 feedparser
 markdown
