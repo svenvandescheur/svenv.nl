@@ -185,9 +185,9 @@ class PageViewTestCase(ViewTestCase):
     def test_navigation_position(self):
         response = self.c.get('/')
         content = response.content
-        page1_index = content.index('Page 1')
-        page2_index = content.index('Page 2')
-        self.assertLess(page1_index, page2_index)
+        page1_index = content.index(b'Page 1')
+        page2_index = content.index(b'Page 2')
+        self.assertMore(page1_index, page2_index)
 
     def test_404(self):
         response = self.c.get('/404')
