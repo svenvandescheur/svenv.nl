@@ -1,4 +1,4 @@
-from formatting import svenv_flavored_markdown
+from .formatting import svenv_flavored_markdown
 from markdown2 import Markdown
 from textwrap import dedent
 from unittest import TestCase
