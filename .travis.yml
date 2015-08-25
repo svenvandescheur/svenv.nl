@@ -13,4 +13,5 @@ install:
   - "npm install"
 script:
   - "python svenv/manage.py test svenv"
+  - "grunt"
   - "grunt jasmine"
