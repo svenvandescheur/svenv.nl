@@ -203,7 +203,7 @@ class PostViewSetTestCase(ViewTestCase):
     def test_api_root(self):
         response = self.c.get('/api/?format=json')
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('{"posts":"http://testserver/api/posts/"}' in response.content)
+        self.assertContains(response, '{"posts":"http://testserver/api/posts/"}', None, 200)
 
     def test_api_posts(self):
         response = self.c.get('/api/posts/?format=json')
