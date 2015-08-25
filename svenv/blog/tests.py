@@ -187,7 +187,7 @@ class PageViewTestCase(ViewTestCase):
         content = response.content
         page1_index = content.index(b'Page 1')
         page2_index = content.index(b'Page 2')
-        self.assertMore(page1_index, page2_index)
+        self.assertLess(page1_index, page2_index)
 
     def test_404(self):
         response = self.c.get('/404')
