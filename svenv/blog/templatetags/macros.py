@@ -120,7 +120,7 @@ class UseMacroNode(template.Node):
             except IndexError:
                 context[arg] = ""
 
-        for name, default in self.macro.kwargs.iteritems():
+        for name, default in self.macro.kwargs.items():
             if name in self.fe_kwargs:
                 context[name] = self.fe_kwargs[name].resolve(context)
             else:
