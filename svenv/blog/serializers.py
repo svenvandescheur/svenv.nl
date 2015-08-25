@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets
-from models import Category, Image, Post
+from .models import Category, Image, Post
 
 
 class CategorySerializer(serializers.ModelSerializer):
