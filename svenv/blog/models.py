@@ -8,7 +8,7 @@ class BaseModel():
         try:
             call(['varnishadm', 'ban', 'req.url ~ /'])
         except(OSError):
-            print "Could not clear varnish cache"
+            print("Could not clear varnish cache")
         return models.Model.save(self)
 
 
