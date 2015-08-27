@@ -5,6 +5,7 @@
     "url": "https://github.com/svenvandescheur/svenv.nl-app"
   },
   "dependencies": {
+    "font-awesome": "latest",
     "grunt": "latest",
     "grunt-contrib-copy": "latest",
     "grunt-contrib-less": "latest",

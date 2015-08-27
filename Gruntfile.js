@@ -9,8 +9,15 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'node_modules/',
             src: '*/**',
-            dest: 'svenv/blog/static/blog',
-          }
+            dest: 'svenv/blog/static/blog/',
+          },
+          {
+            expand: true,
+            cwd: 'svenv/blog/static/blog/font-awesome/',
+            src: ['css/font-awesome.min.css', 'fonts/*'],
+            dest: 'svenv/blog/static/blog/',
+          },
+
         ]
       }
     },
@@ -23,7 +30,7 @@ module.exports = function(grunt) {
           optimization: 2
         },
         files: {
-          'svenv/blog/static/blog/css/svenv.min.css': ['svenv/blog/static/blog/less/main.less', 'svenv/blog/static/blog/css/fruity.css'],
+          'svenv/blog/static/blog/css/svenv.min.css': ['svenv/blog/static/blog/less/main.less', 'svenv/blog/static/blog/css/fruity.css', 'svenv/blog/static/blog/css/font-awesome.min.css'],
         }
       }
     },
