@@ -6,13 +6,10 @@ module.exports = function(grunt) {
       main: {
         files: [
           {
-            src: 'node_modules/jquery/dist/jquery.min.js',
-            dest: 'svenv/blog/static/blog/js/jquery.min.js',
-          },
-
-          {
-            src: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
-            dest: 'svenv/blog/static/blog/js/jasmine-jquery.js',
+            expand: true,
+            cwd: 'node_modules/',
+            src: '*/**',
+            dest: 'svenv/blog/static/blog',
           }
         ]
       }
@@ -37,7 +34,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: [
-          'svenv/blog/static/blog/js/jquery.min.js',
+          'svenv/blog/static/blog/jquery/dist/jquery.min.js',
           'svenv/blog/static/blog/js/blog.js',
           'svenv/blog/static/blog/js/analytics.js',
         ],
@@ -49,10 +46,9 @@ module.exports = function(grunt) {
       blog: {
           src: 'svenv/blog/static/blog/js/blog.js',
           options: {
-            //template: 'svenv/blog/static/blog/js/test/fixtures/default.tmpl',
             vendor: [
-              'svenv/blog/static/blog/js/jquery.min.js',
-              'svenv/blog/static/blog/js/jasmine-jquery.js'
+              'svenv/blog/static/blog/jquery/dist/jquery.min.js',
+              'svenv/blog/static/blog/jasmine-jquery/lib/jasmine-jquery.js'
             ],
             specs: 'svenv/blog/static/blog/js/test/spec/blog.spec.js',
 
