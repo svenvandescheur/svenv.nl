@@ -8,9 +8,10 @@
     "font-awesome": "latest",
     "grunt": "latest",
     "grunt-contrib-copy": "latest",
+    "grunt-contrib-jasmine": "latest",
+    "grunt-contrib-jshint": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-jasmine": "latest",
     "jasmine-jquery": "latest",
     "jquery": "latest",
     "less": "latest"
