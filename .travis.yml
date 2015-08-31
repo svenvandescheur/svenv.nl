@@ -14,4 +14,4 @@ install:
   - "grunt"
 script:
   - "python svenv/manage.py test svenv"
-  - "grunt jasmine"
+  - "grunt test"
