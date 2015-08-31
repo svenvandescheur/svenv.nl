@@ -48,7 +48,12 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-      all: ['Gruntfile.js', 'svenv/blog/static/blog/js/**/*.js', '!svenv/blog/static/blog/js/*.min.js']
+      all: [
+        '*.js',
+        '*.json',
+        'svenv/blog/static/blog/js/**/*.js',
+        '!svenv/blog/static/blog/js/*.min.js',
+      ]
     },
 
     jasmine: {
