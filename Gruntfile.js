@@ -52,6 +52,17 @@ module.exports = function (grunt) {
     },
 
     jasmine: {
+      analytics: {
+        src: 'svenv/blog/static/blog/js/analytics.js',
+        options: {
+          vendor: [
+            'svenv/blog/static/blog/jquery/dist/jquery.min.js',
+            'svenv/blog/static/blog/jasmine-jquery/lib/jasmine-jquery.js'
+          ],
+          specs: 'svenv/blog/static/blog/js/test/spec/analytics.spec.js',
+
+        }
+      },
       blog: {
         src: 'svenv/blog/static/blog/js/blog.js',
         options: {
