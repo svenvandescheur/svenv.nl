@@ -253,10 +253,10 @@ function PostView () {
 function blog() {
     'use strict';
     // Get base view
-    var baseView = new View(),
-        view = baseView.getView();
-
-    view.construct();
+    var view = new View().getView();
+    if (typeof view != 'undefined') {
+        view.construct();
+    }
 }
 
 /**
