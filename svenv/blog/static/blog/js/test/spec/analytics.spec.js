@@ -1,13 +1,14 @@
 ﻿jasmine.getFixtures().fixturesPath = 'svenv/blog/static/blog/js/test/fixtures';
 
 
-describe('AnalyticsTest', function() {
+describe('Analytics', function() {
     beforeEach(function() {
         loadFixtures('categoryview.html');
     });
 
-    it('should call the constructor when the document is ready', function() {
-        var called = false;
+    it('should receive a call to the constructor when the document is ready', function() {
+        var called = false,
+            oldAnalytics = Analytics;
         Analytics = jasmine.createSpy().and.callFake(function () {
             this.construct = function() {
                 called = true;
@@ -15,5 +16,6 @@ describe('AnalyticsTest', function() {
         });
         analytics();
         expect(called).toBeTruthy();
+        Analytics = oldAnalytics;
     });
 });

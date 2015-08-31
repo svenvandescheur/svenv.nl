@@ -4,6 +4,20 @@
 describe('View', function() {
     beforeEach(function() {
         loadFixtures('categoryview.html');
+        this.window = window;
+    });
+
+    it('should receive a call to getView when the document is ready', function() {
+        var called = false,
+            oldView = View;
+        View = jasmine.createSpy().and.callFake(function () {
+            this.getView = function() {
+                called = true;
+            };
+        });
+        blog();
+        expect(called).toBeTruthy();
+        View = oldView;
     });
 
     it('should return a CategoryView when body has class "categoryview"', function() {
