@@ -32,7 +32,7 @@ function Analytics() {
         } else {
             return true;
         }
-    }
+    };
 
     /**
      * Fires Google Tag Manager
@@ -52,8 +52,7 @@ function Analytics() {
  */
 function analytics() {
     'use strict';
-    var analytics = new Analytics();
-    analytics.setUpTracking();
+    new Analytics().setUpTracking();
 }
 
 /**
