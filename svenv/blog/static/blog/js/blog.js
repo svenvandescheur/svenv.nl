@@ -254,7 +254,7 @@ function blog() {
     'use strict';
     // Get base view
     var view = new View().getView();
-    if (typeof view != 'undefined') {
+    if (typeof view !== 'undefined') {
         view.construct();
     }
 }

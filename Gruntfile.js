@@ -48,6 +48,15 @@ module.exports = function (grunt) {
     },
 
     jshint: {
+      options: {
+        curly: true,
+        eqeqeq: false,  // for Google code
+        eqnull: true,
+        browser: true,
+        globals: {
+          jQuery: true
+        },
+      },
       all: [
         '*.js',
         '*.json',
