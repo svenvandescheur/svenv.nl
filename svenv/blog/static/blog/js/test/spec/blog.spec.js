@@ -11,16 +11,16 @@ describe('View', function() {
         $('body').addClass('categoryview');
         baseView = new View();
         view = baseView.getView();
-        expect(view.__proto__).toEqual(new CategoryView().__proto__)
-    })
+        expect(view instanceof CategoryView).toBeTruthy();
+    });
 
     it('should return a PostView when body has class "pageview"', function() {
         $('body').removeClass();
         $('body').addClass('pageview');
         baseView = new View();
         view = baseView.getView();
-        expect(view.__proto__).toEqual(new PostView().__proto__)
-    })
+        expect(view instanceof PostView).toBeTruthy();
+    });
 });
 
 describe('CategoryView', function() {

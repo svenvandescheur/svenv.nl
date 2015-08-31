@@ -11,9 +11,9 @@ describe('AnalyticsTest', function() {
         Analytics = jasmine.createSpy().and.callFake(function () {
             this.construct = function() {
                 called = true;
-            }
+            };
         });
         analytics();
         expect(called).toBeTruthy();
-    })
+    });
 });
