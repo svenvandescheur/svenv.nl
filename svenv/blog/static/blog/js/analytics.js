@@ -14,7 +14,7 @@ function Analytics() {
      * Check if user is expected to be a visitor first
      * @returns {Object} fluent interface
      */
-    this.setUpTracking = function() {
+    this.construct = function() {
         if (this.isVisitor()) {
             this.googleTagManager();
         }
@@ -32,7 +32,7 @@ function Analytics() {
         } else {
             return true;
         }
-    }
+    };
 
     /**
      * Fires Google Tag Manager
@@ -52,8 +52,7 @@ function Analytics() {
  */
 function analytics() {
     'use strict';
-    var analytics = new Analytics();
-    analytics.setUpTracking();
+    new Analytics().construct();
 }
 
 /**

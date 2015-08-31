@@ -4,6 +4,20 @@
 describe('View', function() {
     beforeEach(function() {
         loadFixtures('categoryview.html');
+        this.window = window;
+    });
+
+    it('should receive a call to getView when the document is ready', function() {
+        var called = false,
+            oldView = View;
+        View = jasmine.createSpy().and.callFake(function () {
+            this.getView = function() {
+                called = true;
+            };
+        });
+        blog();
+        expect(called).toBeTruthy();
+        View = oldView;
     });
 
     it('should return a CategoryView when body has class "categoryview"', function() {
@@ -11,16 +25,16 @@ describe('View', function() {
         $('body').addClass('categoryview');
         baseView = new View();
         view = baseView.getView();
-        expect(view.__proto__).toEqual(new CategoryView().__proto__)
-    })
+        expect(view instanceof CategoryView).toBeTruthy();
+    });
 
     it('should return a PostView when body has class "pageview"', function() {
         $('body').removeClass();
         $('body').addClass('pageview');
         baseView = new View();
         view = baseView.getView();
-        expect(view.__proto__).toEqual(new PostView().__proto__)
-    })
+        expect(view instanceof PostView).toBeTruthy();
+    });
 });
 
 describe('CategoryView', function() {
