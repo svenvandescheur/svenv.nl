@@ -1,11 +1,17 @@
+@import "../../config/project";
+
+
 .contact {
-    .cols(10);
-    .hmargin(1, 1);
+    .center();
+    .fixed-cols(@section-max-columns, max-width);
     .hpadding(1, 1);
+    display: table;
+    position: relative;
+    z-index: 20;
+
 
     form {
         .cols(12);
-        float: left;
 
         label {
             .cols(3, min-width);

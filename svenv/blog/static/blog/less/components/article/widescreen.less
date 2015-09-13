@@ -1,7 +1,10 @@
+@import "../../config/project";
+
+
 .article {
     section, footer {
         .center();
-        .fixed-cols(11, max-width);
+        .fixed-cols(@section-max-columns, max-width);
         .hpadding(1, 1);
     }
 }

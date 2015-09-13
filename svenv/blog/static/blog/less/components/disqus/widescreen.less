@@ -1,6 +1,9 @@
+@import "../../config/project";
+
+
 .disqus {
     .center();
-    .fixed-cols(11, max-width);
+    .fixed-cols(@section-max-columns, max-width);
     .hpadding(1, 1);
     position: relative;
     top: -1px;
