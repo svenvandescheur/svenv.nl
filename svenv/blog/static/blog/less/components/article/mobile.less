@@ -1,5 +1,4 @@
 .article {
-    .shadow();
     font-size: 160%;
     font-weight: 300;
 
@@ -45,9 +44,9 @@
     section, footer {
         .cols(12);
         .hpadding(0.5, 0.5);
-        .vpadding(0, 2);
+        .vpadding(0.5, 2);
+        .shadow();
         background: @panel;
-        float: left;
         position: relative;
         line-height: 1.5em;
         z-index: 20;
@@ -57,8 +56,6 @@
         }
 
         h2 {
-            .vmargin(1, 1);
-
             a {
                 color: @heading-color;
                 font-weight: bold;
