@@ -18,4 +18,17 @@ describe('Analytics', function() {
         expect(called).toBeTruthy();
         Analytics = oldAnalytics;
     });
+
+    it('should set the analytics.noVisitor property in localstoreage', function() {
+        var a = new Analytics();
+        spyOn(localStorage, 'setItem').and.callThrough();
+        spyOn(console, 'log');
+        a.construct();
+        expect(a.isVisitor()).toBeTruthy();
+        spyOn(a, 'getQueryString').and.returnValue('?nv=tue');
+        a.construct();
+        expect(localStorage.setItem).toHaveBeenCalledWith('analytics.noVisitor', true);
+        expect(a.isVisitor()).toBeFalsy();
+        expect(console.log).toHaveBeenCalledWith('Excluded from analytics.');
+    });
 });

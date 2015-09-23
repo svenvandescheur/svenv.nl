@@ -17,6 +17,8 @@ function Analytics() {
     this.construct = function() {
         if (this.isVisitor()) {
             this.googleTagManager();
+        } else {
+            console.log('Excluded from analytics.');
         }
 
         return this;
@@ -27,12 +29,33 @@ function Analytics() {
      * @returns {boolean}
      */
     this.isVisitor = function() {
+        this.checkNonVisitorParam();
+
         if(typeof(Storage) !== "undefined") {
             return localStorage.getItem("analytics.noVisitor") !== 'true';
         } else {
             return true;
         }
     };
+
+    /**
+     * Checks the GET query string for "nv" (no visitor)
+     * If the key is found, set "analytics.noVisitor" to true in localstorage
+     */
+    this.checkNonVisitorParam = function() {
+        var queryString = this.getQueryString();
+        if(queryString.match('nv=') && typeof(Storage) !== "undefined") {
+            localStorage.setItem("analytics.noVisitor", true);
+        }
+    };
+
+    /**
+     * Gets the query string of the request
+     * @param {string} The query string
+     */
+     this.getQueryString = function() {
+        return window.location.search;
+     };
 
     /**
      * Fires Google Tag Manager
