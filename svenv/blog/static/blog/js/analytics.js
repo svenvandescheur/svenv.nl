@@ -17,6 +17,8 @@ function Analytics() {
     this.construct = function() {
         if (this.isVisitor()) {
             this.googleTagManager();
+        } else {
+            console.log('Excluded from analytics.');
         }
 
         return this;
