@@ -65,8 +65,12 @@ TEMPLATES = [
             '/templates',
             # insert your TEMPLATE_DIRS here
         ],
-        'APP_DIRS': True,
         'OPTIONS': {
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader',
+            ],
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
@@ -76,9 +80,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'loaders': [
-                'admin_tools.template_loaders.Loader',
-            ]
         },
     },
 ]
