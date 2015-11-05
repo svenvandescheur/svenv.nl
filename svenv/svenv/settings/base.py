@@ -17,7 +17,6 @@ SESSION_COOKIE_SECURE = False
 STATIC_ROOT = os.path.join('static')
 STATIC_URL = '/static/'
 TIME_ZONE = 'UTC'
-TEMPLATE_DEBUG = DEBUG
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -63,9 +62,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             '/templates',
-            # insert your TEMPLATE_DIRS here
         ],
         'OPTIONS': {
+            'debug': DEBUG,
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
