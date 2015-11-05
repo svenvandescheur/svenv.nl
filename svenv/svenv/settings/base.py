@@ -32,15 +32,15 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
     'admin_tools',
     'admin_tools.dashboard',
     'admin_tools.menu',
     'admin_tools.theming',
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
     'epiceditor',
     'django.contrib.staticfiles',
     'rest_framework',
@@ -65,8 +65,12 @@ TEMPLATES = [
             '/templates',
             # insert your TEMPLATE_DIRS here
         ],
-        'APP_DIRS': True,
         'OPTIONS': {
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader',
+            ],
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
