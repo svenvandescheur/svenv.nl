@@ -32,15 +32,15 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
     'admin_tools',
     'admin_tools.dashboard',
     'admin_tools.menu',
     'admin_tools.theming',
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
     'epiceditor',
     'django.contrib.staticfiles',
     'rest_framework',
@@ -76,6 +76,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'loaders': [
+                'admin_tools.template_loaders.Loader',
+            ]
         },
     },
 ]
