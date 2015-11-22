@@ -2,7 +2,7 @@
 {% load formatting %}
 
 
-{% macro articles_list data %}
+{% macro article_list data %}
     {% for post in data %}
     <article>
         <header>
@@ -23,11 +23,9 @@
 {% endmacro %}
 
 
-<section class="articleslist">
+
 {% if results %}
-    {% usemacro articles_list results %}
+    {% usemacro article_list results %}
 {% else %}
-    {% usemacro articles_list articles_list %}
-    <a class="fetchposts" href="#">Load more</a>
+    {% usemacro article_list article_list %}
 {% endif %}
-</section>

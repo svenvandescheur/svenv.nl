@@ -80,8 +80,8 @@ class CategoryView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
-    context_object_name = 'articles_list'
-    template_name = 'blog/list.html'
+    context_object_name = 'article_list'
+    template_name = 'blog/category.html'
 
     def get_name(self):
         return self.get_property_or_default('name', 'Home')
@@ -183,7 +183,7 @@ class PostViewSet(BaseBlogViewSet):
     ordering = 'id'
     queryset = Post.objects.filter(published=True, category__published=True)
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
-    template_name = 'blog/list.html'
+    template_name = 'blog/categoryajax.html'
 
 
 class ContactView(BaseBlogView, generic.edit.FormView):

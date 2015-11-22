@@ -1,4 +1,4 @@
-{% extends results|yesno:"blog/ajax.html,blog/base.html" %}
+{% extends "blog/base.html" %}
 
 
 {% block title %}{{ view.get_name|title }} - {{ view.get_blog_title }}{% endblock %}
@@ -8,6 +8,6 @@
 
 {% block content %}
     {% include "blog/components/navbar.html" %}
-    {% include "blog/components/articleslist.html" %}
+    {% include "blog/components/category.html" %}
     {% include "blog/components/footer.html" %}
 {% endblock %}
