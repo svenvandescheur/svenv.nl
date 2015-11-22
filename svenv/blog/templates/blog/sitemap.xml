@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for category in view.get_categories %}
     <url>
-        <loc>{{ view.get_base_url }}{% url 'category' category.name %}</loc>
+        <loc>{{ view.base_url }}{% url 'category' category.name %}</loc>
         <lastmod>{{ category.modified|date:"Y-m-d" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
@@ -12,7 +12,7 @@
 
     {% for post in view.get_posts %}
     <url>
-        <loc>{{ view.get_base_url }}{% url 'post' post.category.name post.short_title %}</loc>
+        <loc>{{ view.base_url }}{% url 'post' post.category.name post.short_title %}</loc>
         <lastmod>{{ post.modified|date:"Y-m-d" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
@@ -21,7 +21,7 @@
 
     {% for page in view.get_pages %}
     <url>
-        <loc>{{ view.get_base_url }}{% url 'page' page.path %}</loc>
+        <loc>{{ view.base_url }}{% url 'page' page.path %}</loc>
         <lastmod>{{ page.modified|date:"Y-m-d" }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.5</priority>

@@ -1,8 +1,8 @@
 {% extends "blog/base.html" %}
 
 
-{% block title %}{{ view.get_name|title }} - {{ view.get_blog_title }}{% endblock %}
-{% block description %}{{ view.get_description }}{% endblock %}
+{% block title %}{{ view.name|title }} - {{ view.blog_title }}{% endblock %}
+{% block description %}{{ view.description }}{% endblock %}
 {% block bodyclass %}categoryview{% endblock %}
 
 

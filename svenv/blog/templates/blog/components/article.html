@@ -3,9 +3,9 @@
 
 <article class="article">
     <header>
-        <h1><a href="/">{{ view.get_blog_title }}</a></h1>
+        <h1><a href="/">{{ view.blog_title }}</a></h1>
         <a href="/"><i class="fa fa-angle-left"></i> Home</a>
-        <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
+        <img src="{{ view.media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
     </header>
     <section class="content">
         <h2>{{ post.title }}</h2>
