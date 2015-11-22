@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+
+{% block title %}{{ view.name|title }} - {{ view.blog_title }}{% endblock %}
+{% block description %}{{ view.description }}{% endblock %}
+{% block bodyclass %}categoryview{% endblock %}
+
+
+{% block content %}
+    {% include "blog/components/navbar.html" %}
+    {% include "blog/components/category.html" %}
+    {% include "blog/components/footer.html" %}
+{% endblock %}

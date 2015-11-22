@@ -3,10 +3,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>{% block title %}{{ view.get_blog_title }}{% endblock %}</title>
+    <title>{% block title %}{{ view.blog_title }}{% endblock %}</title>
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="{{ view.get_base_url }}{{ request.path }}">
+    <link rel="canonical" href="{{ view.base_url }}{{ request.path }}">
     {% if view.is_in_debug_mode %}
         <link rel="stylesheet" type="text/less" href="/static/blog/less/main.less">
         <link rel="stylesheet" type="text/css" href="/static/blog/css/fruity.css">

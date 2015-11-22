@@ -2,12 +2,12 @@
 {% load formatting %}
 
 
-{% macro articles_list data %}
+{% macro article_list data %}
     {% for post in data %}
     <article>
         <header>
             <a href="/{{ post.category.name }}/{{ post.short_title }}">
-                <img src="{{ view.get_media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
+                <img src="{{ view.media_url }}{{ post.image.url }}" width="{{ post.image.width }}" height="{{ post.image.height }}" alt="{{ post.image.title }}">
             </a>
         </header>
         <section>
@@ -23,11 +23,9 @@
 {% endmacro %}
 
 
-<section class="articleslist">
+
 {% if results %}
-    {% usemacro articles_list results %}
+    {% usemacro article_list results %}
 {% else %}
-    {% usemacro articles_list articles_list %}
-    <a class="fetchposts" href="#">Load more</a>
+    {% usemacro article_list article_list %}
 {% endif %}
-</section>

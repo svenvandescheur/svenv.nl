@@ -1,10 +1,10 @@
 {% extends "blog/base.html" %}
 {% load formatting %}
 
-{% block title %}{{ view.get_page.title|title }} - {{ view.get_blog_title }}{% endblock %}
-{% block description %}{{ view.get_page.description }}{% endblock %}
+{% block title %}{{ view.page.title|title }} - {{ view.blog_title }}{% endblock %}
+{% block description %}{{ view.page.description }}{% endblock %}
 {% block bodyclass %}pageview{% endblock %}
-{% block header %}<h1><a href="/">{{ view.get_blog_title }}</a></h1>{% endblock %}
+{% block header %}<h1><a href="/">{{ view.blog_title }}</a></h1>{% endblock %}
 
 
 {% block content  %}

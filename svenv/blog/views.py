@@ -12,44 +12,19 @@ from . import serializers
 
 
 class BaseBlogView():
-    """
-    Base class for Blog views
-    """
-    def get_base_url(self):
-        """
-        Method used to expose base url to templates
-        """
-        return settings.BASE_URL
-
-    def get_blog_title(self):
-        """
-        Method used to expose blog title to templates
-        """
-        return settings.BLOG_TITLE
-
-    def get_blog_description(self):
-        """
-        Method used to expose blog description
-        """
-        return settings.BLOG_DESCRIPTION
+    base_url = settings.BASE_URL
+    blog_description = settings.BLOG_DESCRIPTION
+    blog_title = settings.BLOG_TITLE
+    language_code = settings.LANGUAGE_CODE
+    media_url = settings.MEDIA_URL
+    is_in_debug_mode = settings.DEBUG
+    is_post = False
 
     def get_fqdn(self):
         """
-        Method used to expose fully qualified domain name (fqdn)
+        Method used to expose fqdn to templates
         """
         return getfqdn()
-
-    def get_language_code(self):
-        """
-        Method used to expose the Django language code to templates
-        """
-        return settings.LANGUAGE_CODE
-
-    def get_media_url(self):
-        """
-        Method used to expose media url to templates
-        """
-        return settings.MEDIA_URL
 
     def get_navigation(self):
         """
@@ -63,31 +38,19 @@ class BaseBlogView():
         """
         return Page.objects.filter(published=True).order_by('position')
 
-    def is_in_debug_mode(self):
-        """
-        Method used to expose DEBUG setting to templates
-        """
-        return settings.DEBUG
-
-    def is_post(self):
-        """
-        Returns whether the view belongs to a blog post
-        """
-        return False
-
 
 class CategoryView(BaseBlogView, generic.ListView):
     """
     Shows a list of posts (e.g. home page)
     """
-    context_object_name = 'articles_list'
-    template_name = 'blog/list.html'
+    context_object_name = 'article_list'
+    template_name = 'blog/category.html'
 
     def get_name(self):
         return self.get_property_or_default('name', 'Home')
 
     def get_description(self):
-        return self.get_property_or_default('description', self.get_blog_description())
+        return self.get_property_or_default('description', self.blog_description())
 
     def get_property_or_default(self, property, default):
         category_name = self.kwargs['category_name']
@@ -183,7 +146,7 @@ class PostViewSet(BaseBlogViewSet):
     ordering = 'id'
     queryset = Post.objects.filter(published=True, category__published=True)
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
-    template_name = 'blog/list.html'
+    template_name = 'blog/categoryajax.html'
 
 
 class ContactView(BaseBlogView, generic.edit.FormView):
