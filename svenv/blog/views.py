@@ -151,7 +151,8 @@ class PostViewSet(BaseBlogViewSet):
 
 class SearchPostViewSet(BaseBlogViewSet):
     """
-    Api viewset for post
+    Api viewset for searching posts
+    Uses value GET parameter 'query' to perform a basic search
     Supports HTML rendering
     """
     model = Post
