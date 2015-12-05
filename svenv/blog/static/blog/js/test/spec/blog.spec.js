@@ -50,7 +50,7 @@ describe('CategoryView', function() {
         view.construct();
         view.setPage(1);  // required due to test runner
         view.fetch_button.click();
-        expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=-date&page=2');
+        expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=date&page=2');
         expect($('body').text()).toContain('ajaxtest');
     });
 
@@ -60,7 +60,7 @@ describe('CategoryView', function() {
         view.construct();
         view.setPage(2);
         view.fetch_button.click();
-        expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=-date&page=3');
+        expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=date&page=3');
     });
 
     it('should show a message when no more posts are available', function() {
@@ -71,7 +71,7 @@ describe('CategoryView', function() {
         view.construct();
         view.setPage(1);  // required due to test runner
         view.fetch_button.click();
-        expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=-date&page=2');
+        expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=date&page=2');
         expect($('body').text()).toContain('No more posts');
     });
 

@@ -32,7 +32,7 @@ function CategoryView() {
     this.api_url = '/api/';
     this.content_section = $('main');
     this.fetch_button = $('.fetchposts');
-    this.fetch_url = this.api_url + 'posts/?format=html&ordering=-date';
+    this.fetch_url = this.api_url + 'posts/?format=html&ordering=date';
     this.article_list = this.content_section.find('.articleslist');
     this.articles = this.article_list.find('article');
     this.articleLinkSelector = 'header a';
