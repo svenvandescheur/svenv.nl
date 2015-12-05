@@ -7,6 +7,7 @@
   "dependencies": {
     "font-awesome": "latest",
     "grunt": "latest",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-copy": "latest",
     "grunt-contrib-jasmine": "latest",
     "grunt-contrib-jshint": "latest",

@@ -84,6 +84,41 @@ describe('CategoryView', function() {
     });
 });
 
+describe('Navbar', function() {
+    beforeEach(function() {
+        loadFixtures('categoryview.html');
+    });
+
+    it('should hide the navigation for mobile on search input focusin', function() {
+        var navbar = new NavBar();
+        navbar.search_input.focusin();
+        expect(navbar.nav).toHaveClass('hide-mobile');
+    });
+
+    it('should show the navigation for mobile on search input focusout', function() {
+        spyOn(window, 'setTimeout').and.callFake(function(callback) {
+            callback();
+        });
+        var navbar = new NavBar();
+        navbar.nav.addClass('hide-mobile');
+        navbar.search_input.focusout();
+        expect(navbar.nav).not.toHaveClass('hide-mobile');
+    });
+
+    it('should provide search', function() {
+        spyOn(window, 'setTimeout').and.callFake(function(callback) {
+            callback();
+        });
+        spyOn($, 'ajax').and.callFake(function(options) {
+            options.success('<article><header><a href="/unixandlinux/dockerclean"><img src="https://svenv.nl/media/2015/05/21/docker.png" width="450" height="300" alt="Docker logo"></a></header> <section><h2><a href="/unixandlinux/dockerclean">Cleaning up a full Docker partition</a></h2><p>search test</p></section></article>');
+        });
+        var navbar = new NavBar();
+        navbar.search_input.val('docker').trigger('input');
+        expect(window.setTimeout).toHaveBeenCalled();
+        expect($('body').text()).toContain('search test');
+    });
+});
+
 describe('PostView', function() {
     beforeEach(function() {
         loadFixtures('postview.html');

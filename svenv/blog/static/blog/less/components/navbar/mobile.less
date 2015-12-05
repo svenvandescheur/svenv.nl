@@ -10,7 +10,7 @@
 
     h1 {
         .rows(1, line-height);
-        .hmargin(0.25, 0.25);
+        .hmargin(0, 0.25);
         .vmargin(0, 0);
         float: left;
         font-family: 'Lobster', cursive;
@@ -44,11 +44,44 @@
             font-size: 80%;
             font-weight: 300;
             text-transform: uppercase;
+            vertical-align: top;
 
             &:hover {
                 color: @link-color;
                 text-decoration: none;
             }
+        }
+    }
+
+    label {
+        .rows(1, line-height);
+        color: @default-color;
+        float: right;
+        min-width: 0;  // Fixme
+    }
+
+    input[type=search] {
+        .fixed-cols(0);
+        .rows(.5, height);
+        .rows(.5, line-height);
+        .hmargin(0, 0.25);
+        .vmargin(.3, 0);
+        border: 0;
+        border-bottom: solid 1px @background;
+        color: @default-color;
+        float: right;
+        font-size: 80%;
+        font-weight: 300;
+        min-width: 0;  // Fixme
+        text-transform: uppercase;
+        transition: min-width .3s;
+
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+
+        &:focus {
+            .fixed-cols(1.5, min-width);
         }
     }
 }

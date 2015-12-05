@@ -224,6 +224,22 @@ class PostViewSetTestCase(ViewTestCase):
         self.assertContains(response, 'Post 1')
 
 
+class SearchPostViewSet(ViewTestCase):
+    def test_api_posts(self):
+        response = self.c.get('/api/search/posts/?format=json&query=1')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Post 1')
+        self.assertNotContains(response, 'Post 2')
+        self.assertNotContains(response, 'Post 3')
+        self.assertNotContains(response, 'Post 4')
+
+    def test_html(self):
+        response = self.c.get('/api/search/posts/?format=html&query=1')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<article>')
+        self.assertContains(response, 'Post 1')
+
+
 class ContactViewTestCase(ViewTestCase):
     @override_settings(CONTACT_PAGE_PATH='page1')
     def test_contact_page(self):

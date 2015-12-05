@@ -1,19 +1,19 @@
 @zoom-scale: 1.005;
 
 .articleslist {
-    .hpadding(.25, .25);
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     -webkit-align-items: left;
     -webkit-flex-direction: row;
     -webkit-flex-wrap: wrap;
-    -webkit-justify-content: space-between;
+    -webkit-justify-content: flex-start;
 
     article {
         .cols(12);
+        .hmargin(0.25, 0.25);
         .vmargin(0.25, 0.25);
         .shadow();
         float: left;

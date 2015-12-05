@@ -1,5 +1,19 @@
+@gutter: 0.125;
+
 .articleslist {
     article {
-        .cols(3.875);
+        .cols((@column-count - @gutter * 4) / 3);
+
+        &:nth-child(3n+1) {
+            .hmargin(@gutter, @gutter/2);
+        }
+
+        &:nth-child(3n+2) {
+            .hmargin(@gutter/2, @gutter/2);
+        }
+
+        &:nth-child(3n+3) {
+            .hmargin(@gutter/2, @gutter);
+        }
     }
 }
