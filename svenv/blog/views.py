@@ -144,9 +144,28 @@ class PostViewSet(BaseBlogViewSet):
     """
     model = Post
     ordering = 'id'
-    queryset = Post.objects.filter(published=True, category__published=True)
+    queryset = Post.objects.filter(published=True, category__published=True).order_by('date').reverse()
     renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
     template_name = 'blog/categoryajax.html'
+
+
+class SearchPostViewSet(BaseBlogViewSet):
+    """
+    Api viewset for post
+    Supports HTML rendering
+    """
+    model = Post
+    ordering = 'id'
+    queryset = Post.objects.filter(published=True, category__published=True).order_by('date').reverse()
+    renderer_classes = (BrowsableAPIRenderer, JSONRenderer, TemplateHTMLRenderer)
+    template_name = 'blog/categoryajax.html'
+
+    def get_queryset(self):
+        """
+        Filters the queryset with the given search query
+        """
+        queryset = super(SearchPostViewSet, self).get_queryset()
+        return queryset.filter(content__icontains=self.request.GET.get('query', ''))
 
 
 class ContactView(BaseBlogView, generic.edit.FormView):
