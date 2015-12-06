@@ -70,9 +70,10 @@
         border-bottom: solid 1px @background;
         color: @default-color;
         float: right;
-        font-size: 80%;
+        font-size: 16px;
         font-weight: 300;
         min-width: 0;  // Fixme
+        opacity: 0;
         text-transform: uppercase;
         transition: min-width .3s;
 
@@ -81,6 +82,7 @@
         }
 
         &:focus {
+            opacity: 1;
             .fixed-cols(1.5, min-width);
         }
     }
