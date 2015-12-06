@@ -1,8 +1,7 @@
 import dateutil.parser
 from django import template
-from re import finditer, search, sub, MULTILINE
+from re import finditer, search, sub, match, MULTILINE
 from markdown2 import Markdown
-
 
 register = template.Library()
 
@@ -58,8 +57,9 @@ class svenv_flavored_markdown(Markdown):
         """
         matches = finditer(r'(\d+\.\s+?.+\n|\r)+', text, MULTILINE)
 
-        for match in matches:
-            list = match.group(0)
+        for m in matches:
+            list = m.group(0)
+            list = match('\d+?\.[^<]+', list).group(0)
             text = text.replace(list, self.parse_markdown_sane_list(list))
 
         return super(svenv_flavored_markdown, self)._do_lists(text)

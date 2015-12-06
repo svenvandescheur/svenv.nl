@@ -329,6 +329,14 @@ you've got to put paragraph tags in your blockquotes:
         )
         self.assert_svenv_flavored_markdown(markdown, html)
 
+    def test_list(self):
+        """
+        Tests an issue with lists and headings
+        """
+        markdown = '### 1. Bad code'
+        html = '<h3><ol start="1"><li>Bad code</li></ol></h3>'
+        self.assert_svenv_flavored_markdown(markdown, html)
+
     def assert_markdown(self, markdown, html, msg=None):
         """
         Tests both markdown2 and "svenv flavored markdown"
