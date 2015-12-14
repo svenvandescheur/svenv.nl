@@ -12,7 +12,7 @@
         </header>
         <section>
             <h2><a href="/{{ post.category.name }}/{{ post.short_title }}">{{ post.title }}</a></h2>
-            {{ post.content|markdown|safe|truncatechars_html:100}}
+            {{ post.content|markdown|safe|truncatechars_html:300}}
         </section>
         <footer>
             <em>Written by {{ post.author.username }} on {{ post.date|datetime|date }}</em>
