@@ -1,6 +1,7 @@
+from subprocess import call
+
 from django.contrib.auth.models import User
 from django.db import models
-from subprocess import call
 
 
 class BaseModel():

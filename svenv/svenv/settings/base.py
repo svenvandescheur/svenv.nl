@@ -8,7 +8,7 @@ CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = False
 DEBUG = False  # THIS IS ALSO INDICATES DEVELOPMENT ENVIRONMENT
 LANGUAGE_CODE = 'en-us'
-MEDIA_URL = 'https://svenv.nl/'
+MEDIA_URL = '/'
 ROOT_URLCONF = 'svenv.urls'
 SECRET_KEY = '!k4%c0+yuy2^zu@l_uk2g7h$ya9*m#zfow*0@kv15s0l776%@3'  # NOT FOR PRODUCTION
 SECURE_BROWSER_XSS_FILTER = True
@@ -35,13 +35,10 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'admin_tools',
-    'admin_tools.dashboard',
-    'admin_tools.menu',
-    'admin_tools.theming',
     'django.contrib.admin',
-    'epiceditor',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
+    'epiceditor',
     'rest_framework',
     'blog',
 )
@@ -82,3 +79,10 @@ TEMPLATES = [
         },
     },
 ]
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'article_list': {'size': (300, 300), 'crop': True},
+        'article': {'size': (1080, 300), 'crop': True},
+    },
+}
