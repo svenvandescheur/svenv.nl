@@ -1,19 +1,19 @@
-/**
- * Blog javascript file
- * Provides dynamic interaction on frontend
- */
+'use strict';
+
+import $ from 'jquery';
+
+import Analytics from './analytics'
 
 
 /**
  * Logic common for all views
  */
-function View() {
-    'use strict';
+class View {
     /**
      * Finds the current view
      * @returns {string} The current view
      */
-    this.getView = function () {
+    getView() {
         if ($('body').hasClass('categoryview')) {
             return new CategoryView();
         }
@@ -27,22 +27,21 @@ function View() {
 /**
  * Provides methods for categoryview
  */
-function CategoryView() {
-    'use strict';
-    this.api_url = '/api/';
-    this.content_section = $('main');
-    this.fetch_button = $('.fetchposts');
-    this.fetch_url = this.api_url + 'posts/?format=html&ordering=date';
-    this.article_list = this.content_section.find('.articleslist');
-    this.articles = this.article_list.find('article');
-    this.articleLinkSelector = 'header a';
-    this.transitionInterval = 100;
-
+class CategoryView {
     /**
      * Runs the logic for this view
      * @returns {CategoryView} fluent interface
      */
-    this.construct = function () {
+    constructor() {
+        this.api_url = '/api/';
+        this.content_section = $('main');
+        this.fetch_button = $('.fetchposts');
+        this.fetch_url = this.api_url + 'posts/?format=html&ordering=date';
+        this.article_list = this.content_section.find('.articleslist');
+        this.articles = this.article_list.find('article');
+        this.articleLinkSelector = 'header a';
+        this.transitionInterval = 100;
+
         new NavBar();
 
         this.setUpFetchPosts()
@@ -56,7 +55,7 @@ function CategoryView() {
      * Binds the fetch button to fetchPosts()
      * @returns {CategoryView} fluent interface
      */
-    this.setUpFetchPosts = function () {
+    setUpFetchPosts() {
         this.setFetchPostsTarget(this.fetch_url);
 
         var self = this;
@@ -72,7 +71,7 @@ function CategoryView() {
      * Fetches additional posts
      * @returns {CategoryView} fluent interface
      */
-    this.fetchPosts = function () {
+    fetchPosts() {
         var self = this;
         $.ajax({
             url: this.getFetchPostsTarget() + '&page=' + this.nextPage(),
@@ -87,7 +86,7 @@ function CategoryView() {
      * Gets the api url to fetch posts from
      * @returns {string} The api url
      */
-    this.getFetchPostsTarget = function () {
+    getFetchPostsTarget() {
         return this.fetch_button.data('fetchTarget');
     };
 
@@ -96,7 +95,7 @@ function CategoryView() {
      * @param {string} url The api url
      * @returns {CategoryView} fluent interface
      */
-    this.setFetchPostsTarget = function (url) {
+    setFetchPostsTarget(url) {
         this.fetch_button.data('fetchTarget', url);
         return this;
     };
@@ -105,7 +104,7 @@ function CategoryView() {
      * Success callback for fetchPosts
      * adds the received data to the dom and update the current page value
      */
-    this._fetchPostsSuccess = function (data) {
+    _fetchPostsSuccess(data) {
         $(data).insertBefore(this.fetch_button);
 
         var nodes = $('article').filter(function() {
@@ -120,7 +119,7 @@ function CategoryView() {
      * Error callback for fetchPosts
      * notifies the user that fetching posts has failed
      */
-    this._fetchPostsError = function () {
+    _fetchPostsError() {
         this.fetch_button.text('No more posts.');
     };
 
@@ -128,7 +127,7 @@ function CategoryView() {
      * Calculates the next page
      * @returns {number} The next page
      */
-    this.nextPage = function () {
+    nextPage() {
         return this.getPage() + 1;
     };
 
@@ -136,7 +135,7 @@ function CategoryView() {
      * Gets the current page
      * @returns {number} the current page
      */
-    this.getPage = function () {
+    getPage() {
         return parseInt($('body').attr('data-page'), 10);
     };
 
@@ -145,7 +144,7 @@ function CategoryView() {
      * @param {number} page The new page value
      * @returns {CategoryView} fluent interface
      */
-    this.setPage = function (page) {
+    setPage(page) {
         $('body').attr('data-page', page);
         return this;
     };
@@ -154,7 +153,7 @@ function CategoryView() {
      * Animates articles fading in using CSS3 transitions
      * @returns {CategoryView} fluent interface
      */
-    this.fadeInArticles = function () {
+    fadeInArticles() {
         return this._fadeIn(this.articles);
     };
 
@@ -163,7 +162,7 @@ function CategoryView() {
      * @param {Object} set of jQuery nodes
      * @returns {CategoryView} fluent interface
      */
-    this._fadeIn = function (nodes) {
+    _fadeIn(nodes) {
         var self = this;
 
         $.each(nodes, function (index) {
@@ -182,7 +181,7 @@ function CategoryView() {
      * Binds articles to redirectToArticle()
      * @returns {CategoryView} fluent interface
      */
-    this.setUpRedirectToArticle = function () {
+    setUpRedirectToArticle() {
         var self = this;
         this.articles.click(function () {
             self.redirectToArticle($(this));
@@ -195,7 +194,7 @@ function CategoryView() {
      * Redirect to the permalink of the article
      * @param {Object} jQuery node
      */
-    this.redirectToArticle = function (article) {
+    redirectToArticle(article) {
         var a = article.find(this.articleLinkSelector);
         window.location = a.attr('href');
     };
@@ -205,7 +204,7 @@ function CategoryView() {
      * @param {Object} data jQuery provided data
      * @returns {CategoryView} fluent interface
      */
-    this.setArticles = function (data) {
+    setArticles(data) {
         this.articles.remove();
         this._fetchPostsSuccess(data);
         this.setPage(1);
@@ -216,18 +215,18 @@ function CategoryView() {
 /**
  * Provides methods for navbar component
  */
-function NavBar() {
-    this.base = $('.navbar');
-    this.nav = this.base.find('nav');
-    this.search_input = this.base.find('input#search');
-    this.search_timeout_duration = 200;
-    this.search_url = '/api/search/posts/';
-
+class NavBar {
     /**
      * Runs the logic for this view
      * @returns {Object} fluent interface
      */
-    this.construct = function () {
+    constructor() {
+        this.base = $('.navbar');
+        this.nav = this.base.find('nav');
+        this.search_input = this.base.find('input#search');
+        this.search_timeout_duration = 200;
+        this.search_url = '/api/search/posts/';
+
         this.setUpSearchFocusIn()
             .setUpSearchFocusOut()
             .setUpSearchInput();
@@ -238,7 +237,7 @@ function NavBar() {
      * Binds focusin event on search_input to hideNavOnMobile()
      * @returns {NavBar} fluent interface
      */
-    this.setUpSearchFocusIn = function () {
+    setUpSearchFocusIn() {
         this.search_input.on('focusin', $.proxy(this.hideNavOnMobile, this));
         return this;
     };
@@ -246,7 +245,7 @@ function NavBar() {
      * Adds the hide-mobile class on nav
      * @returns {NavBar} fluent interface
      */
-    this.hideNavOnMobile = function () {
+    hideNavOnMobile() {
         this.nav.addClass('hide-mobile');
         return this;
     };
@@ -255,7 +254,7 @@ function NavBar() {
      * Binds focusout event on search_input to showNavOnMobile()
      * @returns {NavBar} fluent interface
      */
-    this.setUpSearchFocusOut = function () {
+    setUpSearchFocusOut() {
         this.search_input.on('focusout', $.proxy(this.showNavOnMobile, this));
         return this;
     };
@@ -264,7 +263,7 @@ function NavBar() {
      * Waits 300 microseconds before removing hide-mobile class from nav
      * @returns {NavBar} fluent interface
      */
-    this.showNavOnMobile = function () {
+    showNavOnMobile() {
         var nav = this.nav;
         window.setTimeout(function() {
             nav.removeClass('hide-mobile');
@@ -276,7 +275,7 @@ function NavBar() {
      * Binds input event on search_input to serach()
      * @returns {NavBar} fluent interface
      */
-    this.setUpSearchInput = function() {
+    setUpSearchInput() {
         this.search_input.on('input', $.proxy(this.search, this));
         return this;
     };
@@ -285,7 +284,7 @@ function NavBar() {
      * Uses search_timeout mechanism to prevent to many search queries
      * @returns {NavBar} fluent interface
      */
-    this.search = function () {
+    search() {
         var self = this;
         window.clearTimeout(this.search_timeout);
 
@@ -300,7 +299,7 @@ function NavBar() {
      * Searches using ajax
      * @returns {NavBar} fluent interface
      */
-    this.searchRequest = function () {
+    searchRequest() {
         var query = this.search_input.val();
 
         $.ajax({
@@ -322,7 +321,7 @@ function NavBar() {
      * @param {Object} data jQuery provided data
      * @returns {NavBar} fluent interface
      */
-    this.showSearchResults = function (query, data) {
+    showSearchResults(query, data) {
         var categoryview = new CategoryView();
         categoryview.setFetchPostsTarget(categoryview.api_url + 'search/posts/?format=html&query=' + query)
                     .setArticles(data);
@@ -338,28 +337,25 @@ function NavBar() {
      * Logs an ajax error
      * @returns {NavBar} fluent interface
      */
-    this.ajaxError = function () {
+    ajaxError() {
         console.log('Failed to fetch data');
         return this;
     };
-
-    this.construct();
 }
 
 /**
  * Provides methods for postview
  */
-function PostView () {
-    'use strict';
-    this.disqus_shortname = 'svenv';
-    this.article_header_image = $('article header img');
-    this.parallax_ratio = 0.3;
-
+class PostView {
     /**
      * Runs the logic for this view
      * @returns {Object} fluent interface
      */
-    this.construct = function () {
+    constructor() {
+        this.disqus_shortname = 'svenv';
+        this.article_header_image = $('article header img');
+        this.parallax_ratio = 0.3;
+
         this.disqus();
 
         // Universal requestAnimationFrame
@@ -380,7 +376,7 @@ function PostView () {
      * Add Disqus to the current page
      * @returns {Object} fluent interface
      */
-    this.disqus = function () {
+    disqus() {
         if ($('body').hasClass('postview')) {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + this.disqus_shortname + '.disqus.com/embed.js';
@@ -394,7 +390,7 @@ function PostView () {
      * Create a parallax effect on the header by utilizing requestAnimationFrame
      * @returns {Object} fluent interface
      */
-    this.parallaxHeader = function () {
+    parallaxHeader() {
         var self = this;
         $(window).scroll(function(){
             requestAnimFrame(self._parallaxHeader.bind(self));
@@ -407,7 +403,7 @@ function PostView () {
      * Sets the parallax position of the header
      * @returns {Object} fluent interface
      */
-    this._parallaxHeader = function () {
+    _parallaxHeader() {
         this.article_header_image.css({
             'top': this.parallax_ratio * $(window).scrollTop()
         });
@@ -420,12 +416,8 @@ function PostView () {
  * Provides main routine, called on ready
  */
 function blog() {
-    'use strict';
-    // Get base view
-    var view = new View().getView();
-    if (typeof view !== 'undefined') {
-        view.construct();
-    }
+    new View().getView();
+    new Analytics();
 }
 
 /**

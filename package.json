@@ -4,17 +4,20 @@
     "type": "git",
     "url": "https://github.com/svenvandescheur/svenv.nl-app"
   },
-  "dependencies": {
-    "font-awesome": "latest",
-    "grunt": "latest",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-copy": "latest",
-    "grunt-contrib-jasmine": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-less": "latest",
-    "grunt-contrib-uglify": "latest",
-    "jasmine-jquery": "latest",
-    "jquery": "latest",
-    "less": "latest"
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {},
+  "devDependencies": {
+    "jspm": "^0.16.19"
+  },
+  "jspm": {
+    "dependencies": {
+      "jquery": "github:components/jquery@^2.1.4",
+      "less": "github:aaike/jspm-less-plugin@^0.0.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
