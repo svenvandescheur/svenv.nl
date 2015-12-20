@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 
 
@@ -20,7 +18,7 @@ export default class Analytics {
         }
 
         return this;
-    };
+    }
 
     /**
      * Returns whether the user is expected to be a visitor
@@ -38,7 +36,7 @@ export default class Analytics {
         } else {
             return true;
         }
-    };
+    }
 
     /**
      * Checks the GET query string for "nv" (no visitor)
@@ -49,7 +47,7 @@ export default class Analytics {
         if(queryString.match('nv=') && typeof(Storage) !== "undefined") {
             localStorage.setItem("analytics.noVisitor", true);
         }
-    };
+    }
 
     /**
      * Gets the query string of the request
@@ -57,7 +55,7 @@ export default class Analytics {
      */
      getQueryString() {
         return window.location.search;
-     };
+     }
 
     /**
      * Fires Google Tag Manager
@@ -69,5 +67,5 @@ export default class Analytics {
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-KW29N3');
-    };
+    }
 }

@@ -1,8 +1,6 @@
-'use strict';
-
 import $ from 'jquery';
 
-import Analytics from './analytics'
+import Analytics from './analytics';
 
 
 /**
@@ -21,7 +19,7 @@ class View {
         if ($('body').hasClass('postview') || $('body').hasClass('pageview')) {
             return new PostView();
         }
-    };
+    }
 }
 
 /**
@@ -49,7 +47,7 @@ class CategoryView {
             .setUpRedirectToArticle();
 
         return this;
-    };
+    }
 
     /**
      * Binds the fetch button to fetchPosts()
@@ -65,7 +63,7 @@ class CategoryView {
         });
 
         return this;
-    };
+    }
 
     /**
      * Fetches additional posts
@@ -80,7 +78,7 @@ class CategoryView {
         });
 
         return this;
-    };
+    }
 
     /**
      * Gets the api url to fetch posts from
@@ -88,7 +86,7 @@ class CategoryView {
      */
     getFetchPostsTarget() {
         return this.fetch_button.data('fetchTarget');
-    };
+    }
 
     /**
      * Gets the api url to fetch posts from
@@ -98,7 +96,7 @@ class CategoryView {
     setFetchPostsTarget(url) {
         this.fetch_button.data('fetchTarget', url);
         return this;
-    };
+    }
 
     /**
      * Success callback for fetchPosts
@@ -113,7 +111,7 @@ class CategoryView {
 
         this._fadeIn(nodes);
         this.setPage(this.nextPage());
-    };
+    }
 
     /**
      * Error callback for fetchPosts
@@ -121,7 +119,7 @@ class CategoryView {
      */
     _fetchPostsError() {
         this.fetch_button.text('No more posts.');
-    };
+    }
 
     /**
      * Calculates the next page
@@ -129,7 +127,7 @@ class CategoryView {
      */
     nextPage() {
         return this.getPage() + 1;
-    };
+    }
 
     /**
      * Gets the current page
@@ -137,7 +135,7 @@ class CategoryView {
      */
     getPage() {
         return parseInt($('body').attr('data-page'), 10);
-    };
+    }
 
     /**
      * Sets the current page
@@ -147,7 +145,7 @@ class CategoryView {
     setPage(page) {
         $('body').attr('data-page', page);
         return this;
-    };
+    }
 
     /**
      * Animates articles fading in using CSS3 transitions
@@ -155,7 +153,7 @@ class CategoryView {
      */
     fadeInArticles() {
         return this._fadeIn(this.articles);
-    };
+    }
 
     /**
      * Animates jQuery selected nodes fading in using CSS3 transitions
@@ -175,7 +173,7 @@ class CategoryView {
         });
 
         return this;
-    };
+    }
 
     /**
      * Binds articles to redirectToArticle()
@@ -188,7 +186,7 @@ class CategoryView {
         });
 
         return this;
-    };
+    }
 
     /**
      * Redirect to the permalink of the article
@@ -197,7 +195,7 @@ class CategoryView {
     redirectToArticle(article) {
         var a = article.find(this.articleLinkSelector);
         window.location = a.attr('href');
-    };
+    }
 
     /**
      * Remove current articles and shows new content
@@ -209,7 +207,7 @@ class CategoryView {
         this._fetchPostsSuccess(data);
         this.setPage(1);
         return this;
-    };
+    }
 }
 
 /**
@@ -231,7 +229,7 @@ class NavBar {
             .setUpSearchFocusOut()
             .setUpSearchInput();
         return this;
-    };
+    }
 
     /**
      * Binds focusin event on search_input to hideNavOnMobile()
@@ -240,7 +238,7 @@ class NavBar {
     setUpSearchFocusIn() {
         this.search_input.on('focusin', $.proxy(this.hideNavOnMobile, this));
         return this;
-    };
+    }
     /**
      * Adds the hide-mobile class on nav
      * @returns {NavBar} fluent interface
@@ -248,7 +246,7 @@ class NavBar {
     hideNavOnMobile() {
         this.nav.addClass('hide-mobile');
         return this;
-    };
+    }
 
     /**
      * Binds focusout event on search_input to showNavOnMobile()
@@ -257,7 +255,7 @@ class NavBar {
     setUpSearchFocusOut() {
         this.search_input.on('focusout', $.proxy(this.showNavOnMobile, this));
         return this;
-    };
+    }
 
     /**
      * Waits 300 microseconds before removing hide-mobile class from nav
@@ -269,7 +267,7 @@ class NavBar {
             nav.removeClass('hide-mobile');
         }, 300);
         return this;
-    };
+    }
 
     /**
      * Binds input event on search_input to serach()
@@ -278,7 +276,7 @@ class NavBar {
     setUpSearchInput() {
         this.search_input.on('input', $.proxy(this.search, this));
         return this;
-    };
+    }
 
     /**
      * Uses search_timeout mechanism to prevent to many search queries
@@ -293,7 +291,7 @@ class NavBar {
         }, this.search_timeout_duration);
 
         return this;
-    };
+    }
 
     /**
      * Searches using ajax
@@ -314,7 +312,7 @@ class NavBar {
         });
 
         return this;
-    };
+    }
 
     /**
      * Shows the search results
@@ -331,7 +329,7 @@ class NavBar {
         }
 
         return this;
-    };
+    }
 
     /**
      * Logs an ajax error
@@ -340,7 +338,7 @@ class NavBar {
     ajaxError() {
         console.log('Failed to fetch data');
         return this;
-    };
+    }
 }
 
 /**
@@ -370,7 +368,7 @@ class PostView {
 
         this.parallaxHeader();
         return this;
-    };
+    }
 
     /**
      * Add Disqus to the current page
@@ -384,7 +382,7 @@ class PostView {
         }
 
         return this;
-    };
+    }
 
     /**
      * Create a parallax effect on the header by utilizing requestAnimationFrame
@@ -397,7 +395,7 @@ class PostView {
         });
 
         return this;
-    };
+    }
 
     /**
      * Sets the parallax position of the header
@@ -409,7 +407,7 @@ class PostView {
         });
 
         return this;
-    };
+    }
 }
 
 /**
