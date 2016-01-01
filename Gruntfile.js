@@ -2,21 +2,11 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    copy: {
-      build: {
-        files: [{
-            expand: true,
-            cwd: 'node_modules/',
-            src: '*/**',
-            dest: 'svenv/blog/static/blog/',
-          }, {
-            expand: true,
-            cwd: 'svenv/blog/static/blog/font-awesome/',
-            src: ['css/font-awesome.min.css', 'fonts/*'],
-            dest: 'svenv/blog/static/blog/',
-          },
-
-        ]
+    karma: {
+      unit: {
+        options: {
+            configFile: 'karma.conf.js'
+        }
       }
     },
 
@@ -65,36 +55,10 @@ module.exports = function (grunt) {
         '!svenv/blog/static/blog/js/*.min.js',
       ]
     },
-
-    jasmine: {
-      analytics: {
-        src: 'svenv/blog/static/blog/js/analytics.js',
-        options: {
-          vendor: [
-            'svenv/blog/static/blog/jquery/dist/jquery.min.js',
-            'svenv/blog/static/blog/jasmine-jquery/lib/jasmine-jquery.js'
-          ],
-          specs: 'svenv/blog/static/blog/js/test/spec/analytics.spec.js',
-
-        }
-      },
-      blog: {
-        src: 'svenv/blog/static/blog/js/blog.js',
-        options: {
-          vendor: [
-            'svenv/blog/static/blog/jquery/dist/jquery.min.js',
-            'svenv/blog/static/blog/jasmine-jquery/lib/jasmine-jquery.js'
-          ],
-          specs: 'svenv/blog/static/blog/js/test/spec/blog.spec.js',
-
-        }
-      },
-    },
   });
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.registerTask('default', 'build');

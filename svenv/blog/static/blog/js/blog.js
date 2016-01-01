@@ -1,12 +1,12 @@
 import $ from 'jquery';
 
-import Analytics from './analytics';
+import {Analytics} from './analytics';
 
 
 /**
  * Logic common for all views
  */
-class View {
+export class View {
     /**
      * Finds the current view
      * @returns {string} The current view
@@ -25,7 +25,7 @@ class View {
 /**
  * Provides methods for categoryview
  */
-class CategoryView {
+export class CategoryView {
     /**
      * Runs the logic for this view
      * @returns {CategoryView} fluent interface
@@ -40,7 +40,7 @@ class CategoryView {
         this.articleLinkSelector = 'header a';
         this.transitionInterval = 100;
 
-        new NavBar();
+        new Navbar();
 
         this.setUpFetchPosts()
             .fadeInArticles()
@@ -213,7 +213,7 @@ class CategoryView {
 /**
  * Provides methods for navbar component
  */
-class NavBar {
+export class Navbar {
     /**
      * Runs the logic for this view
      * @returns {Object} fluent interface
@@ -233,7 +233,7 @@ class NavBar {
 
     /**
      * Binds focusin event on search_input to hideNavOnMobile()
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     setUpSearchFocusIn() {
         this.search_input.on('focusin', $.proxy(this.hideNavOnMobile, this));
@@ -241,7 +241,7 @@ class NavBar {
     }
     /**
      * Adds the hide-mobile class on nav
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     hideNavOnMobile() {
         this.nav.addClass('hide-mobile');
@@ -250,7 +250,7 @@ class NavBar {
 
     /**
      * Binds focusout event on search_input to showNavOnMobile()
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     setUpSearchFocusOut() {
         this.search_input.on('focusout', $.proxy(this.showNavOnMobile, this));
@@ -259,7 +259,7 @@ class NavBar {
 
     /**
      * Waits 300 microseconds before removing hide-mobile class from nav
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     showNavOnMobile() {
         var nav = this.nav;
@@ -271,7 +271,7 @@ class NavBar {
 
     /**
      * Binds input event on search_input to serach()
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     setUpSearchInput() {
         this.search_input.on('input', $.proxy(this.search, this));
@@ -280,7 +280,7 @@ class NavBar {
 
     /**
      * Uses search_timeout mechanism to prevent to many search queries
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     search() {
         var self = this;
@@ -295,7 +295,7 @@ class NavBar {
 
     /**
      * Searches using ajax
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     searchRequest() {
         var query = this.search_input.val();
@@ -317,7 +317,7 @@ class NavBar {
     /**
      * Shows the search results
      * @param {Object} data jQuery provided data
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     showSearchResults(query, data) {
         var categoryview = new CategoryView();
@@ -333,7 +333,7 @@ class NavBar {
 
     /**
      * Logs an ajax error
-     * @returns {NavBar} fluent interface
+     * @returns {Navbar} fluent interface
      */
     ajaxError() {
         console.log('Failed to fetch data');
@@ -344,7 +344,7 @@ class NavBar {
 /**
  * Provides methods for postview
  */
-class PostView {
+export class PostView {
     /**
      * Runs the logic for this view
      * @returns {Object} fluent interface
@@ -413,7 +413,7 @@ class PostView {
 /**
  * Provides main routine, called on ready
  */
-function blog() {
+export function blog() {
     new View().getView();
     new Analytics();
 }

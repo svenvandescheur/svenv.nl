@@ -1,445 +1,48 @@
 <!DOCTYPE html>
-<!-- Server: mbpsvendescheur.home -->
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title> - Svenv.nl</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://svenv.nl/">
-
-        <link rel="stylesheet" type="text/less" href="/static/blog/less/main.less">
-        <link rel="stylesheet" type="text/css" href="/static/blog/css/fruity.css">
-        <link rel="stylesheet" type="text/css" href="/static/blog/font-awesome/css/font-awesome.css">
-
-</head>
 <body class="categoryview" data-page="1">
 <main>
-
     <header class="navbar">
-    <h1><a href="/">Svenv.nl</a></h1>
-    <nav>
-        <ul>
-
-            <li><a href="/about">About</a></li>
-
-            <li><a href="/privacy">Privacy</a></li>
-
-            <li><a href="/contact">contact</a></li>
-
-        </ul>
-    </nav>
-    <input id="search" type="search" autocomplete="off" />
-    <label for="search">
-        <i class="fa fa-search"></i>
-    </label>
-</header>
+        <h1><a href="/">Svenv.nl</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/contact">contact</a></li>
+            </ul>
+        </nav>
+        <input id="search" type="search" autocomplete="off" />
+        <label for="search">
+            <i class="fa fa-search"></i>
+        </label>
+    </header>
     <section class="articleslist">
-
-
-
-
-
-
-
-
-
-
-
-    <article>
-        <header>
-            <a href="/programming/markdownclasses">
-                <img src="https://svenv.nl/media/2015/05/07/working_on_notebook.png" width="450" height="300" alt="Working on notebook">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/programming/markdownclasses">Adding CSS classes to images with markdown</a></h2>
+        <article>
+            <header>
+                <a href="/programming/markdownclasses">
+                    <img src="https://svenv.nl/media/2015/05/07/working_on_notebook.png" width="450" height="300" alt="Working on notebook">
+                </a>
+            </header>
+            <section>
+                <h2><a href="/programming/markdownclasses">Adding CSS classes to images with markdown</a></h2>
             <pre><code>![Alt text](/path/to/img.jpg "Title" "Class")
-</code></pre>
-
-<p><img src="/path/to/img.jpg" alt="Alt text" title="Title" class="Class" /></p>
-
-<ol start="1"><li>hoi</li><li>    asdf</li><li>    asdfasdf </li><li>    asdfasdfasdfasdf</li></ol>
-
-<p>dfasdfasdf</p>
-
-<ol start="5"><li>hoi</li></ol>
-
-<ol start="6"><li>asdf</li><li>asdfasdfasdf</li><li>aasfdadsf</li></ol>
-
-        </section>
-        <footer>
-            <em>Written by svenv on July 5, 2015</em>
-            <a href="/programming/markdownclasses">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/database/heidisqlalternatives">
-                <img src="https://svenv.nl/media/2015/06/17/dbeaver_small.png" width="480" height="300" alt="dbeaver_small">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/database/heidisqlalternatives">5 cross-platform alternatives to HeidiSQL</a></h2>
-            <p>&lt;&lt;<asdf>&gt;&gt;</p>
-
-<p>When it comes to database administration, HeidiSQL seems to be the best (gui) tool available. Unfortunately, it's only available for Windows and it doesn't look like a cross-platform is coming anytime soon. Fortunately, there are some really good cross-platform alternatives and in this post I will have a quick look at five of them:</p>
-
-<h3>MySQL Workbench</h3>
-
-<p>MySQL Workbench is a MySQL client maintained by Oracle (which also maintains MySQL server these days). It is the most advanced client I've tested and packs some really nice features like server load statistics. On the downside: it seems to be a bit unstable and occasionally crashed on my system. </p>
-
-<p><a href="https://www.mysql.com/products/workbench/">website</a></p>
-
-<h3>Toad</h3>
-
-<p>Toad is a nice client developed and maintained by Dell that supports multiple database platforms. The interface is is clear and it seems to be quite stable. It doesn't have some of the advanced features of other clients but for typical usage this shouldn't be a problem.</p>
-
-<p><a href="http://www.toadworld.com">website</a></p>
-
-<h3>DBeaver (editors choice)</h3>
-
-<p>DBeaver is my personal favorite. It is developed and maintained by a company named JKISS. It is well packed with features, supports multiple database platforms and seems to be stable. The interface is based on Eclipse and is easy to understand. The only problem I encountered with this program is when I tried to make a database dump when DBeaver required me to point to manual installed 'mysqldump' instance.</p>
-
-<p><a href="http://dbeaver.jkiss.org">website</a></p>
-
-<h3>SQuireLSQL</h3>
-
-<p>SQuireLSQL is a community developed, Java written client. My experiences with it weren't any good. It may require manual installation of JDBC drivers and it feels a bit unstable. I personally can only recommend picking any of the other clients available.</p>
-
-<p><a href="http://squirrel-sql.sourceforge.net">website</a></p>
-
-<h3>Emma</h3>
-
-<p>Emma is a nice tiny and fast database client written in Python, it's extremely lightweight and the feature set is just enough for basic CRUD operations. Emma's interface shines in simplicity. It's quite stable (though occasional crashes may appear). It's perfect for simple databases.</p>
-
-<p><a href="https://apps.ubuntu.com/cat/applications/emma/">Ubuntu Apps Directory</a></p>
-
-<h3>Conclusion</h3>
-
-<p>When you don't want to fall back to a command line, many graphical database clients are available and they all differ in terms of stability and features. The most advanced client is MySQL Workbench, but occasional crashes (on my system) made me look for an alternative. I was really impressed with the feature set and stability of DBeaver and this will be my goto client. If you're however, looking for a lightweight alternative I would suggest Emma. But off course, the choice is yours.</p>
-
-<p>Thanks for reading!</p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on June 16, 2015</em>
-            <a href="/database/heidisqlalternatives">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/performance/varnishloadtime">
-                <img src="https://svenv.nl/media/2015/06/07/superbunny_pin_oPov0dA.png" width="300" height="300" alt="Varnish superbunny">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/performance/varnishloadtime">Website performance, with vs without Varnish</a></h2>
-            <p><a href="https://www.varnish-cache.org">Varnish</a> is an exciting http accelerator (or caching HTTP reverse proxy) that claims to make radical performance difference to existing web applications. Since the page load time of web applications is more and more important, it may come in handy.</p>
-
-<p>With no direct performance issues, but also no reason not to implement it I decided to give Varnish a go and share the results...</p>
-
-<p>In this post I want  to give some insights in how much difference Varnish can make to an application (that is to say, <a href="//svenv.nl">svenv.nl</a>). I therefore used <a href="http://gtmetrix.com">GTmetrix</a> to measure the performance before, and after implementing Varnish, the results can be found below:</p>
-
-<h3>About the benchmark</h3>
-
-<p>The test uses GTmetrix to test the web performance. I few notes have to be made:</p>
-
-<ul>
-<li>The request is made from Canada</li>
-<li>Svenv.nl is hosted in Europe</li>
-<li>Actual performance may vary based on location of visitor</li>
-</ul>
-
-<h3>Without Varnish</h3>
-
-<p><img src="/media/2015/06/07/gtmetrix_no_varnish.png" alt="GTmetrix no Varnish stats" title="GTmetrix no Varnish stats" />
-The stack before I implemented varnish was using Nginx (gzip enabled and minified content) and Uwsgi to serve my Django app (read more about my stack <a href="/about">here</a>). The benchmark gave me the following results:</p>
-
-<ul>
-<li>Page load time: <strong>2.88s</strong></li>
-<li>Total page size: 234KB</li>
-</ul>
-
-<h3>With Varnish</h3>
-
-<p><img src="/media/2015/06/07/gtmetrix_varnish.png" alt="GTmetrix with Varnish stats" title="GTmetrix with Varnish stats" />
-After I implemented varnish (just Varnish, no further optimizations) I ran the exact same test again in order to see the difference. I thought the results where quite spectacular:</p>
-
-<ul>
-<li>Page load time: <strong>1.56s</strong></li>
-<li>Total page size: 234KB</li>
-</ul>
-
-<p>The result is clear, Varnish decreased the page load time by more than a second, a difference of almost <strong>46%</strong>!</p>
-
-<h3>Conclusion</h3>
-
-<p>After this experiment I learned a couple things. One thine is that Varnish really can make a radical increase. There should be however, noted that a correct implementation can be difficult and the performance increase may depend on the "cacheability" of a web page. In my case, content could be easily cached.</p>
-
-<p>Another thing I learned that diving further into insights may help you get even more performance out of your application. After making some changes based on the GTmetrix report, the page load time was further reduced to  <strong>1.15s</strong>.</p>
-
-<p>Thanks for reading!</p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on June 7, 2015</em>
-            <a href="/performance/varnishloadtime">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/uncategorized/varnishloadtime">
-                <img src="https://svenv.nl/media/2015/05/07/paper.png" width="453" height="300" alt="Paper">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/uncategorized/varnishloadtime">Website performance, with and without Varnish</a></h2>
-            <p><a href="https://www.varnish-cache.org">Varnish</a> is an exciting http accelerator (caching HTTP reverse proxy) that claims to make radical performance difference to existing web applications. Since the page load time of web applications is more and more important, it may come in handy.</p>
-
-<p>With no direct performance issues, but also no reason not to implement it I decided to give it a go and share the results...</p>
-
-<p>In this post I want  to give some insights in how much difference Varnish can make to an application (that is to say, <a href="//svenv.nl">svenv.nl</a>). I therefore used <a href="http://gtmetrix.com">GTmetrix</a> to measure the performance before, and after implementing Varnish, the results can be found below:</p>
-
-<h3>About the benchmark</h3>
-
-<p>The test uses GTmetrix to test the web performance. I few notes have to be made:</p>
-
-<ul>
-<li>The request is made from Canada</li>
-<li>Svenv.nl is hosted in Europe</li>
-<li>Actual performance may vary based on location of visitor</li>
-</ul>
-
-<h3>Without varnish</h3>
-
-<p><img src="http://svenv.nl/media/2015/06/07/gtmetrix_no_varnish.png" alt="GTmetrix no Varnish stats" title="GTmetrix no Varnish stats" />
-The stack before I implemented varnish was using Nginx (gzip enabled and minified content) and Uwsgi to serve my Django app (read more about my stack <a href="/about">here</a>). The benchmark gave me the following results:</p>
-
-<ul>
-<li>Page load time: <strong>2.88s</strong></li>
-<li>Total page size: 234KB</li>
-</ul>
-
-<h3>With varnish</h3>
-
-<p><img src="http://svenv.nl/media/2015/06/07/gtmetrix_varnish.png" alt="GTmetrix with Varnish stats" title="GTmetrix with Varnish stats" />
-After I implemented varnish (just Varnish, no further optimizations) I rand the exact same test again in order to see the difference. I thought the results where quite spectacular:</p>
-
-<ul>
-<li>Page load time: <strong>1.56s</strong></li>
-<li>Total page size: 234KB</li>
-</ul>
-
-<p>The result is clear, Varnish decreased the page load time by more than a second, a difference of almost <strong>46%</strong>!</p>
-
-<h3>Conclusion</h3>
-
-<p>After this experiment I learned a couple things. One thine is that Varnish really can make a radical increase. There should be however, noted that a correct implementation can be difficult and the performance increase may depend on the "cacheability" of a web page. In my case, content could be easily cached.</p>
-
-<p>Another thing I learned that diving further into insights may help you get even more performance out of your application. After making some changes based on the GTmetrix report, the page load time was further reduced 1.15s.</p>
-
-<p>Thanks for reading!</p>
-
-        </section>
-        <footer>
-            <em>Written by sven on May 30, 2015</em>
-            <a href="/uncategorized/varnishloadtime">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/unixandlinux/dockerclean">
-                <img src="https://svenv.nl/media/2015/05/21/docker.png" width="450" height="300" alt="Docker logo">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/unixandlinux/dockerclean">Cleaning up a full Docker partition</a></h2>
-            <p>Docker is great when it comes to isolating applications and services but like many other things, it has some serious drawbacks.</p>
-
-<p>One of the issues that repeatedly bites me is the massive amount of disk space it may use. In rare occasions it can even make your system run out of disk space.  On top of this Docker lacks a decent system to clean I'ts mess up,  so fixing it isn't as easy as it should be. Fortunately, solving the problem isn't rocket science and the solution is rather simple (scroll down for copy+paste).</p>
-
-<p>During some maintenance on <a href="//svenv.nl">svenv.nl</a> I noticed that Docker did stole all my disk space. A docker's run script (the script I launch at runtime) crashed with the following message:</p>
-
-<div class="codehilite"><pre><code> <span class="o">*</span> <span class="err">/etc/init.d/mysql: ERROR: The partition with /var/lib/mysql is too full!</span>
-</code></pre></div>
-
-<p>I returned to the command line of the host and did a quick check on the disk usage, this confirmed the issue:</p>
-
-<div class="codehilite"><pre><code><span class="nx">df</span> <span class="o">-</span><span class="nx">h</span>
-<span class="nx">Filesystem</span>      <span class="nx">Size</span>  <span class="nx">Used</span> <span class="nx">Avail</span> <span class="nx">Use</span><span class="o">%</span> <span class="nx">Mounted</span> <span class="nx">on</span>
-<span class="err">/dev/vda1        49G   46G     0 100% /</span>
-</code></pre></div>
-
-<p>Whenever this happens, I usually run ncdu (apt-get install ncdu) to find what’s using so much space. Because I already suspected Docker from wasting disk space (and ncdu'ing may take up some time) I checked /var/lib/docker first.</p>
-
-<div class="codehilite"><pre><code><span class="nx">ncdu</span> <span class="o">/</span><span class="nx">var</span><span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">docker</span>
-</code></pre></div>
-
-<p>The results were clear, in my case, the container diffs took up all the space:</p>
-
-<div class="codehilite"><pre><code><span class="o">---</span> <span class="err">/var/lib/docker ------------------------------------------------------------</span>
-   <span class="mf">41.2</span><span class="nx">GiB</span> <span class="p">[</span><span class="c1">##########] /aufs</span>
-   <span class="mf">17.4</span><span class="nx">MiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">graph</span>
-   <span class="mf">14.3</span><span class="nx">MiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">init</span>
-  <span class="mf">400.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">containers</span>
-  <span class="mf">148.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">volumes</span>
-   <span class="mf">60.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">execdriver</span>
-   <span class="mf">48.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">vfs</span>
-   <span class="mf">40.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span>  <span class="nx">linkgraph</span><span class="p">.</span><span class="nx">db</span>
-    <span class="mf">8.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">trust</span>
-    <span class="mf">8.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span> <span class="o">/</span><span class="nx">tmp</span>
-    <span class="mf">4.0</span><span class="nx">KiB</span> <span class="p">[</span>          <span class="p">]</span>  <span class="nx">repositories</span><span class="o">-</span><span class="nx">aufs</span>
-</code></pre></div>
-
-<p>The solution is to remove old containers and images. All the instructions to re-build them is defined in Dockerfiles so removing old container shouldn't be a problem. </p>
-
-<div class="codehilite"><pre><code><span class="nx">docker</span> <span class="nx">ps</span> <span class="o">-</span><span class="nx">a</span> <span class="o">-</span><span class="nx">notrunc</span> <span class="o">|</span> <span class="nx">grep</span> <span class="s1">&#39;Exit&#39;</span> <span class="o">|</span> <span class="nx">awk</span> <span class="s1">&#39;{print $1}&#39;</span> <span class="o">|</span> <span class="nx">xargs</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">docker</span> <span class="nx">rm</span>
-<span class="nx">docker</span> <span class="nx">images</span> <span class="o">-</span><span class="nx">notrunc</span> <span class="o">|</span> <span class="nx">grep</span> <span class="nx">none</span> <span class="o">|</span> <span class="nx">awk</span> <span class="s1">&#39;{print $3}&#39;</span> <span class="o">|</span> <span class="nx">xargs</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">docker</span> <span class="nx">rmi</span>
-</code></pre></div>
-
-<p>After running these commands disk usage returned back to normal and the application started as usual.</p>
-
-<p>Keep it clean!</p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on May 19, 2015</em>
-            <a href="/unixandlinux/dockerclean">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/internet/disqus">
-                <img src="https://svenv.nl/media/2015/05/21/diqus_W8ewEIb.png" width="300" height="300" alt="Disqus logo">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/internet/disqus">Why you should use Disqus</a></h2>
-            <p>I recently implemented a commenting system on my blog, I choose to use Disqus, and I think you should too.</p>
-
-<p><a href="https://disqus.com">Disqus</a> is a system that can be used to incorporate comments on a website or blog and has become quite popular lately. And thats for a reason.</p>
-
-<p>The commenting system Disqus provides, is installed in a couple of mouse clicks and by adding some JavaScript (you do remember those fancy "add this to your website" buttons right? It's something like that). Once this is done you're good, Disqus does all the hard work.</p>
-
-<p>This simple installation is not the only reason why you should consider using it when you're installing (or building) a commenting system. It does have an additional advantage.</p>
-
-<p>Regular commenting systems often require some kind of authentication. When your visitors originate from search engines. It's not very likely that they have (or are willing, to create) an account. Disqus uses one single login across multiple sites. If a visitor comments once, it's likely they're still logged in for the next website.</p>
-
-<p>Implementing a commenting system isn't just easier using Disqus, it als provides better usability towards your users. Profit!</p>
-
-<p>Happy blogging!</p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on May 15, 2015</em>
-            <a href="/internet/disqus">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/unixandlinux/latestlesscubuntu">
-                <img src="https://svenv.nl/media/2015/05/21/less.png" width="300" height="300" alt="Less logo">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/unixandlinux/latestlesscubuntu">Installing latest lessc on Ubuntu (Docker)</a></h2>
-            <p>When you're installing "lessc" (LESS compiler) on Ubuntu using the node-LESS package. An outdated version is installed on your system. I ran into this problem when I wanted to do server-side compilation of my .LESS stylesheets. The outdated version didn't compile the stylesheets properly so I needed to replace it.</p>
-
-<p>The problem however was that the environment runs in a Docker container and is build using commands in a Dockerfile. The process therefore needs to be automated using simple instructions.</p>
-
-<p>The solution was simple. Instead of installing node-LESS I installed nodejs <a href="http://svenv.nl/programming/nodennosuchfile">(on Ubuntu, don't forget nodejs-legacy)</a> and NPM. I then ran:</p>
-
-<div class="codehilite"><pre><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">less</span> <span class="o">-</span><span class="nx">g</span>
-</code></pre></div>
-
-<p>For a global, latest version of the LESS compiler.</p>
-
-<p>Happy coding! </p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on May 14, 2015</em>
-            <a href="/unixandlinux/latestlesscubuntu">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/programming/nodennosuchfile">
-                <img src="https://svenv.nl/media/2015/05/14/nodejs-green.png" width="450" height="300" alt="Nodejs">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/programming/nodennosuchfile">/usr/bin/env: node: No such file or directory</a></h2>
-            <p>In an attempt to install LESS using NPM I got the following error:</p>
-
-<div class="codehilite"><pre><code><span class="err">/usr/bin/env: node: No such file or directory</span>
-</code></pre></div>
-
-<p>Turns out some folks at Debian <a href="https://lists.debian.org/debian-devel-announce/2012/07/msg00002.html">decided</a> to rename node to nodejs to solve some kind of naming issue. The solution? Simply install nodejs-legacy</p>
-
-<div class="codehilite"><pre><code><span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">nodejs</span><span class="o">-</span><span class="nx">legacy</span>
-</code></pre></div>
-
-<p>This provides a simple symlink from node to nodejs</p>
-
-<p>Have a nice day!</p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on May 14, 2015</em>
-            <a href="/programming/nodennosuchfile">Read more</a>
-        </footer>
-    </article>
-
-    <article>
-        <header>
-            <a href="/unixandlinux/sudolatestcommand">
-                <img src="https://svenv.nl/media/2015/05/19/xkcd_sandwich.png" width="361" height="300" alt="Xkcd sandwich">
-            </a>
-        </header>
-        <section>
-            <h2><a href="/unixandlinux/sudolatestcommand">Running the latest command as root (sudo)</a></h2>
-            <p>In some cases when maintaining Linux/Unix systems, root privleges are needed for certain commands. And even though running applications as root can be a serious security threat, sometimes it is necessary.</p>
-
-<p>You probably solved the typical "Permission denied" error at least once by simply repeating the command with "sudo" in front of it. If you need this often (perhaps you shouldn't), try this for a change:</p>
-
-<div class="codehilite"><pre><code><span class="nx">sudo</span> <span class="o">!!</span>
-</code></pre></div>
-
-<p>The "!!" command basically repeats the previous command so you don't have to.</p>
-
-<p>Xkcd also has a great <a href="https://xkcd.com/149/">article</a> on sudo.</p>
-
-<p>Sudo: Suck it Up and DO as i told.</p>
-
-        </section>
-        <footer>
-            <em>Written by svenv on May 14, 2015</em>
-            <a href="/unixandlinux/sudolatestcommand">Read more</a>
-        </footer>
-    </article>
-
-
-
-    <a class="fetchposts" href="#">Load more</a>
-</section>
+            </code></pre>
+                <p><img src="/path/to/img.jpg" alt="Alt text" title="Title" class="Class" /></p>
+                <ol start="1"><li>hoi</li><li>    asdf</li><li>    asdfasdf </li><li>    asdfasdfasdfasdf</li></ol>
+                <p>dfasdfasdf</p>
+                <ol start="5"><li>hoi</li></ol>
+                <ol start="6"><li>asdf</li><li>asdfasdfasdf</li><li>aasfdadsf</li></ol>
+            </section>
+            <footer>
+                <em>Written by svenv on July 5, 2015</em>
+                <a href="/programming/markdownclasses">Read more</a>
+            </footer>
+        </article>
+        <a class="fetchposts" href="#">Load more</a>
+    </section>
     <footer class="footer">
-    <p>You've hit the bottom of this page.</p>
-</footer>
-
+        <p>You've hit the bottom of this page.</p>
+    </footer>
 </main>
-
-    <script src="/static/blog/jquery/dist/jquery.js"></script>
-    <script src="/static/blog/less/dist/less.js" type="text/javascript"></script>
-    <script src="/static/blog/js/blog.js" type="text/javascript"></script>
-
 </body>
 </html>

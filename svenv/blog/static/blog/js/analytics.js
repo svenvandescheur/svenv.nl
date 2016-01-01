@@ -4,7 +4,7 @@ import $ from 'jquery';
 /**
  * Logic for Google Analytics
  */
-export default class Analytics {
+export class Analytics {
     /**
      * Wrapper to setup tracking
      * Check if user is expected to be a visitor first
