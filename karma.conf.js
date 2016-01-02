@@ -4,8 +4,8 @@ module.exports = function (config) {
     config.set({
         autoWatch: true,
         singleRun: true,
-        browsers: ['Chrome'],
-        frameworks: ['jspm', 'jasmine-jquery', 'jasmine'],
+        browsers: ['PhantomJS'],
+        frameworks: ['jspm', 'jasmine-jquery', 'jasmine', 'es6-shim'],
         reporters: ['spec'],
 
         jspm: {
