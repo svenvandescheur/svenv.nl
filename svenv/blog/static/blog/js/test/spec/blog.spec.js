@@ -1,4 +1,7 @@
-﻿jasmine.getFixtures().fixturesPath = 'svenv/blog/static/blog/js/test/fixtures';
+﻿import {View, CategoryView, Navbar, PostView} from '../../blog.js';
+
+
+jasmine.getFixtures().fixturesPath = 'svenv/blog/static/blog/js/test/fixtures';
 
 
 describe('View', function() {
@@ -7,33 +10,18 @@ describe('View', function() {
         this.window = window;
     });
 
-    it('should receive a call to getView when the document is ready', function() {
-        var called = false,
-            oldView = View;
-        View = jasmine.createSpy().and.callFake(function () {
-            this.getView = function() {
-                called = true;
-            };
-        });
-        blog();
-        expect(called).toBeTruthy();
-        View = oldView;
-    });
-
     it('should return a CategoryView when body has class "categoryview"', function() {
-        $('body').removeClass();
         $('body').addClass('categoryview');
-        baseView = new View();
-        view = baseView.getView();
-        expect(view instanceof CategoryView).toBeTruthy();
+        var view = new View(),
+            currentView = view.getView();
+        expect(currentView.constructor.name).toBe('CategoryView');
     });
 
     it('should return a PostView when body has class "pageview"', function() {
-        $('body').removeClass();
-        $('body').addClass('pageview');
-        baseView = new View();
-        view = baseView.getView();
-        expect(view instanceof PostView).toBeTruthy();
+        $('body').addClass('categoryview');
+        var view = new View(),
+            currentView = view.getView();
+        expect(currentView.constructor.name).toBe('CategoryView');
     });
 });
 
@@ -47,7 +35,6 @@ describe('CategoryView', function() {
         spyOn($, "ajax").and.callFake(function(options) {
             options.success('<article>ajaxtest</article>');
         });
-        view.construct();
         view.setPage(1);  // required due to test runner
         view.fetch_button.click();
         expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=date&page=2');
@@ -57,7 +44,6 @@ describe('CategoryView', function() {
     it('should load the correct page when clicking "Load more"', function() {
         var view = new CategoryView();
         spyOn($, "ajax");
-        view.construct();
         view.setPage(2);
         view.fetch_button.click();
         expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=date&page=3');
@@ -68,7 +54,6 @@ describe('CategoryView', function() {
         spyOn($, "ajax").and.callFake(function(options) {
             options.error();
         });
-        view.construct();
         view.setPage(1);  // required due to test runner
         view.fetch_button.click();
         expect($.ajax.calls.mostRecent().args[0].url).toBe('/api/posts/?format=html&ordering=date&page=2');
@@ -78,7 +63,6 @@ describe('CategoryView', function() {
     it('should redirect to the article when clicking on it', function() {
         var view = new CategoryView();
         spyOn(view, 'redirectToArticle');
-        view.construct();
         $('article:first-child').click();
         expect(view.redirectToArticle).toHaveBeenCalled();
     });
@@ -90,7 +74,7 @@ describe('Navbar', function() {
     });
 
     it('should hide the navigation for mobile on search input focusin', function() {
-        var navbar = new NavBar();
+        var navbar = new Navbar();
         navbar.search_input.focusin();
         expect(navbar.nav).toHaveClass('hide-mobile');
     });
@@ -99,7 +83,7 @@ describe('Navbar', function() {
         spyOn(window, 'setTimeout').and.callFake(function(callback) {
             callback();
         });
-        var navbar = new NavBar();
+        var navbar = new Navbar();
         navbar.nav.addClass('hide-mobile');
         navbar.search_input.focusout();
         expect(navbar.nav).not.toHaveClass('hide-mobile');
@@ -112,7 +96,7 @@ describe('Navbar', function() {
         spyOn($, 'ajax').and.callFake(function(options) {
             options.success('<article><header><a href="/unixandlinux/dockerclean"><img src="https://svenv.nl/media/2015/05/21/docker.png" width="450" height="300" alt="Docker logo"></a></header> <section><h2><a href="/unixandlinux/dockerclean">Cleaning up a full Docker partition</a></h2><p>search test</p></section></article>');
         });
-        var navbar = new NavBar();
+        var navbar = new Navbar();
         navbar.search_input.val('docker').trigger('input');
         expect(window.setTimeout).toHaveBeenCalled();
         expect($('body').text()).toContain('search test');
@@ -125,11 +109,9 @@ describe('PostView', function() {
     });
 
     it('should load disqus when body has class "postview"', function() {
-        var view = new PostView();
         $('body').removeClass();
         $('body').addClass('postview');
-        $('script').remove();
-        view.construct();
+        new PostView();
         expect($('script[src="//svenv.disqus.com/embed.js"]').length).toBe(1);
     });
 });

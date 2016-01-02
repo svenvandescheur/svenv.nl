@@ -2,6 +2,7 @@ from .base import *
 
 
 DEBUG = True
+ROOT_URLCONF = 'svenv.urls.development'
 X_FRAME_OPTIONS = 'ALLOW'
 
 INSTALLED_APPS += ('debug_toolbar',)
