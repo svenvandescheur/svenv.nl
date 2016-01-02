@@ -1,4 +1,4 @@
-﻿import {Analytics} from '../../analytics.js'
+﻿import {Analytics} from '../../analytics.js';
 
 
 jasmine.getFixtures().fixturesPath = 'svenv/blog/static/blog/js/test/fixtures';

@@ -391,7 +391,7 @@ export class PostView {
     parallaxHeader() {
         var self = this;
         $(window).scroll(function(){
-            requestAnimFrame(self._parallaxHeader.bind(self));
+            window.requestAnimFrame(self._parallaxHeader.bind(self));
         });
 
         return this;

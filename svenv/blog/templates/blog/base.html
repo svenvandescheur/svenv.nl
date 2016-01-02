@@ -10,7 +10,6 @@
     {% if view.is_in_debug_mode %}
     <link rel="stylesheet" type="text/less" href="/static/blog/less/main.less">
     <link rel="stylesheet" type="text/css" href="/static/blog/css/fruity.css">
-    <link rel="stylesheet" type="text/css" href="/static/blog/font-awesome/css/font-awesome.css">
     {% else %}
     <link rel="stylesheet" type="text/css" href="/static/blog/css/svenv.min.css">
     {% endif %}
@@ -23,6 +22,7 @@
 <script src="/jspm_packages/system.js"></script>
 <script src="/config.js"></script>
 <script>
+    System.import('font-awesome/css/font-awesome.min.css!');
     System.import('/static/blog/js/blog.js');
     System.import('less');
 </script>

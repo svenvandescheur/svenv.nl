@@ -1,4 +1,4 @@
-﻿import {View, CategoryView, Navbar, PostView, blog} from '../../blog.js'
+﻿import {View, CategoryView, Navbar, PostView} from '../../blog.js';
 
 
 jasmine.getFixtures().fixturesPath = 'svenv/blog/static/blog/js/test/fixtures';
