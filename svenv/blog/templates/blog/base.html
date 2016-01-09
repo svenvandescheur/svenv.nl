@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="{{ view.base_url }}{{ request.path }}">
     {% if view.is_in_debug_mode %}
-    <link rel="stylesheet" type="text/less" href="/static/blog/less/main.less">
+    <link rel="stylesheet" type="text/css" href="/jspm_packages/npm/font-awesome@4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/blog/css/fruity.css">
+    <link rel="stylesheet" type="text/less" href="/static/blog/less/main.less">
     {% else %}
     <link rel="stylesheet" type="text/css" href="/static/blog/css/svenv.min.css">
     {% endif %}
@@ -22,7 +23,6 @@
 <script src="/jspm_packages/system.js"></script>
 <script src="/config.js"></script>
 <script>
-    System.import('font-awesome/css/font-awesome.min.css!');
     System.import('/static/blog/js/blog.js');
     System.import('less');
 </script>
