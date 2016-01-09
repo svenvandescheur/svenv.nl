@@ -20,4 +20,5 @@ install:
 script:
   - "cd svenv/"
   - "python manage.py test"
+  - "cd ../"
   - "gulp test"
