@@ -12,6 +12,8 @@ class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
 
+    url = serializers.CharField()
+
 
 class UserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=200)

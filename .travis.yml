@@ -18,5 +18,7 @@ install:
   - "jspm install"
   - "gulp"
 script:
-  - "python svenv/manage.py test svenv"
+  - "cd svenv/"
+  - "python manage.py test"
+  - "cd ../"
   - "gulp test"

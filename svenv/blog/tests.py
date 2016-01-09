@@ -94,7 +94,7 @@ class ViewTestCase(TestCase):
         category1.save()
         category2 = Category(published=1, name="cat2")
         category2.save()
-        image1 = Image(copyright="some artist")
+        image1 = Image(url="media/test/svenv_avatar.png", copyright="some artist")
         image1.save()
         image2 = Image()
         image2.save()
@@ -238,6 +238,12 @@ class SearchPostViewSet(ViewTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, '<article>')
         self.assertContains(response, 'Post 1')
+
+    def test_thumbnail_in_api(self):
+        response = self.c.get('/api/search/posts/?format=html&query=Post 1')
+        self.assertContains(response, '<img src="/media/t')
+        self.assertContains(response, '_crop')
+        self.assertNotContains(response, 'src=""')
 
 
 class ContactViewTestCase(ViewTestCase):
