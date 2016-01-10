@@ -57,7 +57,7 @@ export class CategoryView {
         this.setFetchPostsTarget(this.fetch_url);
 
         var self = this;
-        this.fetch_button.click(function (e) {
+        this.fetch_button.off('click').on('click', function (e) {
             e.preventDefault();
             self.fetchPosts();
         });
@@ -236,7 +236,7 @@ export class Navbar {
      * @returns {Navbar} fluent interface
      */
     setUpSearchFocusIn() {
-        this.search_input.on('focusin', $.proxy(this.hideNavOnMobile, this));
+        this.search_input.off('focusin').on('focusin', $.proxy(this.hideNavOnMobile, this));
         return this;
     }
     /**
@@ -253,7 +253,7 @@ export class Navbar {
      * @returns {Navbar} fluent interface
      */
     setUpSearchFocusOut() {
-        this.search_input.on('focusout', $.proxy(this.showNavOnMobile, this));
+        this.search_input.off('focusout').on('focusout', $.proxy(this.showNavOnMobile, this));
         return this;
     }
 
@@ -274,7 +274,7 @@ export class Navbar {
      * @returns {Navbar} fluent interface
      */
     setUpSearchInput() {
-        this.search_input.on('input', $.proxy(this.search, this));
+        this.search_input.off('input').on('input', $.proxy(this.search, this));
         return this;
     }
 
@@ -375,7 +375,7 @@ export class PostView {
      * @returns {Object} fluent interface
      */
     disqus() {
-        if ($('body').hasClass('postview')) {
+        if ($('.disqus').length) {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + this.disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
