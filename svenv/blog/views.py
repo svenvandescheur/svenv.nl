@@ -165,8 +165,13 @@ class SearchPostViewSet(BaseBlogViewSet):
         """
         Filters the queryset with the given search query
         """
+        query = self.request.GET.get('query', '')
         queryset = super(SearchPostViewSet, self).get_queryset()
-        return queryset.filter(content__icontains=self.request.GET.get('query', ''))
+
+        for keyword in query.split(' '):
+            keyword = keyword.strip()
+            queryset = queryset.filter(content__icontains=keyword)
+        return queryset
 
 
 class ContactView(BaseBlogView, generic.edit.FormView):
