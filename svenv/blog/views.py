@@ -91,21 +91,39 @@ class PostView(BaseBlogView, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         """
-        @Todo
+        Returns the default context combined with previous_post and next_post objects
         """
         context = super(PostView, self).get_context_data(**kwargs)
-
-        try:
-            context['next_post'] = self.object.get_next_by_date()
-        except:
-            context['next_post'] = None
-
-        try:
-            context['previous_post'] = self.object.get_previous_by_date()
-        except:
-            context['previous_post'] = None
+        context['previous_post'] = self.get_previous(self.object)
+        context['next_post'] = self.get_next(self.object)
 
         return context
+
+    def get_previous(self, object):
+        """
+        Returns the previous published Post object
+        """
+        try:
+            previous = object.get_previous_by_date()
+            if not previous.published:
+                previous = self.get_previous(previous)
+        except Post.DoesNotExist:
+            return None
+
+        return previous
+
+    def get_next(self, object):
+        """
+        Returns the next published Post object
+        """
+        try:
+            next = object.get_next_by_date()
+            if not next.published:
+                next = self.get_next(next)
+        except Post.DoesNotExist:
+            return None
+
+        return next
 
     def is_post(self):
         """
