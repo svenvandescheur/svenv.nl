@@ -89,6 +89,24 @@ class PostView(BaseBlogView, generic.DetailView):
         category = get_object_or_404(Category, name__icontains=self.kwargs['category_name'], published=True)
         return get_object_or_404(Post, category=category, short_title__icontains=self.kwargs['short_title'], published=True)
 
+    def get_context_data(self, **kwargs):
+        """
+        @Todo
+        """
+        context = super(PostView, self).get_context_data(**kwargs)
+
+        try:
+            context['next_post'] = self.object.get_next_by_date()
+        except:
+            context['next_post'] = None
+
+        try:
+            context['previous_post'] = self.object.get_previous_by_date()
+        except:
+            context['previous_post'] = None
+
+        return context
+
     def is_post(self):
         """
         Returns whether the view belongs to a blog post

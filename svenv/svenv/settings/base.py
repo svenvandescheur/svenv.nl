@@ -84,5 +84,6 @@ THUMBNAIL_ALIASES = {
     '': {
         'article_list': {'size': (300, 300), 'crop': True},
         'article': {'size': (1080, 300), 'crop': True},
+        'related': {'size': (64, 64), 'crop': True},
     },
 }

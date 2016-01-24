@@ -1,0 +1,40 @@
+@import "../../config/project";
+
+
+.related {
+    .cols(12, width);
+    .vpadding(1, 1);
+    .shadow();
+    background: @panel;
+    display: flex;
+    padding-left: @section-mobile-padding;
+    padding-right: @section-mobile-padding;
+    position: relative;
+    z-index: 20;
+
+    ul {
+        .cols(12);
+
+        li {
+            display: flex;
+            list-style: none;
+
+            img {
+                height: @related-thumbnail-size;
+                width: @related-thumbnail-size;
+                margin-right: 1rem;
+            }
+
+            a {
+                margin: auto 0;
+            }
+
+            &.next {
+                float: left;
+            }
+            &.previous {
+                float: right;
+            }
+        }
+    }
+}
