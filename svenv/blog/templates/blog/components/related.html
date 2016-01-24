@@ -1,0 +1,20 @@
+{% load thumbnail %}
+
+
+<aside class="related">
+    <ul>
+        {% if next_post %}
+        <li class="next">
+            <img src="{{ next_post.image.url|thumbnail_url:'related' }}" alt="{{ next_post.image.title }}">
+            <a href="/{{ next_post.category.name }}/{{ next_post.short_title }}">{{ next_post.title }}</a>
+        </li>
+        {% endif %}
+
+        {% if previous_post %}
+        <li class="previous">
+            <img src="{{ previous_post.image.url|thumbnail_url:'related' }}" alt="{{ previous_post.image.title }}">
+            <a href="/{{ previous_post.category.name }}/{{ previous_post.short_title }}">{{ previous_post.title }}</a>
+        </li>
+        {% endif %}
+    </ul>
+</aside>
