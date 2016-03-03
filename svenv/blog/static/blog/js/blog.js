@@ -177,12 +177,17 @@ export class CategoryView {
 
     /**
      * Binds articles to redirectToArticle()
+     * Only on left mouse button click, ignores other buttons
      * @returns {CategoryView} fluent interface
      */
     setUpRedirectToArticle() {
         var self = this;
-        this.articles.click(function () {
-            self.redirectToArticle($(this));
+        this.articles.click(function (event) {
+            if (event.which === 1) {
+                event.preventDefault();
+                self.redirectToArticle($(this));
+                return;
+            }
         });
 
         return this;

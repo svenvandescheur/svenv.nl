@@ -60,11 +60,31 @@ describe('CategoryView', function() {
         expect($('body').text()).toContain('No more posts');
     });
 
-    it('should redirect to the article when clicking on it', function() {
-        var view = new CategoryView();
+    it('should redirect to the article when left-clicking on it', function() {
+        let view = new CategoryView(),
+            event = jQuery.Event('click', {'which': 1});
+
         spyOn(view, 'redirectToArticle');
-        $('article:first-child').click();
+        $('article:first-child').trigger(event);
         expect(view.redirectToArticle).toHaveBeenCalled();
+    });
+
+    it('should redirect to the article when middle-clicking on it', function() {
+        let view = new CategoryView(),
+            event = jQuery.Event('click', {'which': 2});
+
+        spyOn(view, 'redirectToArticle');
+        $('article:first-child').trigger(event);
+        expect(view.redirectToArticle).not.toHaveBeenCalled();
+    });
+
+    it('should redirect to the article when right-clicking on it', function() {
+        let view = new CategoryView(),
+            event = jQuery.Event('click', {'which': 3});
+
+        spyOn(view, 'redirectToArticle');
+        $('article:first-child').trigger(event);
+        expect(view.redirectToArticle).not.toHaveBeenCalled();
     });
 });
 
