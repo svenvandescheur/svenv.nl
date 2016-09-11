@@ -1,4 +1,4 @@
-django=1.9
+django==1.9
 django-admin-tools
 django-debug-toolbar
 django-epiceditor
