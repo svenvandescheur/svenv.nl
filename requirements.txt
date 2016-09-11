@@ -3,6 +3,7 @@ django-admin-tools
 django-debug-toolbar
 django-epiceditor
 djangorestframework
+psycopg2
 easy-thumbnails
 feedparser
 markdown
