@@ -26,8 +26,8 @@ X_FRAME_OPTIONS = 'DENY'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'svenv.nl,
-        'USER': 'svenv.nl,
+        'NAME': 'svenv.nl',
+        'USER': 'svenv.nl',
         'PASSWORD': 'my-secret-password',
         'HOST': 'postgresql',
     }
