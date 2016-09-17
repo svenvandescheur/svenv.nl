@@ -9,5 +9,6 @@ markdown
 markdown2
 mock
 pillow
+psycopg2
 pygments
 python-dateutil
