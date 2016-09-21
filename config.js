@@ -268,6 +268,9 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:isarray@1.0.0": {
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
     "npm:js-yaml@2.0.5": {
       "argparse": "npm:argparse@0.1.16",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
