@@ -83,7 +83,7 @@ gulp.task('compile-less', function () {
  * Merge CSS
  */
 gulp.task('merge-css', ['compile-less'], function () {
-    return gulp.src(['./svenv/blog/static/blog/css/*.css', 'jspm_packages/npm/font-awesome*/css/font-awesome.min.css'])
+    return gulp.src(['./svenv/blog/static/blog/css/*.css', 'node_modules/font-awesome/css/font-awesome.min.css'])
     .pipe(concatCss('./svenv/blog/static/blog/css/svenv.min.css'))
     .pipe(gulp.dest('./'));
 });
