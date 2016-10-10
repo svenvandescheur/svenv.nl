@@ -14,9 +14,6 @@ before_install:
   - "npm -g install npm@next"
 install:
   - "pip install -r requirements.txt"
-  - "gulp"
 script:
   - "cd svenv/"
   - "python manage.py test"
-  - "cd ../"
-  - "gulp test"
