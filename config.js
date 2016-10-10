@@ -19,7 +19,6 @@ System.config({
     "clean-css": "npm:clean-css@3.4.8",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
-    "font-awesome": "npm:font-awesome@4.5.0",
     "grunt": "npm:grunt@0.4.5",
     "jquery": "github:components/jquery@2.1.4",
     "less": "github:aaike/jspm-less-plugin@0.0.5",
@@ -164,9 +163,6 @@ System.config({
       "glob": "npm:glob@3.2.11",
       "lodash": "npm:lodash@2.4.2",
       "path": "github:jspm/nodelibs-path@0.1.0"
-    },
-    "npm:font-awesome@4.5.0": {
-      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:glob@3.1.21": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",

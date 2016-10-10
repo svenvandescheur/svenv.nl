@@ -33,7 +33,6 @@
   },
   "jspm": {
     "dependencies": {
-      "font-awesome": "npm:font-awesome@^4.5.0",
       "jquery": "github:components/jquery@^2.1.4",
       "less": "github:aaike/jspm-less-plugin@^0.0.5"
     },
@@ -43,5 +42,8 @@
       "clean-css": "npm:clean-css@^3.4.8",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "dependencies": {
+    "font-awesome": "^4.6.3"
   }
 }
