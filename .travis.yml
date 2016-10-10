@@ -14,8 +14,6 @@ before_install:
   - "npm -g install npm@next"
 install:
   - "pip install -r requirements.txt"
-  - "npm install"
-  - "jspm install"
   - "gulp"
 script:
   - "cd svenv/"
